@@ -1,6 +1,6 @@
 [build]
 publish = "public"
-command = "hugo --there=hello-friend-ng --gc --minify"
+command = "hugo -t hello-friend-ng --gc --minify"
 
 [context.production.environment]
 HUGO_VERSION = "0.81.0"
