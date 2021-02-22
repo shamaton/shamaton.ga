@@ -1,0 +1,15 @@
+<!-- use either src or link-thumb for thumbnail image -->
+{{ $src := .Get "src" }}
+{{ $url := (.Get "link" | default (.Get "src")) }}
+{{ $cap := .Get "cap" }}
+<!-- Allow local and remote images -->
+{{ if and $src (not (findRE "^(/|http(s?)://)" $src)) }}
+{{ $src = ($.Page.Resources.GetMatch (.Get "src")).RelPermalink }}
+{{ end }}
+{{ if not (findRE "^(/|http(s?)://)" $url) }}
+{{ $url = ($.Page.Resources.GetMatch $url).RelPermalink }}
+{{ end }}
+
+<a href="{{ $url }}" class="btn btn-border luminous">
+    {{ $cap }}
+</a>

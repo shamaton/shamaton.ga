@@ -83,8 +83,14 @@ disableHugoGeneratorInject = false
   # Integrate Javascript files or stylesheets by adding the url to the external assets or by
   # linking local files with their path relative to the static folder, e.g. "css/styles.css"
   #
-  customCSS = []
-  customJS  = []
+  customCSS = [
+    "https://cdn.jsdelivr.net/npm/luminous-lightbox@2.3.2/dist/luminous-basic.min.css",
+    "/stylesheets/button.css"
+  ]
+  customJS  = [
+    "https://cdn.jsdelivr.net/npm/luminous-lightbox@2.3.2/dist/luminous.min.js",
+    "/scripts/luminous.js"
+  ]
 
   # Toggle this option need to rebuild SCSS, requires extended version of Hugo
   #
