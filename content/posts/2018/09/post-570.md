@@ -3,8 +3,8 @@ title: '[golang] MessagePackのシリアライザ(msgpack)を作りました'
 author: しゃまとん
 type: post
 date: 2018-09-28T13:02:59+00:00
-url: /archives/570
-featured_image: /wp-content/uploads/2016/12/GitHub-Mark-120px-plus.png
+url: /posts/570
+featured_image: /images/posts/2016/12/GitHub-Mark-120px-plus.png
 categories:
   - go
 
@@ -14,9 +14,9 @@ categories:
 
 ちょっとしたお知らせです。  
 タイトルの通りなんですが、golangで使えるMessagePackのシリアライザを作りました。  
-（&#x1f389;個人的にはパンパカパーン&#x1f389;）
+（🎉個人的にはパンパカパーン🎉）
 
-
+{{< blogcard url="https://github.com/shamaton/msgpack" title="shamaton/msgpack" >}}
 
 まず、MessagePackとはデータのシリアライズフォーマットの1つで効率の良い形式として知られています。よくJSONと比較・検証されて使われていることが多いですね。  
 現在は多くの言語で使えるようになっており、言語間で何かデータのやり取りをするときに候補の1つになっています。
@@ -30,10 +30,11 @@ categories:
 エンドポイントの名称は迷ったんですが、いろいろ考えてEncode / Decodeにしました。  
 呼び出しはこんな感じで。
 
-<pre class="lang:go decode:true " title="sample.go">package main;
-
+```go
+package main
+     
 import (
-  "github.com/shamaton/msgpack"
+    "github.com/shamaton/msgpack"
 )
 
 func main() {
@@ -41,7 +42,7 @@ func main() {
         String string
     }
     v := Struct{String: "msgpack"}
-
+    
     d, err := msgpack.Encode(v)
     if err != nil {
         panic(err)
@@ -51,15 +52,18 @@ func main() {
     if err != nil {
         panic(err)
     }
-}</pre>
+}
+```
+
 
 単純に使うだけならEncode/Decodeを呼び出すだけです！  
-引数は標準のパッケージencoding/jsonと同じ形にしてます。（置き換えが容易かも&#8230;！）
+引数は標準のパッケージencoding/jsonと同じ形にしてます。（置き換えが容易かも...！）
 
 で、肝心のパフォーマンスですが、まずはシリアライズ。  
-自分が知っている範囲で他のMessagePackやJSON等の別フォーマットと比較してみます。ベンチマークはおそらくユーザーが呼び出すであろうエンドポイントでとってみました。
+自分が知っている範囲で他のMessagePackやJSON等の別フォーマットと比較してみます。ベンチマークはおそらくユーザーが呼び出すであろうエンドポイントでとってみました。
 
-<pre class="lang:default mark:5,7 decode:true ">$ go test -bench CompareEncode -benchmem
+```shell script
+$ go test -bench CompareEncode -benchmem
 goos: darwin
 goarch: amd64
 pkg: github.com/shamaton/msgpack_bench
@@ -73,13 +77,15 @@ BenchmarkCompareEncodeJson-4                  500000          3428 ns/op        
 BenchmarkCompareEncodeGob-4                   200000         11537 ns/op        2824 B/op         50 allocs/op
 BenchmarkCompareEncodeProtocolBuffer-4        500000          2338 ns/op         792 B/op         29 allocs/op
 PASS
-ok      github.com/shamaton/msgpack_bench   14.481s</pre>
+ok      github.com/shamaton/msgpack_bench   14.481s
+```
 
 Shamatonとついているものが今回リリースしたものになります。ArrayShamatonというのはMessagePackのフォーマットが軽量なパターンを採用しているものです（Unityでは[MessagePack-CSharp][2]でおなじみですね？）。今回のケースでは通常のEncodeでも他のパッケージよりも性能よく動作させられたっぽいです。
 
 次にデシリアライズです。
 
-<pre class="lang:default mark:5,7 decode:true ">$ go test -bench CompareDecode -benchmem
+```shell script
+$ go test -bench CompareDecode -benchmem
 goos: darwin
 goarch: amd64
 pkg: github.com/shamaton/msgpack_bench
@@ -93,7 +99,8 @@ BenchmarkCompareDecodeJson-4                  200000          8904 ns/op        
 BenchmarkCompareDecodeGob-4                    50000         34805 ns/op       10172 B/op        275 allocs/op
 BenchmarkCompareDecodeProtocolBuffer-4       1000000          1759 ns/op         656 B/op         19 allocs/op
 PASS
-ok      github.com/shamaton/msgpack_bench   16.946s</pre>
+ok      github.com/shamaton/msgpack_bench   16.946s
+```
 
 こちらも性能良く動作させられたっぽいです。ただProtocol Bufferはデータの形次第でパフォーマンス良くなることがありました（struct onlyな構成など）。まぁprotoファイルとかを準備しないといけないので、その点よいかなーと。
 
@@ -108,17 +115,7 @@ ok      github.com/shamaton/msgpack_bench   16.946s</pre>
 よかったら使ってみてください！  
 以上です。
 
-&nbsp;
-
-<blockquote class="twitter-tweet" data-lang="ja">
-  <p dir="ltr" lang="en">
-    I&#8217;ve just published MessagePack Serializer(v1.0.0) for golang. Its performance is faster than the others. You can use simply. Please see and try it!! &#x1f389;&#x1f389;&#x1f389;<a href="https://t.co/X4P5qNWOzH">https://t.co/X4P5qNWOzH</a><a href="https://twitter.com/hashtag/Golang?src=hash&ref_src=twsrc%5Etfw">#Golang</a>
-  </p>
-  
-  <p>
-    — しゃまとん ʕ ◔ϖ◔ʔ (@shamaton) <a href="https://twitter.com/shamaton/status/1045659310737346561?ref_src=twsrc%5Etfw">2018年9月28日</a>
-  </p>
-</blockquote>
+{{< tweet 1045659310737346561 >}}  
 
  [1]: https://msgpack.org/ja.html
  [2]: https://github.com/neuecc/MessagePack-CSharp
