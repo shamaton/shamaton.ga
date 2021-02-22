@@ -14,13 +14,17 @@ categories:
 
 ---
  お世話になっております。  
-しゃまとんです。  
+しゃまとんです。
   
-先日、msgpackにissueが立っていたので確認したところ windows/386 on Windows 10でbuildエラーになってしまうということだったので修正しておくことに。 エラーになっている箇所を確認したところ、どうやらWindowsのOSは関係なく32bit環境だとエラーになってるぽいなーと思い、じゃあ32bit環境で試すかー。ってそんな環境はねぇ！って一瞬思ったんですが  
+先日、[msgpack](https://github.com/shamaton/msgpack)に[issue](https://github.com/shamaton/msgpack/issues/13)が
+立っていたので確認したところ`windows/386 on Windows 10`でbuildエラーになってしまうということだったので修正しておくことに。  
+エラーになっている箇所を確認したところ、どうやらWindowsのOSは関係なく32bit環境だとエラーになってるぽいなーと思い、じゃあ32bit環境で試すかー。  
+
+ってそんな環境はねぇ！って一瞬思ったんですが...
   
 32bitの環境だったら、Linuxでもいいから用意できたらいいかも  
 Dockerでいけないだろうかと思ったら、そんなコンテナあるんですねー。  
-  
+
 <https://hub.docker.com/r/i386/centos/>  
   
 ということで32bitなコンテナのテスト環境をつくっていきます。  
@@ -28,7 +32,8 @@ Dockerでいけないだろうかと思ったら、そんなコンテナある�
   
 上記のコンテナをベースにDockerfileを作りました。以前に似たようなことをしていたのですが、同様にgolang/gitを入れておきます。 ベースそのままだとyumがうまく動かないのでrepoファイルに対処を入れる必要がありました。 
 
-<pre class="wp-block-preformatted">FROM i386/centos:6
+```dockerfile
+FROM i386/centos:6
  
 LABEL maintainer="shamaton"
  
@@ -46,29 +51,29 @@ RUN echo "docker ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
  
 # install latest stable git
 RUN yum -y install \
-git \
-gcc \
-curl-devel \
-expat-devel \
-gettext-devel \
-openssl-devel \
-zlib-devel \
-perl-ExtUtils-MakeMaker && \
-git clone https://github.com/git/git.git && \
-cd git/ && \
-git checkout `git tag | sort -V | grep -v "\-rc" | tail -1` && \
-yum -y remove git && \
-make prefix=/usr all && \
-make prefix=/usr install && \
-yum -y remove gcc \
-curl-devel \
-expat-devel \
-gettext-devel \
-openssl-devel \
-zlib-devel \
-perl-ExtUtils-MakeMaker && \
-cd / && \
-rm -rf /git
+    git \
+    gcc \
+    curl-devel \
+    expat-devel \
+    gettext-devel \
+    openssl-devel \
+    zlib-devel \
+    perl-ExtUtils-MakeMaker && \
+    git clone https://github.com/git/git.git && \
+    cd git/ && \
+    git checkout `git tag | sort -V | grep -v "\-rc" | tail -1` && \
+    yum -y remove git && \
+    make prefix=/usr all && \
+    make prefix=/usr install && \
+    yum -y remove gcc \
+    curl-devel \
+    expat-devel \
+    gettext-devel \
+    openssl-devel \
+    zlib-devel \
+    perl-ExtUtils-MakeMaker && \
+    cd / && \
+    rm -rf /git
  
 # install golang
 RUN curl -O https://storage.googleapis.com/golang/go${go_ver}.linux-386.tar.gz
@@ -82,21 +87,32 @@ USER docker
 # user work
 ENV PATH $PATH:/usr/local/go/bin
 RUN mkdir -p ${HOME}/go
-ENV GOPATH /home/docker/go</pre> 次にbuildして立ち上げて見ましょう。 
+ENV GOPATH /home/docker/go
+```
 
-<pre class="wp-block-code"><code>docker build ./ -t centos6-i386-go-git
-docker run -it --rm --name test123 centos6-i386-go-git bash</code></pre> コンテナが起動したら、32bitでgolangとgitが使えるか確認しておきます 
+次にbuildして立ち上げて見ましょう。 
 
-<pre class="wp-block-code"><code>$ getconf LONG_BIT
+```shell script
+docker build ./ -t centos6-i386-go-git
+docker run -it --rm --name test123 centos6-i386-go-git bash
+```
+
+コンテナが起動したら、32bitでgolangとgitが使えるか確認しておきます 
+
+```shell script
+$ getconf LONG_BIT
 32
 
 $ git version
 git version 2.22.0
 
 $ go version
-go version go1.12.7 linux/386</code></pre> ついでにissueになっている挙動も確認しておきます 
+go version go1.12.7 linux/386
+```
 
-<pre class="wp-block-code"><code>$ go get -d -v github.com/shamaton/msgpack
+ ついでにissueになっている挙動も確認しておきます 
+```shell script
+$ go get -d -v github.com/shamaton/msgpack
  github.com/shamaton/msgpack (download)
 
 $ cd go/src/github.com/shamaton/msgpack
@@ -114,12 +130,16 @@ internal/encoding/struct.go:94:14: constant 4294967295 overflows int
 internal/encoding/struct.go:141:14: constant 4294967295 overflows int
 internal/encoding/struct.go:197:16: constant 4294967295 overflows int
 internal/encoding/struct.go:197:16: too many errors
-FAIL    github.com/shamaton/msgpack [build failed] </code></pre> エラーでた！
+FAIL    github.com/shamaton/msgpack [build failed]
+```
 
-  
+エラーでた！
+
 ってことで、32bit環境になっているようです。（不具合を晒していく）  
   
 さぁ、修正しよう。（した）  
 以上です。  
   
-あとから気づいたけど、こっちのほうが良かったかな&#8230; <https://hub.docker.com/r/i386/alpine/>
+あとから気づいたけど、こっちのほうが良かったかな...
+
+<https://hub.docker.com/r/i386/alpine/>

@@ -6,10 +6,12 @@ aliases = ["about-us","about-hugo","contact"]
   name = "shamaton"
 +++
 
+{{< image src="/images/posts/2013/09/hello_html5.jpg" alt="Hello Friend" position="center" style="border-radius: 8px;" >}}
+
 Thank you for your visit my website.
 I am a software engineer and usually work at an company. After work, I also create some games, services and OSS.
 
-I have been posting aricles about technology and so on. If you are interested my posts, [please visit it](../posts).(I'm sorry but I write in Japanese) 
+I have been posting articles about technology and so on. If you are interested my posts, [please visit it](../posts).(I'm sorry but I write in Japanese) 
 
 ## Experience
 Programming language is tool, so I don't have likes and dislikes in programming languages. They should be used suitable on any cases. 
