@@ -134,7 +134,7 @@ disableHugoGeneratorInject = false
   # Uncomment this if you want a portrait on your start page
   #
   [params.portrait]
-    path     = "https://avatars.githubusercontent.com/u/4637556?s=400&u=606ab9cc9d7915e72a1ff2472883b6d91bc35310&v=4"
+    path     = "/images/me.jpg"
     alt      = "Portrait"
     maxWidth = "200px"
 
