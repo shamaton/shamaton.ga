@@ -55,9 +55,9 @@ disableHugoGeneratorInject = false
 
   # Metadata mostly used in document's head
   # 
-  description = "Nice theme for homepages and blogs"
-  keywords = ""
-  images = [""]
+  description = "Various posts by a software engineer"
+  keywords = "shamaton"
+  images = []
 
   homeSubtitle = "I ❤ engineering."
 

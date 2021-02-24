@@ -24,5 +24,5 @@ Programming language is tool, so I don't have likes and dislikes in programming 
   
 ## Private Works
 
-{{< lightbox src="/images/posts/2019/06/image-1.png" cap=1 grp=a >}} 
+{{< lightbox src="/images/posts/2019/06/image-1.png" thumb="/images/posts/2019/06/image-1.png" grp=a >}} 
 {{< lightbox src="/images/posts/2019/06/image-2.png" cap=2 grp=a >}}
