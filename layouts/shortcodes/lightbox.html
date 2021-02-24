@@ -1,7 +1,10 @@
 <!-- use either src or link-thumb for thumbnail image -->
 {{ $src := .Get "src" }}
 {{ $url := (.Get "link" | default (.Get "src")) }}
+
+<!-- caption or thumbnail -->
 {{ $cap := .Get "cap" }}
+{{ $thumb := .Get "thumb" }}
 
 <!-- groping -->
 {{ $grp := .Get "grp" }}
@@ -17,6 +20,12 @@
 {{ $url = ($.Page.Resources.GetMatch $url).RelPermalink }}
 {{ end }}
 
+{{ if and $cap }}
 <a href="{{ $url }}" class="btn btn-border" rel="lightbox{{ $grp }}">
     {{ $cap }}
 </a>
+{{ else if and $thumb }}
+<a href="{{ $url }}" rel="lightbox{{ $grp }}">
+    <img src="{{ $thumb }}">
+</a>
+{{ end }}
