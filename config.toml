@@ -84,12 +84,12 @@ disableHugoGeneratorInject = false
   # linking local files with their path relative to the static folder, e.g. "css/styles.css"
   #
   customCSS = [
-    "https://cdn.jsdelivr.net/npm/luminous-lightbox@2.3.2/dist/luminous-basic.min.css",
-    "/stylesheets/button.css"
+    "/lightbox/css/lightbox.min.css",
+    "/design/button.css",
   ]
   customJS  = [
-    "https://cdn.jsdelivr.net/npm/luminous-lightbox@2.3.2/dist/luminous.min.js",
-    "/scripts/luminous.js"
+    "https://code.jquery.com/jquery-3.5.1.min.js",
+    "/lightbox/js/lightbox.min.js",
   ]
 
   # Toggle this option need to rebuild SCSS, requires extended version of Hugo

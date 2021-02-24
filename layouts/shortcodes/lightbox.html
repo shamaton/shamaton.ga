@@ -2,6 +2,13 @@
 {{ $src := .Get "src" }}
 {{ $url := (.Get "link" | default (.Get "src")) }}
 {{ $cap := .Get "cap" }}
+
+<!-- groping -->
+{{ $grp := .Get "grp" }}
+{{ if and $grp }}
+{{ $grp = delimit (slice "[" $grp "]") "" }}
+{{ end }}
+
 <!-- Allow local and remote images -->
 {{ if and $src (not (findRE "^(/|http(s?)://)" $src)) }}
 {{ $src = ($.Page.Resources.GetMatch (.Get "src")).RelPermalink }}
@@ -10,6 +17,6 @@
 {{ $url = ($.Page.Resources.GetMatch $url).RelPermalink }}
 {{ end }}
 
-<a href="{{ $url }}" class="btn btn-border luminous">
+<a href="{{ $url }}" class="btn btn-border" rel="lightbox{{ $grp }}">
     {{ $cap }}
 </a>
