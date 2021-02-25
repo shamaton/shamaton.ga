@@ -3,7 +3,7 @@ title: '[メモ] 2017年の振り返り'
 author: しゃまとん
 type: post
 date: 2017-12-30T16:39:12+00:00
-url: /archives/513
+url: /posts/513
 featured_image: /wp-content/uploads/2017/12/2017.png
 categories:
   - メモ
