@@ -6,6 +6,12 @@
 {{ $cap := .Get "cap" }}
 {{ $thumb := .Get "thumb" }}
 
+<!-- class -->
+{{ $class := .Get "class" }}
+{{ if and $class }}
+{{ $class = delimit (slice "btn" "btn-border") " " }}
+{{ end }}
+
 <!-- groping -->
 {{ $grp := .Get "grp" }}
 {{ if and $grp }}
@@ -21,7 +27,7 @@
 {{ end }}
 
 {{ if and $cap }}
-<a href="{{ $url }}" class="btn btn-border" rel="lightbox{{ $grp }}">
+<a href="{{ $url }}" class="{{ $class }}" rel="lightbox{{ $grp }}">
     {{ $cap }}
 </a>
 {{ else if and $thumb }}

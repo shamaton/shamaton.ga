@@ -34,10 +34,10 @@ button.btn {
 }
 
 a.btn-border {
-    padding: 10px 16px;
-    border: 2px solid #000;
+    padding: 2px 4px;
+    border: 1px solid #000;
     border-radius: 0;
-    background: #fff;
+    background: rgb(202, 202, 202);
     text-decoration: none;
 }
 
