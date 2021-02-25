@@ -3,8 +3,8 @@ title: '[CI] concourseでUnityのビルドをCIしてみる – 動作編'
 author: しゃまとん
 type: post
 date: 2019-07-07T12:22:19+00:00
-url: /archives/668
-featured_image: /wp-content/uploads/2019/06/concourse_icon.png
+url: /posts/668
+featured_image: /images/posts/2019/06/concourse_icon.png
 is_comment_form_freeze:
   - on
 comment_form_freeze_message:
