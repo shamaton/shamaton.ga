@@ -1,5 +1,13 @@
+{{ $url := .Get "url" }}
+{{ $title := .Get "title" }}
+
+<!-- Allow local and remote urls -->
+{{ if and (findRE "^/" (.Get "url")) }}
+{{ $url = delimit (slice "https://shamaton.ga" (.Get "url")) "" }}
+{{ end }}
+
 <!-- blog card -->
-<iframe style="display: block; width: 100%; height: 155px; max-width: 500px; margin: 10px 0px;" src="https://hatenablog-parts.com/embed?url={{.Get "url"}}" title="{{.Get "title"}}" class="embed-card embed-webcard" scrolling="no" frameborder="0">
+<iframe style="display: block; width: 100%; height: 155px; max-width: 500px; margin: 10px 0px;" src="https://hatenablog-parts.com/embed?url={{ $url }}" title="{{ $title }}" scrolling="no" frameborder="0">
     <span data-mce-type="bookmark" style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;" class="mce_SELRES_start">
     </span>
 </iframe>

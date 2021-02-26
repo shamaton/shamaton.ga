@@ -3,8 +3,8 @@ title: '[Unity/Golang] 環境間でデータを圧縮して解凍してみる'
 author: しゃまとん
 type: post
 date: 2018-11-25T13:48:58+00:00
-url: /archives/544
-featured_image: /wp-content/uploads/2016/03/unity-logo.png
+url: /posts/544
+featured_image: /images/posts/2016/03/unity-logo.png
 categories:
   - go
   - unity
@@ -25,7 +25,8 @@ Go1.10
 テキストデータを圧縮し、Base64化したものをサーバーにPOSTするものを作りました。  
 またサーバーからのレスポンスを受け取って解凍するようにしました。
 
-<pre class="lang:c# decode:true " title="Sample.cs">using System;
+```csharp
+using System;
 using System.Collections;
 using System.Text;
 using UnityEngine;
@@ -61,12 +62,13 @@ public class Sample : MonoBehaviour {
     }
   }
 }
-</pre>
+```
 
 圧縮の処理ですが、今回は外部DLL等を入れることなく使えるものを利用しました。  
 簡単ですが、このような感じです。
 
-<pre class="lang:c# decode:true" title="Compressor.cs">using System.IO;
+```csharp:compressor.cs
+using System.IO;
 using System.IO.Compression;
 
 public class Compressor {
@@ -95,15 +97,20 @@ public class Compressor {
     }
     return ms2.ToArray();
   }
-}</pre>
+}
+```
 
-次にサーバですが、Unity側と同じ圧縮アルゴリズムを利用して処理を実装しました（当然ですが）。実装の際、結構ハマっていたポイントがあるのですが、なぜかunexpected EOFというエラーが出てしまっていました。原因は、圧縮処理を行うwriterのCloseを行わずしてデータを返却していたことでした。
+次にサーバですが、Unity側と同じ圧縮アルゴリズムを利用して処理を実装しました（当然ですが）。
+実装の際、結構ハマっていたポイントがあるのですが、なぜかunexpected EOFというエラーが出てしまっていました。
+原因は、圧縮処理を行うwriterのCloseを行わずしてデータを返却していたことでした。
 
-これが結構厄介なところで、Goだとよく defer writer.Close() とかするのでそれでよいと思い込んでいたのですが、Closeを行ってからじゃないと正しく処理されたデータを取得することができません。陥りがな罠に自分もハマっていました・・・。
+これが結構厄介なところで、Goだとよく `defer writer.Close()` とかするのでそれでよいと思い込んでいたのですが、
+Closeを行ってからじゃないと正しく処理されたデータを取得することができません。陥りがな罠に自分もハマっていました・・・。
 
 処理自体はリクエストが来たらパラメータの解凍とデコードをして、その値プラスで追加メッセージをいれて、エンコードと圧縮をするようなものです。
 
-<pre class="lang:go decode:true " title="server.go">package main
+```go:server.go
+package main
 
 import (
     "bytes"
@@ -197,18 +204,19 @@ func fromBase64(text string) ([]byte, error) {
 func toBase64(data []byte) string {
     return base64.StdEncoding.EncodeToString(data)
 }
-</pre>
+```
 
 これでサーバ側の起動（go run server.goなど）しておいて、Unityを実行してみます。  
 下のような感じで、サーバで文字が追加されたものを解凍することができました。
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2018/06/console.png" alt="" width="420" height="75" class="aligncenter size-full wp-image-546" />][1]
+{{< figure src="/images/posts/2018/06/console.png" >}}
 
 これで何か大きなデータをやり取りするときは相互にデータサイズを減らしていけそうです。  
 以上です。
 
 ■ 参考  
-<a href="http://gurizuri0505.halfmoon.jp/20121211/52033" target="_blank" rel="noopener">【C#】文字列->圧縮処理->BASE64->解凍処理->文字列な処理コード</a>  
-<a href="https://qiita.com/kenmazsyma/items/65149ac736303238bff6" target="_blank" rel="noopener">GO言語のcompressパッケージで陥りがちな罠</a>
 
- [1]: https://shamaton.orz.hm/blog/wp-content/uploads/2018/06/console.png
+{{< blogcard url="http://gurizuri0505.halfmoon.jp/20121211/52033" >}}
+
+{{< blogcard url="https://qiita.com/kenmazsyma/items/65149ac736303238bff6" >}}
+

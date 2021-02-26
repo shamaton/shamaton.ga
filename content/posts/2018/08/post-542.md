@@ -3,7 +3,7 @@ title: '[gRPC] golangでgRPCを使ってみる'
 author: しゃまとん
 type: post
 date: 2018-08-08T13:45:46+00:00
-url: /archives/542
+url: /posts/542
 featured_image: /wp-content/uploads/2018/08/grpc.svg
 categories:
   - go
@@ -13,14 +13,17 @@ categories:
 お世話になっております。  
 しゃまとんです。
 
-[gRPC][1]触ってみたいぞ！ってことで、Unity x golang x gRPC を試してみましょう。  
+gRPC触ってみたいぞ！ってことで、Unity x golang x gRPC を試してみましょう。  
 今回はよくある方のgolangです。
+
+{{< blogcard url="https://grpc.io/" >}}
 
 まずは必要なパッケージたちを準備していきましょう。  
 gRPCはprotoファイルを作成して、そこから各言語毎のソースコードを生成します。  
 そのためgolang用のgrpcのダウンロードとprotocコマンドを使えるようにしておきます。
 
-<pre class="lang:default decode:true"># golang用のgRPCパッケージを取得
+```shell script
+# golang用のgRPCパッケージを取得
 go get -u google.golang.org/grpc
 
 # protocを使えるようにする
@@ -29,24 +32,28 @@ brew install protobuf
 
 #　確認
 protoc --version
-libprotoc 3.*.*</pre>
+libprotoc 3.*.*
+```
 
 protocのバージョンは3以上にしましょう（何も考えなければそうなる）
 
 それではGOPATHの通ったどこかに作業用ディレクトリを作成し、まずはprotoファイルを作成します。今回はgrpctestとしました。
 
-<pre class="lang:default decode:true"># 作業用フォルダ作成
+```shell script
+# 作業用フォルダ作成
 cd $GOPATH/src
 mkdir grpctest
 cd grpctest
 
 # protoファイルの置き場
 mkdir helloworld
-touch helloworld.proto</pre>
+touch helloworld.proto
+```
 
 protoファイルは公式と同じ感じです！
 
-<pre class="lang:default decode:true" title="helloworld.proto">syntax = "proto3";
+```proto
+syntax = "proto3";
 
 package helloworld;
 
@@ -64,20 +71,24 @@ message HelloRequest {
 // The response message containing the greetings
 message HelloReply {
   string message = 1;
-}</pre>
+}
+```
 
 用意できたらコードを生成してみましょう。
 
-<pre class="lang:default decode:true"># goのコードを生成
+```shell script
+# goのコードを生成
 protoc --go_out=plugins=grpc:. ./helloworld/*.proto
 
 # 確認（pb.goが作成されている）
 ls helloworld/
-helloworld.pb.go helloworld.proto</pre>
+helloworld.pb.go helloworld.proto
+```
 
 次にclient / serverのコードを作成します。先程生成したpb.goを利用しつつコードを書く感じですね。まずはserverです。
 
-<pre class="lang:go decode:true" title="server.go">package main
+```go
+package main
 
 import (
     "log"
@@ -108,11 +119,12 @@ func main() {
     s.Serve(l)
 
 }
-</pre>
+```
 
 次にclientです。
 
-<pre class="lang:go decode:true" title="client.go">package main
+```go
+package main
 
 import (
     "log"
@@ -150,11 +162,14 @@ func main() {
         log.Fatalf("could not greet: %v", err)
     }
     log.Printf("Greeting: %s", r.Message)
-}</pre>
+}
+```
 
-それでは実行してみましょう！ターミナルを2つ用意して&#8230;先にserverを実行してからclientを実行してみると下記のように表示されます。
+それでは実行してみましょう！ターミナルを2つ用意して...
+先にserverを実行してからclientを実行してみると下記のように表示されます。
 
-<pre class="lang:default decode:true  "># client
+```shell script
+# client
 $ go run client.go
 2018/08/08 21:50:43 Greeting: Hello world.
 
@@ -164,18 +179,18 @@ $ go run client.go shamaton
 # server
 $ go run server.go
 2018/08/08 21:50:43 call from world
-2018/08/08 21:50:47 call from shamaton</pre>
+2018/08/08 21:50:47 call from shamaton
+```
 
-こんな感じでgolang単体で動作するようになりました！  
+こんな感じでgolang単体で動作するようになりました！  
 次はクライアントをUnityにして、動作させてみたいと思います。
 
 以上です。
 
-<https://shamaton.orz.hm/blog/archives/553>
+{{< blogcard url="/posts/553" >}}
 
 ■ 参考  
-<a href="https://qiita.com/oohira/items/63b5ccb2bf1a913659d6" target="_blank" rel="noopener">Qiita &#8211; gRPCって何？</a>  
-<a href="https://blog.fenrir-inc.com/jp/2016/10/grpc-go.html" target="_blank" rel="noopener">gRPC(Go) で API を実装する</a>  
-<a href="https://grpc.io/docs/quickstart/go.html" target="_blank" rel="noopener">Go Quick Start</a>
 
- [1]: https://grpc.io/
+{{< blogcard url="https://qiita.com/oohira/items/63b5ccb2bf1a913659d6" >}}
+{{< blogcard url="https://blog.fenrir-inc.com/jp/2016/10/grpc-go.html" >}}
+{{< blogcard url="https://grpc.io/docs/quickstart/go.html" >}}

@@ -4,7 +4,7 @@ author: しゃまとん
 type: post
 date: 2018-08-09T13:57:14+00:00
 url: /posts/553
-featured_image: /wp-content/uploads/2018/08/grpc.svg
+featured_image: /images/posts/2018/08/grpc.svg
 categories:
   - go
   - gRPC
@@ -16,7 +16,7 @@ categories:
 
 前の記事でまずはgolangでgRPCを使って動作させてみました。
 
-<https://shamaton.orz.hm/blog/archives/542>
+{{< blogcard url="/posts/542" >}}
 
 今回はclient側にUnityを使ってみたいと思います。  
 実行環境はこんな感じでした。
@@ -27,27 +27,30 @@ Go 1.10.3
 まずUnityでgRPCを使うには.NETのバージョンを上げておく必要があります。  
 Menu:Edit -> Project Settings -> Player -> Configuration として図のように設定しておきます。
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2018/08/grpc_config.png" alt="" width="303" height="77" class="aligncenter size-full wp-image-559" />][1]
+{{< figure src="/images/posts/2018/08/grpc_config.png" >}}
 
 次にgRPC関連の必要なパッケージを用意しましょう。  
 本当に最近（2018/08時点）ですが、公式でビルド済みのライブラリを用意してくれるようなりました！
 
-まだexprimentalなので、ご注意くださいね  
-[Github issue &#8211; Unity3D package #15013][2]
+まだexperimentalなので、ご注意くださいね  
+{{< blogcard url="https://github.com/grpc/grpc/issues/15013" >}}
 
-ということでこちら（<https://packages.grpc.io/>）にアクセスし、Daily Builds of master Branchの項目の最新のBuild IDのリンクをクリックします。
+ということでこちら（<https://packages.grpc.io/>）にアクセスし、
+Daily Builds of master Branchの項目の最新のBuild IDのリンクをクリックします。
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2018/08/grpc_download.png" alt="" width="1125" height="297" class="aligncenter size-full wp-image-556" />][3]
+{{< figure src="/images/posts/2018/08/grpc_download.png" >}}
 
-するとパッケージのリストがあるので、Grpc.Toolsとgrpc\_unity\_packageをダウンロードしましょう。
+するとパッケージのリストがあるので、Grpc.Toolsとgrpc_unity_packageをダウンロードしましょう。
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2018/08/grpc_download2.png" alt="" width="1123" height="312" class="aligncenter size-full wp-image-557" />][4]
+{{< figure src="/images/posts/2018/08/grpc_download2.png" >}}
 
 ダウンロードしたら、Unityで新規プロジェクトを作成し、とりあえず移動させておきます。
 
-Grpc.Toolsはnupkgになっていますが、拡張子をzipに変更することで簡単に解凍することができます。ただGUI上で解凍すると、フォルダ構成がうまく復元できないことがあったので、コマンドで実行するほうがよいかもしれません。
+Grpc.Toolsはnupkgになっていますが、拡張子をzipに変更することで簡単に解凍することができます。
+ただGUI上で解凍すると、フォルダ構成がうまく復元できないことがあったので、コマンドで実行するほうがよいかもしれません。
 
-<pre class="lang:default decode:true"># できればフォルダを用意しておくとよい
+```shell script
+# できればフォルダを用意しておくとよい
 $ mkdir Grpc.Tools
  
 # zipに変更して解凍
@@ -65,11 +68,14 @@ Archive:  Grpc.Tools.1.15.0-dev.zip
   inflating: Grpc.Tools/package/services/metadata/core-properties/8799bc730c0846ad904b28d32702ee35.psmdcp
 
 # 対象OSのtoolに実行権限を付与
-$ chmod +x Grpc.Tools/tools/macosx_x64/*</pre>
+$ chmod +x Grpc.Tools/tools/macosx_x64/*
+```
 
-grpc\_unity\_packageはUnityで必要になるので、Assets配下にフォルダを作成して解凍します。こちらはPluginsにすべて含まれた状態になるので、Assetsを対象にして解凍します。
+grpc_unity_packageはUnityで必要になるので、Assets配下にフォルダを作成して解凍します。
+こちらはPluginsにすべて含まれた状態になるので、Assetsを対象にして解凍します。
 
-<pre class="lang:default decode:true ">$ unzip grpc_unity_package.1.15.0-dev.zip -d Assets
+```shell script
+$ unzip grpc_unity_package.1.15.0-dev.zip -d Assets
 Archive:  grpc_unity_package.1.15.0-dev.zip
 warning:  grpc_unity_package.1.15.0-dev.zip appears to use backslashes as path separators
   inflating: Assets/Plugins/Google.Protobuf.meta
@@ -78,34 +84,45 @@ warning:  grpc_unity_package.1.15.0-dev.zip appears to use backslashes as path s
   ...
   inflating: Assets/Plugins/System.Interactive.Async/lib/net45/System.Interactive.Async.dll
   inflating: Assets/Plugins/System.Interactive.Async/lib/net45/System.Interactive.Async.dll.meta
-  inflating: Assets/Plugins/System.Interactive.Async/lib/net45/System.Interactive.Async.xml.meta</pre>
+  inflating: Assets/Plugins/System.Interactive.Async/lib/net45/System.Interactive.Async.xml.meta
+```
+
 
 これでgolangと同じ準備ができた（はず）ので、protoファイルを作成して実装を進めていきます。基本的に前回のものと一緒ですが、namespaceだけ分けておくため、追記して何処かに配置しておきましょう。（本当は共通のものを参照しているとよい）
 
 今回はGrpcSample（プロジェクト名）/protosに配置しました。
 
-<pre class="lang:default decode:true ">syntax = "proto3";
+```proto
+syntax = "proto3";
 
 # これを追記
 option csharp_namespace = "Pj.Grpc.Sample";
 
-package helloworld;</pre>
+package helloworld;
+```
 
-protoをC#に変換します。出力時に指定のフォルダがないとエラーになってしまうので、事前に作成しておく必要があります。そして生成コマンドがgolangより長い。
+protoをC#に変換します。出力時に指定のフォルダがないとエラーになってしまうので、
+事前に作成しておく必要があります。そして生成コマンドがgolangより長い。
 
-<pre class="lang:default decode:true "># 出力先を作成
+```shell script
+# 出力先を作成
 $ mkdir -p Assets/Pj.Grpc
 
 # コード生成
-$ protoc -I protos --csharp_out Assets/Pj.Grpc --grpc_out Assets/Pj.Grpc protos/*.proto --plugin=protoc-gen-grpc=Grpc.Tools/tools/macosx_x64/grpc_csharp_plugin
+$ protoc -I protos --csharp_out Assets/Pj.Grpc \
+  --grpc_out Assets/Pj.Grpc protos/*.proto \
+  --plugin=protoc-gen-grpc=Grpc.Tools/tools/macosx_x64/grpc_csharp_plugin
 
 # 確認
 $ ls Assets/Pj.Grpc
-Helloworld.cs     HelloworldGrpc.cs</pre>
+Helloworld.cs     HelloworldGrpc.cs
+```
 
-それでは生成したコードを利用して、クライアントを書きます。適当なシーンを作成しUI.Textを参照させておいてください。
+それでは生成したコードを利用して、クライアントを書きます。
+適当なシーンを作成しUI.Textを参照させておいてください。
 
-<pre class="lang:c# decode:true">using System.Collections;
+```csharp
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -141,39 +158,37 @@ public class Sample : MonoBehaviour {
 
     channel.ShutdownAsync().Wait();
   }
-}</pre>
+}
+```
 
 それではserver.goを実行した状態で、Unityの再生を開始すると&#8230;  
 replyがきます！
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2018/08/grpc_unity_editor.gif" alt="" width="425" height="245" class="aligncenter size-full wp-image-554" />][5]
+
+{{< figure src="/images/posts/2018/08/grpc_unity_editor.gif" >}}
 
 一応サーバーはこうなります。
 
-<pre class="lang:default decode:true ">$ go run server.go
-2018/08/09 22:35:34 call from editor</pre>
+```shell script
+$ go run server.go
+2018/08/09 22:35:34 call from editor
+```
 
-最後に端末で動作確認してみたいと思います。Project SettingsのIdentificationを初期値から適当に使わなさそうな名前に変更しておきましょう。
+最後に端末で動作確認してみたいと思います。
+Project SettingsのIdentificationを初期値から適当に使わなさそうな名前に変更しておきましょう。
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2018/08/grpc_id.png" alt="" width="306" height="82" class="aligncenter size-full wp-image-560" />][6]
+{{< figure src="/images/posts/2018/08/grpc_id.png" >}}
 
 あとはSwitch PlatformしてAndroid / iOSビルドするだけ！と思っていたのですが、iOSではビルドエラーになってしまうようでした。。。Androidでの実行結果だけ残しておきます。
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2018/08/grpc_android.png" alt="" width="270" height="480" class="aligncenter size-full wp-image-562" />][7]
+{{< figure src="/images/posts/2018/08/grpc_android.png" >}}
 
 文字が小さくてすいません。。  
 以上です。
 
 追記：iOSもできました！  
-<https://shamaton.orz.hm/blog/archives/563>
+
+{{< blogcard url="/posts/563" >}}
 
 ■ 参考  
-<a href="https://qiita.com/jhorikawa_err/items/f75539ffe6cd7a360f65" target="_blank" rel="noopener">UnityでNuGetパッケージを使う方法</a>
-
- [1]: https://shamaton.orz.hm/blog/wp-content/uploads/2018/08/grpc_config.png
- [2]: https://github.com/grpc/grpc/issues/15013
- [3]: https://shamaton.orz.hm/blog/wp-content/uploads/2018/08/grpc_download.png
- [4]: https://shamaton.orz.hm/blog/wp-content/uploads/2018/08/grpc_download2.png
- [5]: https://shamaton.orz.hm/blog/wp-content/uploads/2018/08/grpc_unity_editor.gif
- [6]: https://shamaton.orz.hm/blog/wp-content/uploads/2018/08/grpc_id.png
- [7]: https://shamaton.orz.hm/blog/wp-content/uploads/2018/08/grpc_android.png
+{{< blogcard url="https://qiita.com/jhorikawa_err/items/f75539ffe6cd7a360f65" >}}

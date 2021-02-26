@@ -3,8 +3,8 @@ title: '[Unity] 利用規約をつくったときのこと'
 author: しゃまとん
 type: post
 date: 2018-10-13T13:47:33+00:00
-url: /archives/490
-featured_image: /wp-content/uploads/2017/12/EULA.png
+url: /posts/490
+featured_image: /images/posts/2017/12/EULA.png
 categories:
   - メモ
   - 開発
@@ -16,9 +16,10 @@ categories:
 ユーザー入力ができるアプリを作ったときのお話です。
 
 最初のバージョンを申請したところリジェクトになりました。  
-理由としてUser Generated Contentに関するものでした。原文はこのような感じです。
+理由としてUser Generated Content(UGC)に関するものでした。原文はこのような感じです。
 
-<pre class="lang:default decode:true">Fixed Guideline 1.2 - Safety - User Generated Content
+```text
+Fixed Guideline 1.2 - Safety - User Generated Content
 Your app enables users to post content anonymously but does not have the proper precautions in place.
 
 Next Steps
@@ -32,11 +33,13 @@ To resolve this issue, please revise your app to implement all of the following 
 - A mechanism for users to block abusive users
 - A mechanism for users to immediately remove posts from the feed
 - Developer must act on objectionable content reports within 24 hours by removing the content and ejecting the user who provided the offending content
-- Developer must provide contact information in the app itself, giving users the ability to report inappropriate activity</pre>
+- Developer must provide contact information in the app itself, giving users the ability to report inappropriate activity
+```
 
-まぁ、とりあえずGoogle翻訳を通しておくと&#8230;
+まぁ、とりあえずGoogle翻訳を通しておくと...;
 
-<pre class="lang:default decode:true ">あなたのアプリでは、ユーザーは匿名でコンテンツを投稿できますが、適切な予防措置は講じていません。
+```text
+あなたのアプリでは、ユーザーは匿名でコンテンツを投稿できますが、適切な予防措置は講じていません。
 
 次のステップ
 
@@ -49,17 +52,23 @@ To resolve this issue, please revise your app to implement all of the following 
 - ユーザーが不正なユーザーをブロックする仕組み
 - ユーザーがフィードから投稿をすぐに削除する仕組み
 - 開発者は、コンテンツを削除し、問題のコンテンツを提供したユーザーを取り除くことにより、好ましくないコンテンツレポートを24時間以内に実行する必要があります
-- 開発者は、アプリケーション自体に連絡先情報を提供し、不適切な活動を報告する機能をユーザーに提供する必要があります</pre>
+- 開発者は、アプリケーション自体に連絡先情報を提供し、不適切な活動を報告する機能をユーザーに提供する必要があります
+```
 
-うむ、なるほど&#8230;と。たしかにその通りすぎて、突っぱねる返答など微塵もするできる感じじゃなかったので、納得してくれそうな感じで対応することに。
+うむ、なるほど...と。たしかにその通りすぎて、突っぱねる返答など微塵もするできる感じじゃなかったので、
+納得してくれそうな感じで対応することに。
 
 ほとんどの内容はコンテンツ内容の対応と申請時の年齢設定で改善出来そうだなーと思っていたんですが、1つややこしいのが。
 
 利用規約（End User License Agreement）
 
-です。難しい文章とか硬い感じのしっかりした文章考えないといけないよなー&#8230;とうなっていたんですが、こういうときは他のアプリを参考にするしかない！ということでコミュニケーションアプリといえば[LINEの利用規約][1]を参考にすることにしました。
+です。難しい文章とか硬い感じのしっかりした文章考えないといけないよなー...とうなっていたんですが、
+こういうときは他のアプリを参考にするしかない！  
+ということでコミュニケーションアプリといえば[LINEの利用規約][1]を参考にすることにしました。
 
-（そもそもEULAとはという方は[こちら][2]）
+（そもそもEULAとはという方はこちら）
+
+{{< blogcard url="http://e-words.jp/w/EULA.html">}}
 
 自分にアプリに必要なので読まざるを得ないとは言え  
 利用規約をこんなにしっかり読むことは今までなかったです。。  
@@ -74,4 +83,3 @@ To resolve this issue, please revise your app to implement all of the following 
 以上です。
 
  [1]: https://terms.line.me/line_terms/?lang=ja
- [2]: http://e-words.jp/w/EULA.html
