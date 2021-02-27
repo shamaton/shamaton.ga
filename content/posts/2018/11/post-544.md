@@ -1,7 +1,6 @@
 ---
 title: '[Unity/Golang] 環境間でデータを圧縮して解凍してみる'
 author: しゃまとん
-type: post
 date: 2018-11-25T13:48:58+00:00
 url: /posts/544
 featured_image: /images/posts/2016/03/unity-logo.png

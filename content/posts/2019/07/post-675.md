@@ -1,7 +1,6 @@
 ---
 title: '[Docker] 32bit環境のコンテナを作る'
 author: しゃまとん
-type: post
 date: 2019-07-14T10:23:09+00:00
 url: /posts/675
 featured_image: /images/posts/2016/10/small_v-dark.png

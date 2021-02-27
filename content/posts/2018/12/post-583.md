@@ -1,8 +1,7 @@
 ---
 title: '[メモ] 2018年の振り返り'
 author: しゃまとん
-type: post
-date: 2018-12-30T13:18:52+00:00
+date: 2018-12-30T13:18:52+09:00
 url: /posts/583
 featured_image: /images/posts/2018/12/2018.png
 is_comment_form_freeze:

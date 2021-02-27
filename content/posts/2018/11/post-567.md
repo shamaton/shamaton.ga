@@ -1,7 +1,6 @@
 ---
 title: '[Docker] CentOS6でwingを使わず最新のgitにする'
 author: しゃまとん
-type: post
 date: 2018-11-04T13:21:38+00:00
 url: /posts/567
 featured_image: /images/posts/2016/10/small_v-dark.png

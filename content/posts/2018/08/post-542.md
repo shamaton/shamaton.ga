@@ -1,10 +1,9 @@
 ---
 title: '[gRPC] golangでgRPCを使ってみる'
 author: しゃまとん
-type: post
 date: 2018-08-08T13:45:46+00:00
 url: /posts/542
-featured_image: /wp-content/uploads/2018/08/grpc.svg
+featured_image: /images/posts/2018/08/grpc.svg
 categories:
   - go
   - gRPC

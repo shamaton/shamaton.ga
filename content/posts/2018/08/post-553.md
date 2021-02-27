@@ -1,7 +1,6 @@
 ---
 title: '[gRPC] UnityとgolangでgRPCを使ってみる（androidまで）'
 author: しゃまとん
-type: post
 date: 2018-08-09T13:57:14+00:00
 url: /posts/553
 featured_image: /images/posts/2018/08/grpc.svg

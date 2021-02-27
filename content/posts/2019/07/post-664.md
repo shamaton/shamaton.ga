@@ -1,7 +1,6 @@
 ---
 title: '[CI] concourseでUnityのビルドをCIしてみる – 導入編'
 author: しゃまとん
-type: post
 date: 2019-07-02T13:49:22+00:00
 url: /posts/664
 featured_image: /images/posts/2019/06/concourse_icon.png

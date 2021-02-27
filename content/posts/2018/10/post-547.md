@@ -1,7 +1,6 @@
 ---
 title: '[Golang]構造体のバイナリ化ができなかった'
 author: しゃまとん
-type: post
 date: 2018-10-25T13:53:39+00:00
 url: /posts/547
 featured_image: /images/posts/2015/11/gopher.jpg

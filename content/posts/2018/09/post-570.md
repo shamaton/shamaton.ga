@@ -1,7 +1,6 @@
 ---
 title: '[golang] MessagePackのシリアライザ(msgpack)を作りました'
 author: しゃまとん
-type: post
 date: 2018-09-28T13:02:59+00:00
 url: /posts/570
 featured_image: /images/posts/2016/12/GitHub-Mark-120px-plus.png

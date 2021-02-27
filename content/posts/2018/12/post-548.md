@@ -1,8 +1,7 @@
 ---
 title: '[Unity/Golang]データ圧縮にdeflateが使えなかった'
 author: しゃまとん
-type: post
-date: 2018-12-18T15:03:44+00:00
+date: 2018-12-18T15:03:44+09:00
 url: /posts/548
 featured_image: /images/posts/2016/03/unity-logo.png
 categories:

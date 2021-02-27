@@ -1,7 +1,6 @@
 ---
 title: '[Unity] 利用規約をつくったときのこと'
 author: しゃまとん
-type: post
 date: 2018-10-13T13:47:33+00:00
 url: /posts/490
 featured_image: /images/posts/2017/12/EULA.png
