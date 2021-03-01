@@ -24,6 +24,7 @@ buildFuture  = false
 buildExpired = false
 canonifyURLs = true
 
+hasCJKLanguage = true
 enableRobotsTXT = true
 enableGitInfo   = false
 enableEmoji     = true
