@@ -1,10 +1,9 @@
 ---
 title: '[GCP] GKEでredis-clusterを自力で作ってみた（ボツ）'
 author: しゃまとん
-type: post
 date: 2018-04-09T15:06:13+00:00
-url: /archives/462
-featured_image: /wp-content/uploads/2017/11/kube_logo.png
+url: /posts/462
+featured_image: /images/posts/2017/11/kube_logo.png
 categories:
   - GCP
 
@@ -12,17 +11,19 @@ categories:
 お世話になっております。  
 しゃまとんです。
 
-前にredis-clusterを試してみた記事を作成したのですが、今回はGKEでクラスタを作ってみることにしました。というのもWebDB PRESSで特集されていてやってみようと思ったのがきっかけです。
+前に[redis-clusterを試してみた記事](/posts/461)を作成したのですが、今回はGKEでクラスタを作ってみることにしました。
+というのもWebDB PRESSで特集されていてやってみようと思ったのがきっかけです。
 
-<a href="http://gihyo.jp/magazine/wdpress/archive/2017/vol99" target="_blank" rel="noopener">WEB+DB PRESS Vol.99</a>
+{{< blogcard url="http://gihyo.jp/magazine/wdpress/archive/2017/vol99" >}}
 
-<https://shamaton.orz.hm/blog/archives/461>
+という記事なんですが、結局、ボツに至ったものになります。
+作業ログとして残しておきたいと思います。本自体はとても勉強になりました。
 
-という記事なんですが、結局、ボツに至ったものになります。作業ログとして残しておきたいと思います。本自体はとても勉強になりました。
+やったこととしては独自のredisコンテナ作成し、起動時に自分の名前に沿ってmaster/slaveを判断して、
+clusterに参加するといったものです。それではまずredisイメージファイル（Dockerfile）になります。
 
-やったこととしては独自のredisコンテナ作成し、起動時に自分の名前に沿ってmaster/slaveを判断して、clusterに参加するといったものです。それではまずredisイメージファイル（Dockerfile）になります。
-
-<pre class="lang:default decode:true " title="Dockerfile">FROM redis:3.2.4-alpine
+```dockerfile
+FROM redis:3.2.4-alpine
 
 MAINTAINER shamaton
 
@@ -32,12 +33,15 @@ RUN apk add --update bind-tools curl && \
 COPY bootstrap.sh /bootstrap.sh
 COPY redis.conf /conf/redis.conf
 
-CMD ["redis-server", "/conf/redis.conf"]</pre>
+CMD ["redis-server", "/conf/redis.conf"]
+```
 
 公式にRedisコンテナに起動スクリプトと設定ファイル（conf）を追加しています。  
-起動スクリプトと設定ファイルは下記のような感じです。スクリプトにはchmodで実行権限をつけておいてください（chmod +x）
+起動スクリプト(bootstrap.sh)と設定ファイル(redis.conf)は下記のような感じです。
+スクリプトにはchmodで実行権限をつけておいてください（chmod +x）
 
-<pre class="lang:sh decode:true" title="bootstrap.sh">#!/bin/sh
+```shell
+#!/bin/sh
 # set -e
 
 SEQ_START=0
@@ -102,9 +106,10 @@ if [ ! ${PET_ORDINAL} = "0" ]; then
 fi
 
 wait
-</pre>
+```
 
-<pre class="lang:default decode:true" title="redis.conf">appendonly yes
+```text
+appendonly yes
 cluster-enabled yes
 cluster-require-full-coverage no
 cluster-node-timeout 5000
@@ -112,18 +117,21 @@ cluster-config-file nodes.conf
 cluster-require-full-coverage yes
 cluster-migration-barrier 1
 protected-mode no
-</pre>
+```
 
-用意できたら、イメージを作成してContainer Registryに追加します。
+用意できたら、イメージを作成して[Container Registry](https://cloud.google.com/container-registry/docs/overview?hl=ja)に追加します。
 
-<pre class="lang:default decode:true">docker build -t redis-cluster:${version} .
+```shell
+docker build -t redis-cluster:${version} .
 docker tag redis-cluster:${version} asia.gcr.io/your_project_id/redis-cluster:${version}
-gcloud docker -- push asia.gcr.io/your_project_id/redis-cluster:${version}</pre>
+gcloud docker -- push asia.gcr.io/your_project_id/redis-cluster:${version}
+```
 
 それではクラスタを作成して、redisクラスタをKubernetes上で作成してみましょう。  
-配置にひつようなyamlファイルは下記のようになります。（プロジェクトIDは置き換えてください）
+配置にひつようなyamlファイル(cluster.yaml)は下記のようになります。（プロジェクトIDは置き換えてください）
 
-<pre class="lang:default decode:true" title="cluster.yaml">#
+```yaml
+#
 # Redis Cluster service
 #
 apiVersion: v1
@@ -214,13 +222,14 @@ spec:
             - path: "pod_namespace"
               fieldRef:
                 fieldPath: metadata.namespace
-</pre>
+```
 
 これを適用させます。すると各redisのpodが起動スクリプトで自分の役割を把握し必要に応じたredisコマンドを実行していきます。
 
-<pre class="lang:default decode:true">gcloud container clusters create test-cluster --machine-type=f1-micro
+```shell
+gcloud container clusters create test-cluster --machine-type=f1-micro
 kubectl apply -f cluster.yaml
-ログ確認コマンド
+#ログ確認コマンド
 
 # pod一覧
 kubectl get pods
@@ -229,38 +238,47 @@ kubectl get pods
 kubectl logs ${pod_name}
 
 # service確認
-kubectl get service</pre>
+kubectl get service
+```
 
 試しに接続確認してみましょう。podを1つ用意して接続してみます。  
 Serviceから接続できるはずです。
 
-<pre class="lang:default decode:true">kubectl run -i --tty ubuntu --image=ubuntu --restart=Never /bin/bash
+```shell
+kubectl run -i --tty ubuntu --image=ubuntu --restart=Never /bin/bash
 apt-get update
 apt-get install ruby vim wget redis-tools
 
 # 接続
 redis-cli -c -h redis-cluster
+```
 
+```text
 redis-cluster:6379&gt; set hoge fuga
--&gt; Redirected to slot [1525] located at 10.48.0.7:6379
+-> Redirected to slot [1525] located at 10.48.0.7:6379
 OK
 
-10.48.0.7:6379&gt; get hoge
+10.48.0.7:6379>; get hoge
 "fuga"</pre>
+```
 
 このようにクラスタが自動で生成されて、接続確認することができました。  
-ただこの方法だとpodが死んでしまった場合に、redis-cluster側が再配置するのと、kubernetes側のpod再生成で辻褄が合わなくなるのではと思いました。何か対処が必要になる感じだったので、redis-trib.rbを使ったクラスタ生成に変えることにしました。
+ただこの方法だとpodが死んでしまった場合に、redis-cluster側が再配置するのと、
+kubernetes側のpod再生成で辻褄が合わなくなるのではと思いました。何か対処が必要になる感じだったので、
+redis-trib.rbを使ったクラスタ生成に変えることにしました。
 
-ファイル自体の定義もちょっとイケてないものだし、特性を活かすには物足りないものだったかなと思います。それでもredis-clusterがどのように構築されるかわかったので良かったと思います。
+ファイル自体の定義もちょっとイケてないものだし、特性を活かすには物足りないものだったかなと思います。
+それでもredis-clusterがどのように構築されるかわかったので良かったと思います。
 
 以上です。
 
 あ、後片付けが必要な方はお忘れなく！
 
-<pre class="lang:default decode:true ">kubectl delete -f cluster.yaml
-gcloud container clusters delete test-cluster</pre>
+```shell
+kubectl delete -f cluster.yaml
+gcloud container clusters delete test-cluster
+```
 
-■参考  
-<a href="https://qiita.com/sawada_masahiko/items/c58ff2953e04c2956c6f" target="_blank" rel="noopener">redis clusterを自力で構築してみた</a>
+■参考
 
-&nbsp;
+{{< blogcard url="https://qiita.com/sawada_masahiko/items/c58ff2953e04c2956c6f" >}}

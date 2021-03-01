@@ -1,10 +1,9 @@
 ---
 title: '[Go] Goからredis-clusterにつないでみる'
 author: しゃまとん
-type: post
 date: 2018-03-12T13:32:29+00:00
-url: /archives/461
-featured_image: /wp-content/uploads/2017/12/redis_logo.png
+url: /posts/461
+featured_image: /images/posts/2017/12/redis_logo.png
 categories:
   - go
   - プログラミング関連
@@ -16,10 +15,12 @@ categories:
 今回はredisをクラスタリングしてGoから接続してみるやつです。  
 個人ではなかなか使う機会がないですが、負荷分散につかう手法みたいなものですね。
 
-ちょっと古めに記事ですが、最初に説明がかかれています。  
-<a href="https://cloudpack.media/420" target="_blank" rel="noopener">Redisってなんじゃ？（レプリケーションとクラスタリング）</a>
+ちょっと古めに記事ですが、最初に説明がかかれています。
 
-万が一、億が一ヒットした場合にしておくと慌てないです済むかなとおもったので理解しておいて損はないかなーと思いやってみることにしました。（実はWEB DB PRESSのKubernetes特集がきっかけでもあります）
+{{< blogcard url="https://cloudpack.media/420" >}}
+
+万が一、億が一ヒットした場合にしておくと慌てないです済むかなとおもったので
+理解しておいて損はないかなーと思いやってみることにしました。（実はWEB DB PRESSのKubernetes特集がきっかけでもあります）
 
 とりあえずクラスタをつくるには複数台Redisが起動している必要があります。  
 今回もサクッと環境を捨てられるDockerを利用して試してみましょう。
@@ -27,13 +28,17 @@ categories:
 まずは検証用コンテナとして適当なOSイメージをもってきてコンテナを起動しましょう  
 （例ではUbuntuを使っています。）
 
-<pre class="lang:default decode:true">docker pull ubuntu
-docker run --name redis_cluster_test -i -t ubuntu /bin/bash</pre>
+```shell
+docker pull ubuntu
+docker run --name redis_cluster_test -i -t ubuntu /bin/bash
+```
 
 コンテナを立ち上げたら、redisをインストールします。  
-Ubuntuでデフォルトでインストールできるredisのバージョンが古いため、ソースから取得しました。（最新は[こちら][1]を確認）
+Ubuntuでデフォルトでインストールできるredisのバージョンが古いため、ソースから取得しました。
+（最新は[こちら][1]を確認）
 
-<pre class="lang:default decode:true">apt-get update
+```shell
+apt-get update
 
 # パッケージ取得
 apt-get -y install gcc make python-dev tcl wget vim
@@ -46,24 +51,28 @@ make PREFIX=/usr/local -C redis-3.2.11 install
 rm -rf redis-3.2.11.tar.gz redis-3.2.11
 
 # 確認
-redis-server --version</pre>
+redis-server --version
+```
 
 次に複数立ち上げるために、設定ファイルを作成します。  
-クラスタリングには最低6つ（master,slaveが3つずつ）必要なので、6つファイルをつくります。1つの例はこちら。
+クラスタリングには最低6つ（master,slaveが3つずつ）必要なので、6つファイルをつくります。1つの例(cluster0.conf)はこちら。
 
-<pre class="lang:default decode:true" title="cluster0.conf"># portは7000 - 7005まで
+```text
+# portは7000 - 7005まで
 port 7000
 cluster-enabled yes
 
-# node-0　 - node-5まで
+# node-0 - node-5まで
 cluster-config-file nodes-0.conf
 cluster-node-timeout 5000
 appendonly yes
-protected-mode no</pre>
+protected-mode no
+```
 
 6ファイル作ったら、ファイルを指定して実行していきます。
 
-<pre class="lang:default decode:true">redis-server cluster0.conf &
+```shell
+redis-server cluster0.conf &
 redis-server cluster1.conf &
 redis-server cluster2.conf &
 redis-server cluster3.conf &
@@ -71,20 +80,26 @@ redis-server cluster4.conf &
 redis-server cluster5.conf &
 
 # プロセス確認　
-ps -aux</pre>
+ps -aux
+```
+
 
 次にこれをクラスタリングしていきます。  
-今回はクラスタを半自動的に作ってくれるredis-trib.rbを使うことにします。Rubyが使える必要があるので、合わせてインストールしていきます。
+今回はクラスタを半自動的に作ってくれるredis-trib.rbを使うことにします。
+Rubyが使える必要があるので、合わせてインストールしていきます。
 
-<pre class="lang:default decode:true">apt-get -y install ruby
+```shell
+apt-get -y install ruby
 gem install redis
 wget http://download.redis.io/redis-stable/src/redis-trib.rb
-chmod 755 redis-trib.rb</pre>
+chmod 755 redis-trib.rb
+```
 
 準備が出来たのでクラスタを作ってみましょう。  
 下記コマンドを実行して返答すれば完成です。
 
-<pre class="lang:default decode:true"># クラスタ生成
+```shell
+# クラスタ生成
 ./redis-trib.rb create --replicas 1 \
   127.0.0.1:7000 \
   127.0.0.1:7001 \
@@ -93,8 +108,8 @@ chmod 755 redis-trib.rb</pre>
   127.0.0.1:7004 \
   127.0.0.1:7005
 
->&gt;&gt; Creating cluster
->&gt;&gt; Performing hash slots allocation on 6 nodes...
+>>> Creating cluster
+>>> Performing hash slots allocation on 6 nodes...
 Using 3 masters:
 127.0.0.1:7000
 127.0.0.1:7001
@@ -119,52 +134,58 @@ S: add1867a1d5b93dd83d5f208ae0e2da758b86aba 127.0.0.1:7005
 Can I set the above configuration? (type 'yes' to accept): yes
 
 
->&gt;&gt; Nodes configuration updated
+>>> Nodes configuration updated
 
 ...（省略）...
 
 [OK] All nodes agree about slots configuration.
->&gt;&gt; Check for open slots...
->&gt;&gt; Check slots coverage...
-[OK] All 16384 slots covered.</pre>
+>>> Check for open slots...
+>>> Check slots coverage...
+[OK] All 16384 slots covered.
+```
 
 一応、確認してみましょう。  
 コマンドを別の場所から実行するとRedirectしているのがわかります。
 
-<pre class="lang:default decode:true"># 接続
+```shell
+# 接続
 redis-cli -c -h localhost -p 7000
 
 # 値を設定
-localhost:7000&gt; set hoge fuga
+localhost:7000> set hoge fuga
 
 # 値を取得
-localhost:7000&gt; get hoge
+localhost:7000> get hoge
 "fuga"
 
 # 別のところに接続
 redis-cli -c -h localhost -p 7001
 
 # redirectする
-localhost:7001&gt; get hoge
--&gt; Redirected to slot [1525] located at 127.0.0.1:7000
-"fuga"</pre>
+localhost:7001> get hoge
+-> Redirected to slot [1525] located at 127.0.0.1:7000
+"fuga"
+```
 
 あとはGoから確認してみましょう。  
 乱暴ですが下記コマンドでまとめて Goを使えるようにします。
 
-<pre class="lang:default decode:true">apt-get -y install git \
+```shell
+apt-get -y install git \
 && wget https://redirector.gvt1.com/edgedl/go/go1.9.2.linux-amd64.tar.gz \
 &&  tar -C /usr/local -xzf go1.9.2.linux-amd64.tar.gz \
 &&  rm go1.9.2.linux-amd64.tar.gz \
 &&  mkdir -p /root/go \
-&&  echo "GOPATH=/root/go" &gt;&gt; /root/.bashrc \
-&&  echo "PATH=$PATH:/usr/local/go/bin:$GOPATH/bin" &gt;&gt; /root/.bashrc \
+&&  echo "GOPATH=/root/go" >> /root/.bashrc \
+&&  echo "PATH=$PATH:/usr/local/go/bin:$GOPATH/bin" >> /root/.bashrc \
 &&  source /root/.bashrc \
-&&  go get -u github.com/go-redis/redis</pre>
+&&  go get -u github.com/go-redis/redis
+```
 
 サンプルコードはこちらになります。（今回もgo-redisを使います）
 
-<pre class="lang:go decode:true " title="main.go">package main
+```go
+package main
 
 import (
     "fmt"
@@ -195,16 +216,19 @@ func main() {
     } else {
             fmt.Println("key2", val2)
     }
-}</pre>
+}
+```
 
 実行すると、値が取得できていますね。
 
-<pre class="lang:default decode:true">＃ 実行
+```shell
+# 実行
 go run main.go
 
 #  結果
 key value
-key2 does not exists</pre>
+key2 does not exists
+```
 
 ちなみにこのときNewClusterClientでないとうまく取得することができません。クラスタを生成してない場合は逆もしかりですね。  
 前準備のほうが全然長くなってしまいましたが、以上です。

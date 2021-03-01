@@ -1,10 +1,9 @@
 ---
 title: '[Server] nginx + golang な環境をhttps化する'
 author: しゃまとん
-type: post
 date: 2018-02-26T15:11:10+00:00
-url: /archives/493
-featured_image: /wp-content/uploads/2017/07/key_close.png
+url: /posts/493
+featured_image: /images/posts/2017/07/key_close.png
 categories:
   - Linux
   - Web関連
@@ -15,24 +14,28 @@ categories:
 
 前回の記事につづいてnginx + golangな環境をhttps化してみました。
 
-<https://shamaton.orz.hm/blog/archives/497>
+{{< blogcard url="/posts/497" >}}
 
-今回もLet&#8217;s Encryptを使ってhttps化していきます。  
-環境を作るにあたってこちらがとても参考になりました。  
-<a href="https://qiita.com/HeRo/items/f9eb8d8a08d4d5b63ee9" target="_blank" rel="noopener">Let&#8217;s Encrypt で Nginx にSSLを設定する</a>
+今回もLet's Encryptを使ってhttps化していきます。  
+環境を作るにあたってこちらがとても参考になりました。
+
+{{< blogcard url="https://qiita.com/HeRo/items/f9eb8d8a08d4d5b63ee9" >}}
 
 まずはサーバーでletsentrypt(certbot)を取得して証明書の発行を行います。  
 私の場合はroot直下で作業しました。
 
-<pre class="lang:default decode:true">git clone https://github.com/certbot/certbot
+```shell
+git clone https://github.com/certbot/certbot
 cd certbot
-./certbot-auto certonly --standalone -t</pre>
+./certbot-auto certonly --standalone -t
+```
 
-問題なければCongraturation!!と表示されます。  
+問題なければ`Congraturation!!`と表示されます。  
 次にnginxのtls周りを設定します。nginx.confのtls部分を下記のようにしました。  
 初期状態だとコメントアウトされているので外して証明書やproxy_passを設定します。
 
-<pre class="lang:default decode:true "># Settings for a TLS enabled server.
+```text
+# Settings for a TLS enabled server.
 #
     server {
         listen       443 ssl;
@@ -61,27 +64,34 @@ cd certbot
         }
     }
 
-}</pre>
+}
+```
 
 設定後は忘れずリロードか再起動を行いましょう。  
 これでhttpsでのアクセスが可能になっているはずです。
 
-<pre class="lang:default decode:true ">service nginx restart
-service nginx reload</pre>
+```shell
+service nginx restart
+service nginx reload
+```
 
-次にnginxは80ポートをバインドするので、Let&#8217;s Encrypt側を&#8211;webrootを使った形式に変更しておきます。（これは最初からこちらでもよかったかも）
+次にnginxは80ポートをバインドするので、Let's Encrypt側を–webrootを使った形式に変更しておきます。
+（これは最初からこちらでもよかったかも）
 
 更新時の確認用パスとなるディレクトリを作成し、renewalしてみます。  
-実行後にCongraturation!!とでればOKです。
+実行後に`Congraturation!!`とでればOKです。
 
-<pre class="lang:default decode:true ">mkdir /var/letsencrypt
-./certbot-auto certonly --webroot -w /var/letsencrypt -d example.com --agree-tos --force-renewal -n</pre>
+```shell
+mkdir /var/letsencrypt
+./certbot-auto certonly --webroot -w /var/letsencrypt -d example.com --agree-tos --force-renewal -n
+```
 
 再度nginx側の設定を変更します。  
 以降はhttpでのアクセスは全てhttpsにリダイレクトするようにしておきます。  
 ただしletsentryptはhttpsを利用するため、先程のディレクトリを指定し対象のアドレスのみHTTPを許可しておきます。
 
-<pre class="lang:default decode:true ">server {
+```text
+server {
         listen       80;
         server_name  hostname;
 
@@ -104,16 +114,20 @@ service nginx reload</pre>
         error_page 500 502 503 504 /50x.html;
             location = /50x.html {
         }
-    }</pre>
+    }
+```
 
 設定したら再度nginxをリロードまたは再起動し、renewを実行してみます。
 
-<pre class="lang:default decode:true">service nginx restart
-./certbot-auto renew --force-renewal</pre>
+```shell
+service nginx restart
+./certbot-auto renew --force-renewal
+```
 
 ログがこんな感じならOKでしょう。
 
-<pre class="lang:default decode:true">Saving debug log to /var/log/letsencrypt/letsencrypt.log
+```text
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
 
 -------------------------------------------------------------------------------
 Processing /etc/letsencrypt/renewal/exmaple.com.conf
@@ -134,22 +148,28 @@ new certificate deployed without reload, fullchain is
 
 Congratulations, all renewals succeeded. The following certs have been renewed:
 /etc/letsencrypt/live/exmaple.com/fullchain.pem (success)
--------------------------------------------------------------------------------</pre>
+-------------------------------------------------------------------------------
+```
 
-もしうまくいかない場合は上記の例だと/var/letsencrypt/.well-known配下にindex.htmlとか作ってみて、curlでURLを叩いてみるといいかもしれません。  
+もしうまくいかない場合は上記の例だと/var/letsencrypt/.well-known配下にindex.htmlとか作ってみて、
+curlでURLを叩いてみるといいかもしれません。  
 というのも、renewは何回か失敗すると一定時間実行できなくなるようなので。。
 
-あとはファイルがあるはずなのに403 Forbiddenになってしまうような場合は、SELinuxが影響している場合もありますのでgetenforceして確かめてみるといいかもしれません。
+あとはファイルがあるはずなのに403 Forbiddenになってしまうような場合は、
+SELinuxが影響している場合もありますのでgetenforceして確かめてみるといいかもしれません。
 
-<a href="http://kakakazuma.hatenablog.com/entry/2015/04/24/235812" target="_blank" rel="noopener">nginxで権限を設定した後も403 Forbiddenが出た話</a>
+{{< blogcard url="http://kakakazuma.hatenablog.com/entry/2015/04/24/235812">}}
 
 必要ならcronも設定しておくとよいですね。
 
-<pre class="lang:default decode:true ">crontab -e
-00 05 15 * * /root/certbot/certbot-auto renew</pre>
+```shell
+crontab -e
+00 05 15 * * /root/certbot/certbot-auto renew
+```
 
 これで一応ですが、nginx + golangな環境にhttpsを導入することができました。  
 以上です。
 
-■ 参考  
-<https://shamaton.orz.hm/blog/archives/426>
+■ 参考
+
+{{< blogcard url="/posts/426" >}}

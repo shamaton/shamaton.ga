@@ -1,10 +1,9 @@
 ---
 title: '[Unity] TextMeshProで日本語と使いたい文字を使えるようにする'
 author: しゃまとん
-type: post
 date: 2018-02-08T15:36:52+00:00
-url: /archives/465
-featured_image: /wp-content/uploads/2017/11/tm_3.png
+url: /posts/465
+featured_image: /images/posts/2017/11/tm_3.png
 is_comment_form_freeze:
   - on
 comment_form_freeze_message:
@@ -17,14 +16,21 @@ categories:
 お世話になっております。  
 しゃまとんです。
 
-TextMeshProでは扱いたい文字をフォントアセットとしてUnity上で作成し、使えるようにする必要があります。TextMeshProで日本語を扱う場合も、使いたい日本語を作成時に指定するしないといけません。
+TextMeshProでは扱いたい文字をフォントアセットとしてUnity上で作成し、使えるようにする必要があります。
+TextMeshProで日本語を扱う場合も、使いたい日本語を作成時に指定するしないといけません。
 
-すべて使う日本語文字が決まっているのならいいのですが、私の場合とにかく日本語を使えるようにしたかったので、色々なサイトを参考に日本語を使えるようにしてみたのですが、この文字（何か小難しい漢字とか記号とか）も使えるようにしたい！けど、やり方わからん！！みたいな状態になっていたので、[こちら][1]を参考にさせてもらいつつTextMeshProでフォントアセット作成の際に使うファイルを出力するスクリプトを作成しました。
+すべて使う日本語文字が決まっているのならいいのですが、私の場合とにかく日本語を使えるようにしたかったので、
+色々なサイトを参考に日本語を使えるようにしてみたのですが、この文字（何か小難しい漢字とか記号とか）も使えるようにしたい！
+けど、やり方わからん！！みたいな状態になっていたので、こちらを参考にさせてもらいつつ
+TextMeshProでフォントアセット作成の際に使うファイルを出力するスクリプトを作成しました。
+
+{{< blogcard url="https://qiita.com/su10/items/67ff8f48e03539a69e31" >}}
 
 スクリプトはRubyで書かれています。  
 Rubyはあまり書いたことないので、変な書き方してるかもしれないです(；・∀・)
 
-<pre class="lang:ruby decode:true"># 文字列を変換
+```ruby
+# 文字列を変換
 def thorikawa2intarr(src)
     arr = []
     splits = src.split(",")
@@ -70,43 +76,39 @@ dst.each{|var|
 File.open("./result.txt", "w") do |f|
   f.puts(output)
 end
-</pre>
+```
 
 上記、スクリプトをコピーしていただいてもOKですし、GitHubにもありますのでご自由に使っていただければと思います。
 
-<a href="https://github.com/shamaton/textmeshpro_converter" target="_blank" rel="noopener">shamaton/textmeshpro_converter</a>
+{{< blogcard url="https://github.com/shamaton/textmeshpro_converter" >}}
 
 スクリプトを取得したら、含めたい文字があればsrc3に追記しておきます。  
-このブログではsrc1,src2に含まれない米印（※）を追加しています。スクリプトを実行すると同じフォルダに結果（result.txt）が生成されます。  
+このブログではsrc1,src2に含まれない米印（※）を追加しています。
+スクリプトを実行すると同じフォルダに結果（result.txt）が生成されます。  
 （中身は文字の羅列です）
 
-<pre class="lang:default decode:true ">shamaton@mac : ~/converter
+```shell
 $ ruby script.rb
-shamaton@mac : ~/converter
+
 $ ls
-result.txt script.rb</pre>
+result.txt script.rb
+```
 
 生成されたファイルを、Unity側のAssets配下においておき、FontAssetCreatorを開きます。  
 （[Menu] → [Window] → [TextMeshPro] → [Font Asset Creator]）  
-Font SettingはAtlas Resolutionを2048か4096辺りに設定し、Character SetをCharacters from Fileにして、先程生成したファイルを参照します。  
+Font SettingはAtlas Resolutionを`2048`か`4096`辺りに設定し、Character SetをCharacters from Fileにして、先程生成したファイルを参照します。  
 （フォントは適宜置き換えてください）
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2017/11/tm_1.png" alt="" width="304" height="535" class="aligncenter size-full wp-image-468" />][2]
+{{< figure src="/images/posts/2017/11/tm_1.png" >}}
 
 Atlas生成には時間がかかるので、気長にまちましょう。  
 生成されたら、後は[Save TextMeshPro Font Asset]で保存して完了です。
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2017/11/tm_3.png" alt="" width="214" height="178" class="aligncenter size-full wp-image-471" />][3]
+{{< figure src="/images/posts/2017/11/tm_3.png" >}}
 
 これで大体の日本語と使いたい文字が使えるようになります。  
 以上です。
 
-■参考  
-[rubyでintegerと文字を相互変換する][4]  
-[TextMeshProの使い方][5]
-
- [1]: https://qiita.com/su10/items/67ff8f48e03539a69e31
- [2]: https://shamaton.orz.hm/blog/wp-content/uploads/2017/11/tm_1.png
- [3]: https://shamaton.orz.hm/blog/wp-content/uploads/2017/11/tm_3.png
- [4]: https://qiita.com/chezou/items/947900faef4c1032ed94
- [5]: https://qiita.com/hinagawa/items/b606c6a2fd56d559a375
+■参考
+{{< blogcard url="https://qiita.com/chezou/items/947900faef4c1032ed94" >}}
+{{< blogcard url="https://qiita.com/hinagawa/items/b606c6a2fd56d559a375" >}}

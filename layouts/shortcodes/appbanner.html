@@ -1,0 +1,39 @@
+
+{{ $title := .Get "title" }}
+{{ $src := .Get "src" }}
+{{ $user := .Get "user" }}
+{{ $ios := .Get "ios" }}
+{{ $android := .Get "android" }}
+
+<img src="{{ $src }}" alt="{{ $title }}" style="float: left; margin: 10px; width: 25%; max-width: 120px; border-radius: 10%;" />
+
+<div class="appreach-info" style="margin: 10px;">
+    <div id="appreach-appname">
+        {{ $title }}
+    </div>
+
+    <div id="appreach-developer" style="font-size: 80%; display: inline-block; _display: inline;">
+        開発元:<a id="appreach-developerurl" href="{{ $user }}" target="_blank" rel="nofollow noopener">shamaton</a>
+    </div>
+
+    <div id="appreach-price" style="font-size: 80%; display: inline-block; _display: inline;">
+        無料
+    </div>
+
+    <div class="appreach-powered" style="font-size: 80%; display: inline-block; _display: inline;">
+        posted with <a title="アプリーチ" href="http://mama-hack.com/app-reach/" target="_blank" rel="nofollow noopener">アプリーチ</a>
+    </div>
+
+    <div class="appreach-links" style="float: left;">
+        <div id="appreach-itunes-link" style="display: inline-block; _display: inline;">
+            <a id="appreach-itunes" href="{{ $ios }}" target="_blank" rel="nofollow noopener"><br /> <img src="https://nabettu.github.io/appreach/img/itune_ja.svg" style="height: 40px; width: 135px;" /><br /> </a>
+        </div>
+
+        <div id="appreach-gplay-link" style="display: inline-block; _display: inline;">
+            <a id="appreach-gplay" href="{{ $android }}" target="_blank" rel="nofollow noopener"><br /> <img src="https://nabettu.github.io/appreach/img/gplay_ja.png" style="height: 40px; width: 134.5px;" /><br /> </a>
+        </div>
+    </div>
+</div>
+
+<div class="appreach-footer" style="margin-bottom: 10px; clear: left;">
+</div>
