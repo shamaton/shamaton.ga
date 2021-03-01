@@ -5,24 +5,28 @@
 {{ $ios := .Get "ios" }}
 {{ $android := .Get "android" }}
 
+<div id="appreach-box" style="text-align: left;">
+    <p>
 <img src="{{ $src }}" alt="{{ $title }}" style="float: left; margin: 10px; width: 25%; max-width: 120px; border-radius: 10%;" />
+    </p>
 
 <div class="appreach-info" style="margin: 10px;">
     <div id="appreach-appname">
         {{ $title }}
     </div>
 
+<!--    href="{{ $user }}"-->
     <div id="appreach-developer" style="font-size: 80%; display: inline-block; _display: inline;">
-        開発元:<a id="appreach-developerurl" href="{{ $user }}" target="_blank" rel="nofollow noopener">shamaton</a>
+        開発元:<a id="appreach-developerurl" href="" target="_blank" rel="nofollow noopener">shamaton</a>
     </div>
 
     <div id="appreach-price" style="font-size: 80%; display: inline-block; _display: inline;">
         無料
     </div>
 
-    <div class="appreach-powered" style="font-size: 80%; display: inline-block; _display: inline;">
-        posted with <a title="アプリーチ" href="http://mama-hack.com/app-reach/" target="_blank" rel="nofollow noopener">アプリーチ</a>
-    </div>
+<!--    <div class="appreach-powered" style="font-size: 80%; display: inline-block; _display: inline;">-->
+<!--        posted with <a title="アプリーチ" href="http://mama-hack.com/app-reach/" target="_blank" rel="nofollow noopener">アプリーチ</a>-->
+<!--    </div>-->
 
     <div class="appreach-links" style="float: left;">
         <div id="appreach-itunes-link" style="display: inline-block; _display: inline;">
@@ -36,4 +40,5 @@
 </div>
 
 <div class="appreach-footer" style="margin-bottom: 10px; clear: left;">
+</div>
 </div>

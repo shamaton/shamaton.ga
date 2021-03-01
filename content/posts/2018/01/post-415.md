@@ -15,9 +15,7 @@ categories:
 今回はGoで位置情報を扱ってみることにしました。  
 ちなみに作者の稚拙アプリ「ことだまっぷ」でも似たようなことをして位置情報を利用しています。
 
-|{{< figure src="https://lh3.googleusercontent.com/AxCAhC3nUgPKVfKQlyZtGL0D0tKaghSsH-tV7NlXc5fSftWBPPBt5SHEIlHIlFexnG92=w170" width=100 class="center" >}}|ことだまっぷ|
-| ---- | ---- |
-| ![https://itunes.apple.com/jp/developer/masayuki-shamoto/id973807464?uo=4](https://nabettu.github.io/appreach/img/itune_ja.svg)  |  ![https://play.google.com/store/apps/details?id=com.shamaton.kotoda.map](https://lh3.googleusercontent.com/cjsqrWQKJQp9RFO7-hJ9AfpKzbUb_Y84vXfjlP0iRHBvladwAfXih984olktDhPnFqyZ0nu9A5jvFwOEQPXzv7hr3ce3QVsLN8kQ2Ao=s0)  |
+{{< appbanner src="https://lh3.googleusercontent.com/AxCAhC3nUgPKVfKQlyZtGL0D0tKaghSsH-tV7NlXc5fSftWBPPBt5SHEIlHIlFexnG92=w170" title="ことだまっぷ" user="https://itunes.apple.com/jp/developer/masayuki-shamoto/id973807464?uo=4" ios="https://itunes.apple.com/jp/app/%E3%81%93%E3%81%A8%E3%81%A0%E3%81%BE%E3%81%A3%E3%81%B7/id1312331217?mt=8&uo=4" android="https://play.google.com/store/apps/details?id=com.shamaton.kotoda.map">}}
 
 位置情報を扱うために、Redisを利用しています。  
 実装の際にRDBMSでできるかな～と思っていたのですが、

@@ -1,0 +1,35 @@
+#appreach-box {
+    max-width: 500px;
+    color: #fff;
+    background: #4a4a4a;
+    padding: 4px 6px;
+    line-height: 1.4;
+    border-radius: 4px;
+}
+#appreach-box a {
+    color: #fff;
+}
+#appreach-box br {
+    display: none;
+}
+#appreach-image {
+    margin-right: 15px !important;
+    margin-bottom: 0 !important;
+}
+#appreach-appname {
+    font-size: 1.35em;
+    font-weight: bold;
+}
+#appreach-developer, #appreach-price, .appreach-powered {
+    color: #bbb;
+    font-size: 11px !important;
+}
+#appreach-box .appreach-links {
+    margin-top: 10px;
+}
+#appreach-itunes-link {
+    margin-right: 10px;
+}
+#appreach-box .appreach-links img:hover {
+    opacity: 0.8;
+}

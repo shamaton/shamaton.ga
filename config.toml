@@ -87,6 +87,7 @@ disableHugoGeneratorInject = false
   customCSS = [
     "/lightbox/css/lightbox.min.css",
     "/design/button.css",
+    "/design/appbanner.css",
     "/design/sharing-buttons.css",
   ]
   customJS  = [
