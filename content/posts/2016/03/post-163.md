@@ -3,8 +3,8 @@ title: '[Unity]パッケージ重複でAndroidのBuildに失敗した'
 author: しゃまとん
 type: post
 date: 2016-03-27T03:05:18+00:00
-url: /archives/163
-featured_image: /wp-content/uploads/2016/03/unity-logo.png
+url: /posts/163
+featured_image: /images/posts/2016/03/unity-logo.png
 categories:
   - unity
   - プログラミング関連

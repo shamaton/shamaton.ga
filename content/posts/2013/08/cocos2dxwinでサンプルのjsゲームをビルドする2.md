@@ -3,7 +3,7 @@ title: 'Cocos2dx@WinでサンプルのJSゲームをビルドする#2'
 author: しゃまとん
 type: post
 date: 2013-08-29T05:02:41+00:00
-url: /archives/25
+url: /posts/25
 categories:
   - cocos2dx
   - プログラミング関連

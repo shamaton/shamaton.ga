@@ -3,8 +3,8 @@ title: '[Docker] prometheusをとりあえず動かしてみた'
 author: しゃまとん
 type: post
 date: 2017-01-19T15:01:38+00:00
-url: /archives/355
-featured_image: /wp-content/uploads/2017/01/prometheus_logo.png
+url: /posts/355
+featured_image: /images/posts/2017/01/prometheus_logo.png
 categories:
   - docker
   - Linux
@@ -27,7 +27,7 @@ categories:
 
 <blockquote class="wp-embedded-content">
   <p>
-    <a href="https://shamaton.orz.hm/blog/archives/341">dplyのボタンつくってみた</a>
+    <a href="https://shamaton.orz.hm/blog/posts/341">dplyのボタンつくってみた</a>
   </p>
 </blockquote>
 
@@ -49,7 +49,7 @@ cd node_exporter-0.13.0.linux-amd64
 
 実行すると、9100でlistenします。
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2017/01/exec_node.png" alt="" width="494" height="240" class="aligncenter wp-image-359 size-full" />][6]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2017/01/exec_node.png" alt="" width="494" height="240" class="aligncenter wp-image-359 size-full" />][6]
 
 ■ Prometheusを起動する  
 prometheusは[dockerhub][7]で直ぐ使えるものが用意されているため、すぐに使い始めることができます。（docker run -p 9090:9090 prom/prometheus）  
@@ -69,11 +69,11 @@ prometheusは[dockerhub][7]で直ぐ使えるものが用意されているた�
 
 9090でlistenしているので、アクセスすると画面が表示されるます。プルダウンからnode_cpuを選んでExecuteすると、グラフが表示されるようになります。consoleにはdplyで定義したnodeに関しての値が表示され、取得出来ていることがわかります。
 
-<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2017/01/node_cpu.png" alt="" width="470" height="237" class="aligncenter size-full wp-image-358" /> 
+<img src="https://shamaton.orz.hm/blog/images/posts/2017/01/node_cpu.png" alt="" width="470" height="237" class="aligncenter size-full wp-image-358" /> 
 
 &nbsp;
 
-<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2017/01/prometheus.png" alt="" width="471" height="353" class="aligncenter size-full wp-image-357" /> 
+<img src="https://shamaton.orz.hm/blog/images/posts/2017/01/prometheus.png" alt="" width="471" height="353" class="aligncenter size-full wp-image-357" /> 
 
 あとは例えば、ノードを追加してグループにしたりとか、アラート（alertmanager）を設定して通知したりとか・・・DBサーバも監視対象にしたりとか・・・でしょうか。  
 AWS等クラウドサービスにも対応しているようなので、少しづつ理解しながら使えるようになれればいいなと思います。
@@ -90,7 +90,7 @@ AWS等クラウドサービスにも対応しているようなので、少し�
  [3]: http://qiita.com/sugitak/items/ff8f5ad845283c5915d2
  [4]: https://dply.co
  [5]: https://prometheus.io/download/
- [6]: https://shamaton.orz.hm/blog/wp-content/uploads/2017/01/exec_node.png
+ [6]: https://shamaton.orz.hm/blog/images/posts/2017/01/exec_node.png
  [7]: https://hub.docker.com/u/prom/
  [8]: http://pocketstudio.jp/log3/2015/02/11/what_is_prometheus_monitoring/
  [9]: http://qiita.com/hana_shin/items/16a7ee88ef502a3fc0eb

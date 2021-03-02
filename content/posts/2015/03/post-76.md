@@ -3,8 +3,8 @@ title: アプリ – 決めろ武神覇斬 – をリリースしました
 author: しゃまとん
 type: post
 date: 2015-03-15T09:35:06+00:00
-url: /archives/76
-featured_image: /wp-content/uploads/2015/03/omnislash.png
+url: /posts/76
+featured_image: /images/posts/2015/03/omnislash.png
 categories:
   - リリース
   - 開発
@@ -30,7 +30,7 @@ iOSのリリースに少し時間がかかったので、心配していまし�
 もしよかったらプレーしてみてください。
 
 <div style="width: 162px" class="wp-caption alignnone">
-  <img src="http://shamaton.orz.hm/blog/wp-content/uploads/2015/03/omnislash.png" alt="omnislash" title="決めろ武神覇斬" width="152" height="152" />
+  <img src="http://shamaton.orz.hm/blog/images/posts/2015/03/omnislash.png" alt="omnislash" title="決めろ武神覇斬" width="152" height="152" />
   
   <p class="wp-caption-text">
     決めろ武神覇斬

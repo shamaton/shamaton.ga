@@ -3,8 +3,8 @@ title: '[golang]Go1.5から1.6に更新した際のあれこれ（IntelliJとか
 author: しゃまとん
 type: post
 date: 2016-07-01T16:22:09+00:00
-url: /archives/217
-featured_image: /wp-content/uploads/2016/06/IDEADEV.png
+url: /posts/217
+featured_image: /images/posts/2016/06/IDEADEV.png
 categories:
   - go
   - プログラミング関連
@@ -44,23 +44,23 @@ goの開発ではintelliJを使っているのですが、細かい設定を更�
 
 まずは既存のプロジェクトを開き、ツリーの一番したにあるExternal LibrariesからGoを右クリックし、Open Library Settingsを選択します。 そしてNameのところを1.6にしておきます。
 
-[<img src="http://shamaton.orz.hm/blog/wp-content/uploads/2016/06/sdks.png" alt="sdks" width="706" height="522" class="size-full wp-image-218 aligncenter" />][2]
+[<img src="http://shamaton.orz.hm/blog/images/posts/2016/06/sdks.png" alt="sdks" width="706" height="522" class="size-full wp-image-218 aligncenter" />][2]
 
 次にIntellij IDEA -> Preferences -> Languages & Frameworks -> Goを開き、Project Settingsを確認します。ここではEnable vendoringが有効になっているかを確認しておきます。（デフォルトでは有効のはず）
 
-[<img src="http://shamaton.orz.hm/blog/wp-content/uploads/2016/06/projectsettings.png" alt="projectsettings" width="764" height="505" class="aligncenter size-full wp-image-219" />][3]
+[<img src="http://shamaton.orz.hm/blog/images/posts/2016/06/projectsettings.png" alt="projectsettings" width="764" height="505" class="aligncenter size-full wp-image-219" />][3]
 
 もしDisableの状態でvendor配下の外部パッケージを参照しようとすると&#8230;
 
-[<img src="http://shamaton.orz.hm/blog/wp-content/uploads/2016/06/error.png" alt="error" width="232" height="18" class="aligncenter size-full wp-image-220" />][4]
+[<img src="http://shamaton.orz.hm/blog/images/posts/2016/06/error.png" alt="error" width="232" height="18" class="aligncenter size-full wp-image-220" />][4]
 
 上記のようにエラーになります（赤色なだけだけど&#8230;）、正常な場合はコチラ
 
-[<img src="http://shamaton.orz.hm/blog/wp-content/uploads/2016/06/ok.png" alt="ok" width="240" height="20" class="aligncenter size-full wp-image-221" />][5]
+[<img src="http://shamaton.orz.hm/blog/images/posts/2016/06/ok.png" alt="ok" width="240" height="20" class="aligncenter size-full wp-image-221" />][5]
 
 Go Librariesは基本的に変更する必要なないと思いますが、何かあれば対応しておきましょう。
 
-[<img src="http://shamaton.orz.hm/blog/wp-content/uploads/2016/06/golibraries.png" alt="golibraries" width="771" height="554" class="aligncenter size-full wp-image-222" />][6]
+[<img src="http://shamaton.orz.hm/blog/images/posts/2016/06/golibraries.png" alt="golibraries" width="771" height="554" class="aligncenter size-full wp-image-222" />][6]
 
 なんか長くなってしまいましたが、vendoring対応してくれてよかったね！という感じですね！  
 以上です。
@@ -72,9 +72,9 @@ Go Librariesは基本的に変更する必要なないと思いますが、何�
 ][7] MacにGo言語の開発環境を構築する【IDE編】
 
  [1]: https://golang.org/doc/install#uninstall
- [2]: http://shamaton.orz.hm/blog/wp-content/uploads/2016/06/sdks.png
- [3]: http://shamaton.orz.hm/blog/wp-content/uploads/2016/06/projectsettings.png
- [4]: http://shamaton.orz.hm/blog/wp-content/uploads/2016/06/error.png
- [5]: http://shamaton.orz.hm/blog/wp-content/uploads/2016/06/ok.png
- [6]: http://shamaton.orz.hm/blog/wp-content/uploads/2016/06/golibraries.png
+ [2]: http://shamaton.orz.hm/blog/images/posts/2016/06/sdks.png
+ [3]: http://shamaton.orz.hm/blog/images/posts/2016/06/projectsettings.png
+ [4]: http://shamaton.orz.hm/blog/images/posts/2016/06/error.png
+ [5]: http://shamaton.orz.hm/blog/images/posts/2016/06/ok.png
+ [6]: http://shamaton.orz.hm/blog/images/posts/2016/06/golibraries.png
  [7]: http://akirachiku.com/2016/03/01/go16-development.html

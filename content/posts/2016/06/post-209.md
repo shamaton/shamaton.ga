@@ -3,8 +3,8 @@ title: CentOS7に.NET Coreを入れてhello worldしてみる
 author: しゃまとん
 type: post
 date: 2016-06-24T15:07:44+00:00
-url: /archives/209
-featured_image: /wp-content/uploads/2016/06/microsoft.png
+url: /posts/209
+featured_image: /images/posts/2016/06/microsoft.png
 categories:
   - プログラミング関連
 

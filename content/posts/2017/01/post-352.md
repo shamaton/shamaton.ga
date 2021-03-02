@@ -3,8 +3,8 @@ title: '[golang] zeroformatterでdelay_deserializeできるようにしてみま
 author: しゃまとん
 type: post
 date: 2017-01-06T15:22:32+00:00
-url: /archives/352
-featured_image: /wp-content/uploads/2016/12/GitHub-Mark-120px-plus.png
+url: /posts/352
+featured_image: /images/posts/2016/12/GitHub-Mark-120px-plus.png
 categories:
   - go
   - プログラミング関連
@@ -16,7 +16,7 @@ categories:
 去年末にgolangでzeroformatterを作り始めたのを記事にしました。ありがたいことに、いいねをしてくださっていて嬉しい限りです。  
 今回はちょっとした進捗報告的な感じです。
 
-<http://shamaton.orz.hm/blog/archives/249>
+<http://shamaton.orz.hm/blog/posts/249>
 
 今回は前回の記事で課題にしていた、遅延してシリアライズするというものに対応してみました。どうやればいいかなーともやもや考えていたのですが、一旦やってみるかという感じで実装しました。
 

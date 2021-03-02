@@ -3,8 +3,8 @@ title: '[Unity] transformはcacheした方が早いけど、gameObjectはどう�
 author: しゃまとん
 type: post
 date: 2016-05-29T07:42:26+00:00
-url: /archives/187
-featured_image: /wp-content/uploads/2016/03/unity-logo.png
+url: /posts/187
+featured_image: /images/posts/2016/03/unity-logo.png
 categories:
   - unity
   - プログラミング関連
@@ -84,7 +84,7 @@ public class CacheTest : MonoBehaviour {
 
 で計測してみたら、transformと似たような結果になりました。
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2016/05/time_check.png" alt="time_check" width="225" height="130" class="size-full wp-image-189 aligncenter" />][1]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2016/05/time_check.png" alt="time_check" width="225" height="130" class="size-full wp-image-189 aligncenter" />][1]
 
 gameObjectも場合によってはキャッシュしたほうがよいかもですね。  
 以上です。
@@ -92,4 +92,4 @@ gameObjectも場合によってはキャッシュしたほうがよいかもで�
 ■参考  
 <a href="http://qiita.com/crow_ver6/items/3dc6ba29062d397bbf60" target="_blank">this.transformを計測してみた</a>
 
- [1]: https://shamaton.orz.hm/blog/wp-content/uploads/2016/05/time_check.png
+ [1]: https://shamaton.orz.hm/blog/images/posts/2016/05/time_check.png

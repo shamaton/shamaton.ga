@@ -3,8 +3,8 @@ title: '[English] Native Campで人生初の英会話を体験した'
 author: しゃまとん
 type: post
 date: 2017-03-25T15:21:51+00:00
-url: /archives/383
-featured_image: /wp-content/uploads/2017/03/logo_ogp.png
+url: /posts/383
+featured_image: /images/posts/2017/03/logo_ogp.png
 categories:
   - 英語
 
@@ -20,7 +20,7 @@ categories:
 ということで、細々と書籍を買って勉強していたのですが、やはり話せないと学生時代の二の舞になりそうだったので英会話やるしかないと思ったわけです。  
 でも、英会話って高い・・・・ということでオンライン英会話を調べまくってました。
 
-[<img src="http://shamaton.orz.hm/blog/wp-content/uploads/2017/03/logo_ogp.png" alt="" width="600" height="315" class="aligncenter size-full wp-image-391" />][3]
+[<img src="http://shamaton.orz.hm/blog/images/posts/2017/03/logo_ogp.png" alt="" width="600" height="315" class="aligncenter size-full wp-image-391" />][3]
 
 それで<a href="https://px.a8.net/svt/ejp?a8mat=2TE6SZ+97114I+35VG+5YJRM" target="_blank" rel="nofollow">ネイティブキャンプ</a><img src="https://www15.a8.net/0.gif?a8mat=2TE6SZ+97114I+35VG+5YJRM" border="0" alt="" width="1" height="1" />を知りました。とりあえずどんな特徴があるかというと
 
@@ -82,4 +82,4 @@ Rubyの父、まつもとさんもこういってることだし。（DMMやけ�
 
  [1]: http://answers.unity3d.com/
  [2]: http://stackoverflow.com/
- [3]: http://shamaton.orz.hm/blog/wp-content/uploads/2017/03/logo_ogp.png
+ [3]: http://shamaton.orz.hm/blog/images/posts/2017/03/logo_ogp.png

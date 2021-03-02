@@ -3,8 +3,8 @@ title: '[Docker] golangとredisのコンテナを繋いでみた'
 author: しゃまとん
 type: post
 date: 2016-11-22T16:22:28+00:00
-url: /archives/310
-featured_image: /wp-content/uploads/2016/10/small_v-dark.png
+url: /posts/310
+featured_image: /images/posts/2016/10/small_v-dark.png
 categories:
   - docker
   - go
@@ -18,7 +18,7 @@ categories:
 
 <blockquote class="wp-embedded-content">
   <p>
-    <a href="http://shamaton.orz.hm/blog/archives/305">[Docker] CentOS6でGo言語の開発環境を作ってみた</a>
+    <a href="http://shamaton.orz.hm/blog/posts/305">[Docker] CentOS6でGo言語の開発環境を作ってみた</a>
   </p>
 </blockquote>
 
@@ -32,7 +32,7 @@ golangからredisに接続して操作するには外部のパッケージが必
 
 <blockquote class="wp-embedded-content">
   <p>
-    <a href="http://shamaton.orz.hm/blog/archives/141">[golang]redisで構造体を扱ってみる</a>
+    <a href="http://shamaton.orz.hm/blog/posts/141">[golang]redisで構造体を扱ってみる</a>
   </p>
 </blockquote>
 
@@ -55,7 +55,7 @@ $ docker-compose build</pre>
 
 実行すると、go_redisのイメージ生成が行われます。（名前がちょっと変）
 
-[<img src="http://shamaton.orz.hm/blog/wp-content/uploads/2016/10/images.png" alt="images" width="594" height="71" class="aligncenter size-full wp-image-311" />][1]
+[<img src="http://shamaton.orz.hm/blog/images/posts/2016/10/images.png" alt="images" width="594" height="71" class="aligncenter size-full wp-image-311" />][1]
 
 それではdocker-composeを利用して、コンテナを起動します。redisのイメージがローカルにない場合は、取得しにいきます。今回はrunの後にgo_redisを指定して生成したコンテナに接続するようにしています。
 
@@ -63,13 +63,13 @@ $ docker-compose build</pre>
 
 ターミナル表示が切り替わるので、テストコードを実行してみます。
 
-[<img src="http://shamaton.orz.hm/blog/wp-content/uploads/2016/10/test_redis.png" alt="test_redis" width="727" height="99" class="aligncenter size-full wp-image-312" />][2]
+[<img src="http://shamaton.orz.hm/blog/images/posts/2016/10/test_redis.png" alt="test_redis" width="727" height="99" class="aligncenter size-full wp-image-312" />][2]
 
 こんな感じで接続できました。docker-composeを使うと簡単に複数のコンテナを組み合わせて使えるし、構成もサクッと変更できて便利ですね。
 
 今回も[リポジトリ][3]にしておいたので、ご自由にお使いくださいませ。  
 以上です。
 
- [1]: http://shamaton.orz.hm/blog/wp-content/uploads/2016/10/images.png
- [2]: http://shamaton.orz.hm/blog/wp-content/uploads/2016/10/test_redis.png
+ [1]: http://shamaton.orz.hm/blog/images/posts/2016/10/images.png
+ [2]: http://shamaton.orz.hm/blog/images/posts/2016/10/test_redis.png
  [3]: https://github.com/shamaton/docker-goredis-centos6

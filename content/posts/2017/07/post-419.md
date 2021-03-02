@@ -3,8 +3,8 @@ title: '[Unity] GitHub for Unityを触ってみたかった…'
 author: しゃまとん
 type: post
 date: 2017-07-02T06:40:20+00:00
-url: /archives/419
-featured_image: /wp-content/uploads/2016/12/GitHub-Mark-120px-plus.png
+url: /posts/419
+featured_image: /images/posts/2016/12/GitHub-Mark-120px-plus.png
 categories:
   - git
   - unity
@@ -31,16 +31,16 @@ Github for UnityはUnityのEditorExtensionとして配布しているようで�
 [こちら][3]から最新のunitypackageをダウンロードして、使いたいプロジェクトにimportしてみます。  
 今回は新規のプロジェクトを作成してやってみました。
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2017/07/cap01.png" alt="" width="305" height="363" class="aligncenter wp-image-420 size-full" />][4]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2017/07/cap01.png" alt="" width="305" height="363" class="aligncenter wp-image-420 size-full" />][4]
 
 importが完了するとEditorフォルダが作成され、メニューにGithubが追加されます。
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2017/07/cap02.png" alt="" width="630" height="23" class="aligncenter wp-image-421 size-full" />][5]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2017/07/cap02.png" alt="" width="630" height="23" class="aligncenter wp-image-421 size-full" />][5]
 
 Sign inというメニューがあったので、ログイン情報いれてみたんですが何も起きず&#8230;だったので、Windowを表示してみます。  
 ※（2017/07/02）どうやらSign inのメニューはまだBugがあるようで機能しないみたいです
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2017/07/cap03.png" alt="" width="285" height="454" class="aligncenter wp-image-423 size-full" />][6]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2017/07/cap03.png" alt="" width="285" height="454" class="aligncenter wp-image-423 size-full" />][6]
 
 Windowを表示するとInitialize repositoryとあるのでクリックしてみたのですが、反応が帰ってこず&#8230;ログを確認しても
 
@@ -48,7 +48,7 @@ Windowを表示するとInitialize repositoryとあるのでクリックして�
 
 と表示されるだけでした。仕方がないということで、git initだけして再起動してみると、表示が切り替わったので、アカウント名とかリポジトリのURLを設定してみたのですが反応がない&#8230;
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2017/07/cap04.png" alt="" width="304" height="556" class="aligncenter wp-image-424 size-full" />][7]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2017/07/cap04.png" alt="" width="304" height="556" class="aligncenter wp-image-424 size-full" />][7]
 
 じゃあ、何かcommitしてみるかということで.gitignoreを作ってcommitして、unity再起動してみたのですが、historyとかブランチとか何も表示されず&#8230;
 
@@ -65,7 +65,7 @@ Windowを表示するとInitialize repositoryとあるのでクリックして�
  [1]: https://unity.github.com/
  [2]: http://forest.watch.impress.co.jp/docs/news/1067877.html
  [3]: https://github.com/github-for-unity/Unity/releases
- [4]: https://shamaton.orz.hm/blog/wp-content/uploads/2017/07/cap01.png
- [5]: https://shamaton.orz.hm/blog/wp-content/uploads/2017/07/cap02.png
- [6]: https://shamaton.orz.hm/blog/wp-content/uploads/2017/07/cap03.png
- [7]: https://shamaton.orz.hm/blog/wp-content/uploads/2017/07/cap04.png
+ [4]: https://shamaton.orz.hm/blog/images/posts/2017/07/cap01.png
+ [5]: https://shamaton.orz.hm/blog/images/posts/2017/07/cap02.png
+ [6]: https://shamaton.orz.hm/blog/images/posts/2017/07/cap03.png
+ [7]: https://shamaton.orz.hm/blog/images/posts/2017/07/cap04.png

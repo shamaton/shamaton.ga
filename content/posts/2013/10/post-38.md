@@ -3,8 +3,8 @@ title: git管理用メモ
 author: しゃまとん
 type: post
 date: 2013-10-28T12:15:45+00:00
-url: /archives/38
-featured_image: /wp-content/uploads/2016/05/git.png
+url: /posts/38
+featured_image: /images/posts/2016/05/git.png
 categories:
   - git
   - プログラミング関連

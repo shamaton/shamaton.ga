@@ -3,8 +3,8 @@ title: '[cocos2dx]photonを使ってみた – その1'
 author: しゃまとん
 type: post
 date: 2015-04-08T01:25:13+00:00
-url: /archives/84
-featured_image: /wp-content/uploads/2015/08/photon_realtime_turquoise.png
+url: /posts/84
+featured_image: /images/posts/2015/08/photon_realtime_turquoise.png
 categories:
   - cocos2dx
   - photon
@@ -39,7 +39,7 @@ cocos2d-xのバージョンはv3.2でした。
 
 こちらはクライアントSDK（v4）をダウンロードします。
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2015/03/2015_0329_sdk.png" alt="2015_04_sdk" width="603" height="438" class="aligncenter size-full wp-image-86" />][1]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2015/03/2015_0329_sdk.png" alt="2015_04_sdk" width="603" height="438" class="aligncenter size-full wp-image-86" />][1]
 
 ダウンロード以外の手順は同じです。cocos2d-xでプロジェクトを作成し、SDKのフォルダをリネムして、同じ位置に格納しましょう。
 
@@ -121,10 +121,10 @@ $(call import-module,loadbalancing-cpp-prebuilt)</pre>
 画面のとおりに表示されるようにします！
 
 <p style="text-align: center;">
-  <a href="https://shamaton.orz.hm/blog/wp-content/uploads/2015/03/2015_0329_photon_test_exec.png"><img src="https://shamaton.orz.hm/blog/wp-content/uploads/2015/03/2015_0329_photon_test_exec.png" alt="photon test exec" width="547" height="358" class="aligncenter wp-image-87" /></a>
+  <a href="https://shamaton.orz.hm/blog/images/posts/2015/03/2015_0329_photon_test_exec.png"><img src="https://shamaton.orz.hm/blog/images/posts/2015/03/2015_0329_photon_test_exec.png" alt="photon test exec" width="547" height="358" class="aligncenter wp-image-87" /></a>
 </p>
 
 次はコードの修正をします。  
 ここまでお疲れ様でした。
 
- [1]: https://shamaton.orz.hm/blog/wp-content/uploads/2015/03/2015_0329_sdk.png
+ [1]: https://shamaton.orz.hm/blog/images/posts/2015/03/2015_0329_sdk.png

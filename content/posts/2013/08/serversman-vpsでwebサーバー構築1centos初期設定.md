@@ -3,7 +3,7 @@ title: 'ServersMan VPSでWebサーバー構築#1(CentOS:初期設定)'
 author: しゃまとん
 type: post
 date: 2013-08-11T14:51:05+00:00
-url: /archives/12
+url: /posts/12
 categories:
   - Web関連
   - サーバー構築

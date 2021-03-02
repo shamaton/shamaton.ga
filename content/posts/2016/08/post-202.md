@@ -3,8 +3,8 @@ title: '[Unity] CSVからScriptableObjectを作成してみる'
 author: しゃまとん
 type: post
 date: 2016-08-04T14:49:00+00:00
-url: /archives/202
-featured_image: /wp-content/uploads/2016/06/csv_scriptable.png
+url: /posts/202
+featured_image: /images/posts/2016/06/csv_scriptable.png
 categories:
   - unity
   - プログラミング関連
@@ -112,11 +112,11 @@ CSVファイル（Data.csv）はこんな感じで適当に作ります。
 
 今回の場合、Assets/CSVに上記のファイルを配置すると、importが開始されましてData.assetが生成されます。中身も入ってますね。
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2016/06/csv_scriptable.png" alt="csv_scriptable" width="278" height="275" class="aligncenter size-full wp-image-204" />][1]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2016/06/csv_scriptable.png" alt="csv_scriptable" width="278" height="275" class="aligncenter size-full wp-image-204" />][1]
 
 エクセルだと中身がどのように変わったのかわからないので嫌だな〜と思ったりするのですが、何かいい術はないものか。。いろいろあれですね。  
 以上です。
 
 &nbsp;
 
- [1]: https://shamaton.orz.hm/blog/wp-content/uploads/2016/06/csv_scriptable.png
+ [1]: https://shamaton.orz.hm/blog/images/posts/2016/06/csv_scriptable.png

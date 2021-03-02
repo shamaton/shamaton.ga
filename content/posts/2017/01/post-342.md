@@ -3,8 +3,8 @@ title: '[2016/12] 進捗報告'
 author: しゃまとん
 type: post
 date: 2017-01-03T13:00:48+00:00
-url: /archives/342
-featured_image: /wp-content/uploads/2016/12/talking.gif
+url: /posts/342
+featured_image: /images/posts/2016/12/talking.gif
 categories:
   - 進捗
   - 開発
@@ -72,6 +72,6 @@ categories:
 
 <blockquote class="wp-embedded-content">
   <p>
-    <a href="http://shamaton.orz.hm/blog/archives/332">[2016/11] 進捗報告</a>
+    <a href="http://shamaton.orz.hm/blog/posts/332">[2016/11] 進捗報告</a>
   </p>
 </blockquote>

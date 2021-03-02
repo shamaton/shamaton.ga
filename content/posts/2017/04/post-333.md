@@ -3,8 +3,8 @@ title: Macでcompletionするアレコレ
 author: しゃまとん
 type: post
 date: 2017-04-05T15:10:31+00:00
-url: /archives/333
-featured_image: /wp-content/uploads/2016/11/completion.gif
+url: /posts/333
+featured_image: /images/posts/2016/11/completion.gif
 categories:
   - Linux
   - Mac
@@ -52,7 +52,7 @@ compinit -u
 
 試しにやってみると&#8230;
 
-[<img src="http://shamaton.orz.hm/blog/wp-content/uploads/2016/11/completion.gif" alt="completion" width="492" height="309" class="aligncenter size-full wp-image-335" />][1]
+[<img src="http://shamaton.orz.hm/blog/images/posts/2016/11/completion.gif" alt="completion" width="492" height="309" class="aligncenter size-full wp-image-335" />][1]
 
 このように補完してくれるようになりました。  
 どっちも便利なので是非活用しましょう！  
@@ -83,4 +83,4 @@ docker rmi centos:latest</pre>
 
 &nbsp;
 
- [1]: http://shamaton.orz.hm/blog/wp-content/uploads/2016/11/completion.gif
+ [1]: http://shamaton.orz.hm/blog/images/posts/2016/11/completion.gif

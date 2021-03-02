@@ -3,7 +3,7 @@ title: 'ServersMan VPSでWebサーバー構築#2(ドメイン取得)'
 author: しゃまとん
 type: post
 date: 2013-08-13T16:31:22+00:00
-url: /archives/14
+url: /posts/14
 categories:
   - Web関連
   - サーバー構築

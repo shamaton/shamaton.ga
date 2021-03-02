@@ -3,8 +3,8 @@ title: macでgitを導入するときにやっておくこと。
 author: しゃまとん
 type: post
 date: 2013-09-03T16:16:22+00:00
-url: /archives/28
-featured_image: /wp-content/uploads/2016/05/git.png
+url: /posts/28
+featured_image: /images/posts/2016/05/git.png
 is_comment_form_freeze:
   - on
 comment_form_freeze_message:

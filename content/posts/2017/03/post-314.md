@@ -3,8 +3,8 @@ title: '[Jenkins] Jenkinsからaws-cliを使えるようにするメモ'
 author: しゃまとん
 type: post
 date: 2017-03-15T15:05:05+00:00
-url: /archives/314
-featured_image: /wp-content/uploads/2016/08/headshot.png
+url: /posts/314
+featured_image: /images/posts/2016/08/headshot.png
 categories:
   - メモ
 
@@ -29,11 +29,11 @@ aws-cliはインストールすると、/usr/local/binにコマンドが配置�
 
 [Jenkinsの管理] → [システムの設定] を選択し、グローバルプロパティにPATHを追加しました。
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2016/10/set_path.png" alt="set_path" width="990" height="205" class="aligncenter size-full wp-image-315" />][1]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2016/10/set_path.png" alt="set_path" width="990" height="205" class="aligncenter size-full wp-image-315" />][1]
 
 これで、再度確認してみると
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2016/10/aws_help.png" alt="aws_help" width="1320" height="704" class="aligncenter size-full wp-image-316" />][2]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2016/10/aws_help.png" alt="aws_help" width="1320" height="704" class="aligncenter size-full wp-image-316" />][2]
 
 実行することができました。Jenkinsからシェルを実行すると環境変数が違っていたりするのでちょっと配慮が必要ですね。
 
@@ -43,6 +43,6 @@ aws-cliはインストールすると、/usr/local/binにコマンドが配置�
 
 以上です。
 
- [1]: https://shamaton.orz.hm/blog/wp-content/uploads/2016/10/set_path.png
- [2]: https://shamaton.orz.hm/blog/wp-content/uploads/2016/10/aws_help.png
+ [1]: https://shamaton.orz.hm/blog/images/posts/2016/10/set_path.png
+ [2]: https://shamaton.orz.hm/blog/images/posts/2016/10/aws_help.png
  [3]: http://qiita.com/mechamogera/items/f689b95670127d5bf046

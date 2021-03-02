@@ -3,7 +3,7 @@ title: '[Unity] クラスをKeyにしたDictionaryを作るには'
 author: しゃまとん
 date: 2018-06-11T13:46:11+00:00
 url: /posts/389
-featured_image: /wp-content/uploads/2017/03/dictionary.png
+featured_image: /images/posts/2017/03/dictionary.png
 is_comment_form_freeze:
   - on
 comment_form_freeze_message:

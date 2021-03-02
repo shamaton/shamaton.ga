@@ -3,8 +3,8 @@ title: '[Unity] UniRxを使ったマルチシーンの利用方法を考えた�
 author: しゃまとん
 type: post
 date: 2017-05-28T09:27:10+00:00
-url: /archives/387
-featured_image: /wp-content/uploads/2017/05/unirx.png
+url: /posts/387
+featured_image: /images/posts/2017/05/unirx.png
 categories:
   - unity
   - プログラミング関連
@@ -229,10 +229,10 @@ public class Scene2Arg {
 
 挙動例はこれ。
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2017/05/multi_test.gif" alt="" width="598" height="410" class="aligncenter size-full wp-image-411" />][1]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2017/05/multi_test.gif" alt="" width="598" height="410" class="aligncenter size-full wp-image-411" />][1]
 
 もっと理解していたらきれいに使えるかもなんですが、今はちょっとなーという感じになってしまいました。一旦はシンプルな使い方にとどめておこうかと思います。
 
 以上です。
 
- [1]: https://shamaton.orz.hm/blog/wp-content/uploads/2017/05/multi_test.gif
+ [1]: https://shamaton.orz.hm/blog/images/posts/2017/05/multi_test.gif

@@ -3,8 +3,8 @@ title: '[Golang] gojiでも接続数を制限してみる'
 author: しゃまとん
 type: post
 date: 2017-02-15T13:40:07+00:00
-url: /archives/271
-featured_image: /wp-content/uploads/2016/08/goji.png
+url: /posts/271
+featured_image: /images/posts/2016/08/goji.png
 categories:
   - go
   - プログラミング関連

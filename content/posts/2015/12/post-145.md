@@ -3,8 +3,8 @@ title: '[golang]標準入力を受け取りつつ、システムコマンド(mys
 author: しゃまとん
 type: post
 date: 2015-12-06T09:47:34+00:00
-url: /archives/145
-featured_image: /wp-content/uploads/2015/11/gopher.jpg
+url: /posts/145
+featured_image: /images/posts/2015/11/gopher.jpg
 categories:
   - go
   - プログラミング関連

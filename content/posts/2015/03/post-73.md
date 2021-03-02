@@ -3,8 +3,8 @@ title: '[cocos2dx]内部でテクスチャを作成して、クリッピング�
 author: しゃまとん
 type: post
 date: 2015-03-02T09:46:29+00:00
-url: /archives/73
-featured_image: /wp-content/uploads/2015/08/Icon-cocos.png
+url: /posts/73
+featured_image: /images/posts/2015/08/Icon-cocos.png
 categories:
   - cocos2dx
   - プログラミング関連
@@ -97,7 +97,7 @@ void HelloWorld::_clippingTest() {
 こちらのようにクリッピングされるかと思います。
 
 <p style="text-align: center;">
-  <a href="https://shamaton.orz.hm/blog/wp-content/uploads/2015/03/cliping_test.png"><img src="https://shamaton.orz.hm/blog/wp-content/uploads/2015/03/cliping_test.png" alt="clipping_test" width="469" height="307" class="aligncenter" /></a>
+  <a href="https://shamaton.orz.hm/blog/images/posts/2015/03/cliping_test.png"><img src="https://shamaton.orz.hm/blog/images/posts/2015/03/cliping_test.png" alt="clipping_test" width="469" height="307" class="aligncenter" /></a>
 </p>
 
 ちなみにAndroidではクリッピング処理がうまくいかない場合があるようですので、下記のサイトを参考にさせていただきました。

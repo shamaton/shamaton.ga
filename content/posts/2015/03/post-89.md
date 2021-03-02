@@ -3,8 +3,8 @@ title: '[cocos2dx]Androidのdebug,releaseビルドの切り替え'
 author: しゃまとん
 type: post
 date: 2015-03-29T13:40:09+00:00
-url: /archives/89
-featured_image: /wp-content/uploads/2015/03/droid.png
+url: /posts/89
+featured_image: /images/posts/2015/03/droid.png
 categories:
   - cocos2dx
   - プログラミング関連
@@ -25,9 +25,9 @@ cocos2d-xのver3.2を使用しています。
 下記のようにプロジェクトを右クリックして、プロパティを開き、C/C++ビルドを選択してください。
 
 <p style="text-align: center;">
-  <a href="https://shamaton.orz.hm/blog/wp-content/uploads/2015/03/2015_0328_android_build.png"><img src="https://shamaton.orz.hm/blog/wp-content/uploads/2015/03/2015_0328_android_build.png" alt="2015_0328_android_build" width="638" height="591" class="aligncenter  wp-image-90" /></a>
+  <a href="https://shamaton.orz.hm/blog/images/posts/2015/03/2015_0328_android_build.png"><img src="https://shamaton.orz.hm/blog/images/posts/2015/03/2015_0328_android_build.png" alt="2015_0328_android_build" width="638" height="591" class="aligncenter  wp-image-90" /></a>
 </p>
 
 以上です。
 
- [1]: http://shamaton.orz.hm/blog/archives/49 "cocos2dxのリリースビルド設定"
+ [1]: http://shamaton.orz.hm/blog/posts/49 "cocos2dxのリリースビルド設定"

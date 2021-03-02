@@ -3,8 +3,8 @@ title: '[Unity] Shaderで波紋のようなものを出してみる（2Dだよ�
 author: しゃまとん
 type: post
 date: 2016-07-18T02:17:58+00:00
-url: /archives/250
-featured_image: /wp-content/uploads/2016/07/ripple_eye.gif
+url: /posts/250
+featured_image: /images/posts/2016/07/ripple_eye.gif
 categories:
   - shader
   - unity
@@ -114,7 +114,7 @@ sin関数の引数にはテクスチャの中心点から波が発生してい�
 シェーダを作成後、マテリアルを生成して適当なSpriteに設定します。  
 実行するとこんな感じになります。
 
-[<img src="http://shamaton.orz.hm/blog/wp-content/uploads/2016/07/ripple_eye.gif" alt="ripple_eye" width="198" height="197" class="aligncenter size-full wp-image-251" />][1]
+[<img src="http://shamaton.orz.hm/blog/images/posts/2016/07/ripple_eye.gif" alt="ripple_eye" width="198" height="197" class="aligncenter size-full wp-image-251" />][1]
 
 なんか洗脳されそうですねｗ  
 行数にしたら数行ですが、これだけで出来ちゃうShaderすごい。もっと色々な表現できるようになりたいものです。
@@ -128,6 +128,6 @@ sin関数の引数にはテクスチャの中心点から波が発生してい�
 ■ UnityのShaderじゃないけど勉強になります！[  
 [連載]やってみれば超簡単！ WebGL と GLSL で始める、はじめてのシェーダコーディング（１）][3]
 
- [1]: http://shamaton.orz.hm/blog/wp-content/uploads/2016/07/ripple_eye.gif
+ [1]: http://shamaton.orz.hm/blog/images/posts/2016/07/ripple_eye.gif
  [2]: http://tips.hecomi.com/entry/2014/03/16/233943
  [3]: http://qiita.com/doxas/items/b8221e92a2bfdc6fc211

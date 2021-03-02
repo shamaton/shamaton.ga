@@ -3,8 +3,8 @@ title: cocos2dxで作ったアプリのアイコンを変更するには
 author: しゃまとん
 type: post
 date: 2014-03-25T01:18:03+00:00
-url: /archives/46
-featured_image: /wp-content/uploads/2015/08/Icon-cocos.png
+url: /posts/46
+featured_image: /images/posts/2015/08/Icon-cocos.png
 is_comment_form_freeze:
   - on
 comment_form_freeze_message:

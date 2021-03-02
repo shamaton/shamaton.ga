@@ -3,8 +3,8 @@ title: '[Unity/C#] List<T>.ConvertAllの実行速度について'
 author: しゃまとん
 type: post
 date: 2017-02-07T13:56:54+00:00
-url: /archives/255
-featured_image: /wp-content/uploads/2016/08/a252291db008f1ed7cbf0d54c4b39950.png
+url: /posts/255
+featured_image: /images/posts/2016/08/a252291db008f1ed7cbf0d54c4b39950.png
 categories:
   - unity
   - プログラミング関連

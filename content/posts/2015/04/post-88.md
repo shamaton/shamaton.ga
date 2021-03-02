@@ -3,8 +3,8 @@ title: '[cocos2dx]photonを使ってみた – その2'
 author: しゃまとん
 type: post
 date: 2015-04-09T13:22:43+00:00
-url: /archives/88
-featured_image: /wp-content/uploads/2015/08/photon_realtime_turquoise.png
+url: /posts/88
+featured_image: /images/posts/2015/08/photon_realtime_turquoise.png
 categories:
   - メモ
 
@@ -215,7 +215,7 @@ NetworkLogicの生成も少しだけ違っています。
 Androidでもビルドできると思いますので、やってみてください。
 
 <p style="text-align: center;">
-  <a href="http://shamaton.orz.hm/blog/wp-content/uploads/2015/03/2015_0329_photon_test_exec.png"><img src="http://shamaton.orz.hm/blog/wp-content/uploads/2015/03/2015_0329_photon_test_exec.png" alt="photon test exec" width="469" height="307" class="aligncenter  wp-image-87" /></a>
+  <a href="http://shamaton.orz.hm/blog/images/posts/2015/03/2015_0329_photon_test_exec.png"><img src="http://shamaton.orz.hm/blog/images/posts/2015/03/2015_0329_photon_test_exec.png" alt="photon test exec" width="469" height="307" class="aligncenter  wp-image-87" /></a>
 </p>
 
 お疲れ様でした。

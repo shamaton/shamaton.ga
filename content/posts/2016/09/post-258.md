@@ -3,8 +3,8 @@ title: sshでローカル環境だけにパスワード認証を有効にする
 author: しゃまとん
 type: post
 date: 2016-09-17T02:25:33+00:00
-url: /archives/258
-featured_image: /wp-content/uploads/2016/08/ssh_eye_catch.png
+url: /posts/258
+featured_image: /images/posts/2016/08/ssh_eye_catch.png
 is_comment_form_freeze:
   - on
 categories:

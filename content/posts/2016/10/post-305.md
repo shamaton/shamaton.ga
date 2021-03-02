@@ -3,8 +3,8 @@ title: '[Docker] CentOS6でGo言語の開発環境を作ってみた'
 author: しゃまとん
 type: post
 date: 2016-10-08T03:08:44+00:00
-url: /archives/305
-featured_image: /wp-content/uploads/2016/10/small_v-dark.png
+url: /posts/305
+featured_image: /images/posts/2016/10/small_v-dark.png
 is_comment_form_freeze:
   - on
 comment_form_freeze_message:
@@ -37,7 +37,7 @@ dockerではイメージを作って、イメージからコンテナを生成�
 
 ずらずらーと実行されて、イメージが作成されます。
 
-[<img src="http://shamaton.orz.hm/blog/wp-content/uploads/2016/10/docker_image.png" alt="docker_image" width="562" height="60" class="aligncenter size-full wp-image-308" />][1]
+[<img src="http://shamaton.orz.hm/blog/images/posts/2016/10/docker_image.png" alt="docker_image" width="562" height="60" class="aligncenter size-full wp-image-308" />][1]
 
 イメージを使ってコンテナを生成して起動してみます。
 
@@ -45,7 +45,7 @@ dockerではイメージを作って、イメージからコンテナを生成�
 
 もろもろ確認してみます。
 
-[<img src="http://shamaton.orz.hm/blog/wp-content/uploads/2016/10/docker_run_check.png" alt="docker_run_check" width="714" height="185" class="aligncenter size-full wp-image-307" />][2]
+[<img src="http://shamaton.orz.hm/blog/images/posts/2016/10/docker_run_check.png" alt="docker_run_check" width="714" height="185" class="aligncenter size-full wp-image-307" />][2]
 
 確認が終わったら削除します。起動時に名前をつけておくと削除しやすいですね。
 
@@ -70,8 +70,8 @@ Dockerfileの記述は知識が必要ですが、なれればサクサクを環�
 
 &nbsp;
 
- [1]: http://shamaton.orz.hm/blog/wp-content/uploads/2016/10/docker_image.png
- [2]: http://shamaton.orz.hm/blog/wp-content/uploads/2016/10/docker_run_check.png
+ [1]: http://shamaton.orz.hm/blog/images/posts/2016/10/docker_image.png
+ [2]: http://shamaton.orz.hm/blog/images/posts/2016/10/docker_run_check.png
  [3]: https://github.com/shamaton/golang-centos6
  [4]: https://hub.docker.com/r/shamaton/golang-centos6/
  [5]: http://qiita.com/muddydixon/items/15e5fe8f04a0c325eb8e

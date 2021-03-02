@@ -3,7 +3,7 @@ title: cocos2d-html5の開発する環境を作る@win
 author: しゃまとん
 type: post
 date: 2013-09-11T00:39:04+00:00
-url: /archives/30
+url: /posts/30
 categories:
   - Windows
   - メモ
@@ -40,12 +40,12 @@ Cocos2d-html5-v2.1.5\Cocos2d-html5-v2.1.5\HelloHTML5World
 
 以下のような画面がでればサンプル実行完了です。
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2013/09/hello_html5.jpg" alt="hello_html5" width="509" height="287" />][2]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2013/09/hello_html5.jpg" alt="hello_html5" width="509" height="287" />][2]
 
 ■ここまで来たら  
 次は開発していきたい。  
 現在は英語のチュートリアルしかないので、ここを読んでいくしかないか・・・  
 <a href="http://www.cocos2d-x.org/projects/cocos2d-x/wiki/Cocos2d-html5" target="_blank" rel="noopener">http://www.cocos2d-x.org/projects/cocos2d-x/wiki/Cocos2d-html5</a>
 
- [1]: http://shamaton.orz.hm/blog/archives/24 "Cocos2dx@WinでサンプルのJSゲームをビルドする#1"
- [2]: https://shamaton.orz.hm/blog/wp-content/uploads/2013/09/hello_html5.jpg
+ [1]: http://shamaton.orz.hm/blog/posts/24 "Cocos2dx@WinでサンプルのJSゲームをビルドする#1"
+ [2]: https://shamaton.orz.hm/blog/images/posts/2013/09/hello_html5.jpg

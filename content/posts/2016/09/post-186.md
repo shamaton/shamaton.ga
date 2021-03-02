@@ -3,8 +3,8 @@ title: '[Unity] Colliderの比較するのは何がいいのか'
 author: しゃまとん
 type: post
 date: 2016-09-25T13:13:28+00:00
-url: /archives/186
-featured_image: /wp-content/uploads/2016/05/space-92348_640.jpg
+url: /posts/186
+featured_image: /images/posts/2016/05/space-92348_640.jpg
 is_comment_form_freeze:
   - on
 comment_form_freeze_message:

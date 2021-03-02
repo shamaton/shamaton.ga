@@ -3,8 +3,8 @@ title: '[Golang] EchoのUseの挙動について'
 author: しゃまとん
 type: post
 date: 2017-03-07T14:12:52+00:00
-url: /archives/293
-featured_image: /wp-content/uploads/2016/09/logo.png
+url: /posts/293
+featured_image: /images/posts/2016/09/logo.png
 categories:
   - go
   - プログラミング関連
@@ -33,12 +33,12 @@ Use関数とはリクエストが飛んできたときに事前に決められ�
 ■ http://localhost:8080/nice/middle/hoge  
 １，２しか表示されません。
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2016/09/hoge.png" alt="hoge" width="121" height="57" class="aligncenter size-full wp-image-297" />][3]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2016/09/hoge.png" alt="hoge" width="121" height="57" class="aligncenter size-full wp-image-297" />][3]
 
 ■ http://localhost:8080/nice/middle/fuga  
 １，２，３と表示されます。
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2016/09/fuga.png" alt="fuga" width="133" height="100" class="aligncenter size-full wp-image-298" />][4]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2016/09/fuga.png" alt="fuga" width="133" height="100" class="aligncenter size-full wp-image-298" />][4]
 
 このように、Useとルーティングの順序が違うとUseしたけど呼ばれません。
 
@@ -48,5 +48,5 @@ Use関数とはリクエストが飛んできたときに事前に決められ�
 
  [1]: https://github.com/labstack/echo
  [2]: https://github.com/zenazn/goji
- [3]: https://shamaton.orz.hm/blog/wp-content/uploads/2016/09/hoge.png
- [4]: https://shamaton.orz.hm/blog/wp-content/uploads/2016/09/fuga.png
+ [3]: https://shamaton.orz.hm/blog/images/posts/2016/09/hoge.png
+ [4]: https://shamaton.orz.hm/blog/images/posts/2016/09/fuga.png

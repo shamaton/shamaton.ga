@@ -3,8 +3,8 @@ title: '[2016/10] 開発進捗'
 author: しゃまとん
 type: post
 date: 2016-10-31T15:09:04+00:00
-url: /archives/317
-featured_image: /wp-content/uploads/2016/10/item_manager.gif
+url: /posts/317
+featured_image: /images/posts/2016/10/item_manager.gif
 categories:
   - 進捗
   - 開発
@@ -70,6 +70,6 @@ categories:
 
 <blockquote class="wp-embedded-content">
   <p>
-    <a href="http://shamaton.orz.hm/blog/archives/291">[2016/09] 開発進捗</a>
+    <a href="http://shamaton.orz.hm/blog/posts/291">[2016/09] 開発進捗</a>
   </p>
 </blockquote>

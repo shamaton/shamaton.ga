@@ -3,8 +3,8 @@ title: 痛monodevelopで括弧が補間されるようにする
 author: しゃまとん
 type: post
 date: 2015-09-21T14:32:30+00:00
-url: /archives/126
-featured_image: /wp-content/uploads/2015/09/unity_chan.png
+url: /posts/126
+featured_image: /images/posts/2015/09/unity_chan.png
 categories:
   - unity
   - メモ
@@ -23,8 +23,8 @@ unityのエディタで痛monodevelopを使っているのですが、デフォ�
 設定　→　テキストエディタ　→　動作  
 対応する括弧を追加
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2015/09/ita_monodevelop_setting.png" alt="ita_monodevelop_setting" width="692" height="453" class="alignleft  wp-image-127" />][1]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2015/09/ita_monodevelop_setting.png" alt="ita_monodevelop_setting" width="692" height="453" class="alignleft  wp-image-127" />][1]
 
 以上です。
 
- [1]: https://shamaton.orz.hm/blog/wp-content/uploads/2015/09/ita_monodevelop_setting.png
+ [1]: https://shamaton.orz.hm/blog/images/posts/2015/09/ita_monodevelop_setting.png

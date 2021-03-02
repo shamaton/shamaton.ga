@@ -3,7 +3,7 @@ title: テーマとページのレイアウトを更新しました。
 author: しゃまとん
 type: post
 date: 2015-08-28T09:13:18+00:00
-url: /archives/116
+url: /posts/116
 categories:
   - メモ
 

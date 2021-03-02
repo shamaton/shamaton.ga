@@ -3,8 +3,8 @@ title: '[Docker] docker.qcow2のサイズを小さくする回避策'
 author: しゃまとん
 type: post
 date: 2016-11-02T15:08:52+00:00
-url: /archives/326
-featured_image: /wp-content/uploads/2016/10/small_v-dark.png
+url: /posts/326
+featured_image: /images/posts/2016/10/small_v-dark.png
 is_comment_form_freeze:
   - on
 comment_form_freeze_message:

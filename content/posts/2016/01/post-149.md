@@ -3,8 +3,8 @@ title: assimp2jsonを使えるようにするまで
 author: しゃまとん
 type: post
 date: 2016-01-06T15:34:37+00:00
-url: /archives/149
-featured_image: /wp-content/uploads/2016/01/JSON_logo.png
+url: /posts/149
+featured_image: /images/posts/2016/01/JSON_logo.png
 categories:
   - assimp
   - プログラミング関連

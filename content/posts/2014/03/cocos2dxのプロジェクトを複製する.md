@@ -3,7 +3,7 @@ title: cocos2dxのプロジェクトを複製する
 author: しゃまとん
 type: post
 date: 2014-03-28T10:57:08+00:00
-url: /archives/48
+url: /posts/48
 categories:
   - cocos2dx
   - プログラミング関連

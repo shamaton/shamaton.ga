@@ -3,7 +3,7 @@ title: 'ServersMan VPSでWebサーバー構築#3(Apache)'
 author: しゃまとん
 type: post
 date: 2013-08-14T15:44:47+00:00
-url: /archives/13
+url: /posts/13
 categories:
   - Web関連
   - サーバー構築

@@ -3,8 +3,8 @@ title: MySQLの空コミットが気になったので調べてみた
 author: しゃまとん
 type: post
 date: 2015-11-07T09:19:33+00:00
-url: /archives/136
-featured_image: /wp-content/uploads/2015/11/mysql_logo.png
+url: /posts/136
+featured_image: /images/posts/2015/11/mysql_logo.png
 categories:
   - go
   - mysql

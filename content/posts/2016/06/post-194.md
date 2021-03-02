@@ -3,8 +3,8 @@ title: '[Unity] DoTweenで擬似的に追従させてみる'
 author: しゃまとん
 type: post
 date: 2016-06-09T13:43:54+00:00
-url: /archives/194
-featured_image: /wp-content/uploads/2016/06/dotween_chase.gif
+url: /posts/194
+featured_image: /images/posts/2016/06/dotween_chase.gif
 categories:
   - unity
   - プログラミング関連
@@ -19,7 +19,7 @@ categories:
 
 <blockquote class="wp-embedded-content">
   <p>
-    <a href="https://shamaton.orz.hm/blog/archives/176">[Unity] DoTweenでuGUIにバウンドさせてみる</a>
+    <a href="https://shamaton.orz.hm/blog/posts/176">[Unity] DoTweenでuGUIにバウンドさせてみる</a>
   </p>
 </blockquote>
 
@@ -92,7 +92,7 @@ public class TextAction : MonoBehaviour {
 実行するとこんな感じです。  
 赤が対象（target）オブジェクト、白がTextActionを追加したオブジェクトです。
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2016/06/dotween_chase.gif" alt="dotween_chase" width="202" height="122" class="size-full wp-image-195 aligncenter" />][1]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2016/06/dotween_chase.gif" alt="dotween_chase" width="202" height="122" class="size-full wp-image-195 aligncenter" />][1]
 
 &nbsp;
 
@@ -101,4 +101,4 @@ public class TextAction : MonoBehaviour {
 
 以上です。
 
- [1]: https://shamaton.orz.hm/blog/wp-content/uploads/2016/06/dotween_chase.gif
+ [1]: https://shamaton.orz.hm/blog/images/posts/2016/06/dotween_chase.gif

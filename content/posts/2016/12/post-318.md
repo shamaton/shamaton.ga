@@ -3,8 +3,8 @@ title: '[Docker] CentOS6でMySQLコンテナを作成してみる'
 author: しゃまとん
 type: post
 date: 2016-12-13T02:30:28+00:00
-url: /archives/318
-featured_image: /wp-content/uploads/2016/10/small_v-dark.png
+url: /posts/318
+featured_image: /images/posts/2016/10/small_v-dark.png
 categories:
   - docker
   - プログラミング関連
@@ -21,7 +21,7 @@ OSは前回と同じでCentOS6を使います。
 
 <blockquote class="wp-embedded-content">
   <p>
-    <a href="http://shamaton.orz.hm/blog/archives/310">[Docker] golangとredisのコンテナを繋いでみた</a>
+    <a href="http://shamaton.orz.hm/blog/posts/310">[Docker] golangとredisのコンテナを繋いでみた</a>
   </p>
 </blockquote>
 
@@ -76,7 +76,7 @@ mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql</pre>
 
 もう1つターミナルを開いて、中身を覗いてみます。
 
-[<img src="http://shamaton.orz.hm/blog/wp-content/uploads/2016/10/docker_mysql_check.png" alt="docker_mysql_check" width="487" height="383" class="aligncenter size-full wp-image-323" />][2]
+[<img src="http://shamaton.orz.hm/blog/images/posts/2016/10/docker_mysql_check.png" alt="docker_mysql_check" width="487" height="383" class="aligncenter size-full wp-image-323" />][2]
 
 MySQLが起動してユーザーとデータベースが作成されているのが確認できました。  
 このコンテナですが、消してしまうとデータが全て消えてしまいます。  
@@ -89,5 +89,5 @@ MySQLが起動してユーザーとデータベースが作成されているの
 <a href="http://j-caw.co.jp/blog/?p=1583" target="_blank">Dockerでmysqlサーバコンテナへ別のコンテナからアクセスする<br /> </a><a href="http://weblabo.oscasierra.net/installing-mysql56-centos7-yum/" target="_blank">MySQL 5.6をCentOS 7にyum インストールする手順<br /> </a><a href="http://qiita.com/akinoriikeda/items/db4291dc4db3aa7c4b55" target="_blank">dockerで、いい感じでMySQL環境を作る<br /> </a><a href="http://qiita.com/TakamiChie/items/a7437b1a24961ba9c83e" target="_blank">DockerでMySQLを動かす(気を付けるべきところとかいろいろ)</a>
 
  [1]: https://github.com/docker-library/mysql/blob/a03bccc7dc259d817643b0ca0bfcf7ce52ea3906/5.6/Dockerfile
- [2]: http://shamaton.orz.hm/blog/wp-content/uploads/2016/10/docker_mysql_check.png
+ [2]: http://shamaton.orz.hm/blog/images/posts/2016/10/docker_mysql_check.png
  [3]: https://github.com/shamaton/docker-mysql56-centos6

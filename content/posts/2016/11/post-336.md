@@ -3,8 +3,8 @@ title: '[Unity] Nostalgia2 – 2Dマップエディタを触ってみた'
 author: しゃまとん
 type: post
 date: 2016-11-19T13:49:27+00:00
-url: /archives/336
-featured_image: /wp-content/uploads/2016/11/nostalgia.png
+url: /posts/336
+featured_image: /images/posts/2016/11/nostalgia.png
 categories:
   - unity
   - プログラミング関連
@@ -38,7 +38,7 @@ categories:
 ここまでふむふむとお勉強をして素材を用意すれば、  
 すぐにマップ配置をすることができるようになりました。素材はねくらさんの[マップチップ][6]を利用させていただいています。
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2016/11/nostalgia_1.gif" alt="nostalgia_1" width="322" height="321" class="aligncenter size-full wp-image-337" />][7]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2016/11/nostalgia_1.gif" alt="nostalgia_1" width="322" height="321" class="aligncenter size-full wp-image-337" />][7]
 
 ざっくり使い方な手順はこんな感じでしょうか。
 
@@ -66,6 +66,6 @@ categories:
  [4]: https://tkool.jp/products/rpgvx/material
  [5]: http://caitsithware.com/wordpress/assetstore/nostalgia/tutorial
  [6]: http://nekuramap.blog.fc2.com/blog-entry-2.html
- [7]: https://shamaton.orz.hm/blog/wp-content/uploads/2016/11/nostalgia_1.gif
+ [7]: https://shamaton.orz.hm/blog/images/posts/2016/11/nostalgia_1.gif
  [8]: http://caitsithware.com/wordpress/assetstore/nostalgia/demo
  [9]: http://caitsithware.com/wordpress/

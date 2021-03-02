@@ -3,8 +3,8 @@ title: '[Mac] pkgでインストールしたjenkinsのportを変更する'
 author: しゃまとん
 type: post
 date: 2017-02-23T15:36:57+00:00
-url: /archives/276
-featured_image: /wp-content/uploads/2016/08/headshot.png
+url: /posts/276
+featured_image: /images/posts/2016/08/headshot.png
 categories:
   - Mac
   - メモ
@@ -27,7 +27,7 @@ sudo launchctl load /Library/LaunchDaemons/org.jenkins-ci.plist</pre>
 
 58080にアクセスしてみると、表示されました！
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2016/08/port58080.png" alt="port58080" width="840" height="559" class="aligncenter size-full wp-image-278" />][1]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2016/08/port58080.png" alt="port58080" width="840" height="559" class="aligncenter size-full wp-image-278" />][1]
 
 デフォルトでは8080を使っているので、他のサービスとバッティングしてしまう場合は変更しておくとよいですね。
 
@@ -37,6 +37,6 @@ sudo launchctl load /Library/LaunchDaemons/org.jenkins-ci.plist</pre>
 [MACへJenkinsをインストール(インストールの仕方編)  
 ][2] [CHANGING JENKINS PORT ON MAC OS X][3]
 
- [1]: https://shamaton.orz.hm/blog/wp-content/uploads/2016/08/port58080.png
+ [1]: https://shamaton.orz.hm/blog/images/posts/2016/08/port58080.png
  [2]: http://qiita.com/t_n/items/22e6c5fd9f2ced3d5fc4
  [3]: https://three1415.wordpress.com/2014/12/29/changing-jenkins-port-on-mac-os-x/

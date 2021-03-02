@@ -3,8 +3,8 @@ title: '[Unity] ジェネリックを使っている親クラス内のクラス�
 author: しゃまとん
 type: post
 date: 2016-04-29T05:59:15+00:00
-url: /archives/180
-featured_image: /wp-content/uploads/2016/04/test_child.png
+url: /posts/180
+featured_image: /images/posts/2016/04/test_child.png
 categories:
   - unity
   - プログラミング関連

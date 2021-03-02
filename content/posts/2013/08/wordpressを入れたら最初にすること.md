@@ -3,7 +3,7 @@ title: WordPressを入れたら最初にすること
 author: しゃまとん
 type: post
 date: 2013-08-19T15:52:15+00:00
-url: /archives/19
+url: /posts/19
 categories:
   - メモ
 

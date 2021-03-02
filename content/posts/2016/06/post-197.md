@@ -3,8 +3,8 @@ title: '[iOS] アプリを申請するときの広告まわりの設定'
 author: しゃまとん
 type: post
 date: 2016-06-11T12:41:25+00:00
-url: /archives/197
-featured_image: /wp-content/uploads/2016/06/ios_small.jpg
+url: /posts/197
+featured_image: /images/posts/2016/06/ios_small.jpg
 categories:
   - メモ
 

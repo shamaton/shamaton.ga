@@ -1,10 +1,9 @@
 ---
 title: '[Unity] iOS申請時のMissing Push Notificationを対処する'
 author: しゃまとん
-type: post
 date: 2017-12-07T15:21:29+00:00
-url: /archives/485
-featured_image: /wp-content/uploads/2017/12/apple_logo_PNG19689.png
+url: /posts/485
+featured_image: /images/posts/2017/12/apple_logo_PNG19689.png
 is_comment_form_freeze:
   - on
 comment_form_freeze_message:
@@ -17,12 +16,14 @@ categories:
 お世話になっております。  
 しゃまとんです。
 
-UnityでiOS向けにPush通知を利用していない状態でbuildして何も気にせずアプリ申請（ここではXcode等からArchiveしてUploadすること）を行うとAppleからアップロードしたファイルに関しての通知が来ます。
+UnityでiOS向けにPush通知を利用していない状態でbuildして何も気にせずアプリ申請
+（ここではXcode等からArchiveしてUploadすること）を行うとAppleからアップロードしたファイルに関しての通知が来ます。
 
 問題なければ、完了した旨のメールが来るのみですが、下記のような内容です。  
-ちなみに確認したバージョンは5.6.0f3なので、他のバージョンでは対応が異なる可能性があります。
+ちなみに確認したバージョンは`5.6.0f3`なので、他のバージョンでは対応が異なる可能性があります。
 
-<pre class="lang:default decode:true ">Dear developer,
+```text
+Dear developer,
 
 We have discovered one or more issues with your recent delivery for "アプリ名". Your delivery was successful, but you may wish to correct the following issues in your next delivery:
 
@@ -32,15 +33,20 @@ After you’ve corrected the issues, you can use Xcode or Application Loader to 
 
 Regards,
 
-The App Store team</pre>
+The App Store team
+```
 
-どうやらプッシュ通知に関しての設定が有効になっているけど使うための証明書が見つからないそうで、直してくださいという内容みたいです。
+どうやらプッシュ通知に関しての設定が有効になっているけど使うための証明書が見つからないそうで、
+直してくださいという内容みたいです。
 
-Unity側のBuild設定でPush通知を無効にする対応できればいいのですが、なさそうなので使わない場合は該当の箇所に対して別途修正をする必要がありました。
+Unity側のBuild設定でPush通知を無効にする対応できればいいのですが、
+なさそうなので使わない場合は該当の箇所に対して別途修正をする必要がありました。
 
-UnityでiOS向けのBuildを行い、完了したらXcodeを実行し、該当の箇所（Classes/UnityAppContoller.mm）をコメントアウトします。
+UnityでiOS向けのBuildを行い、完了したらXcodeを実行し、
+該当の箇所（Classes/UnityAppContoller.mm）をコメントアウトします。
 
-<pre class="lang:objc decode:true ">#if UNITY_USES_REMOTE_NOTIFICATIONS
+```objectivec
+#if UNITY_USES_REMOTE_NOTIFICATIONS
 /*
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
 {
@@ -74,10 +80,11 @@ UnityでiOS向けのBuildを行い、完了したらXcodeを実行し、該当�
     UnitySendRemoteNotificationError(error);
 }
 */
-#endif</pre>
+#endif
+```
 
 これでArchiveしてアップロードすると先程の通知なくバイナリの配置をすることができました。  
 以上です。
 
-■ 参考  
-<a href="https://blog.77jp.net/missing-push-notification-entitlement-ios" target="_blank" rel="noopener">【Unity】Missing Push Notification Entitlement Unity iOSアプリ申請アップロード時のエラー対応</a>
+■ 参考
+{{< blogcard url="https://blog.77jp.net/missing-push-notification-entitlement-ios">}}

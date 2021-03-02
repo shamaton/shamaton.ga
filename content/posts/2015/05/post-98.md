@@ -3,8 +3,8 @@ title: アプリ – つくてん – をリリースしました
 author: しゃまとん
 type: post
 date: 2015-05-23T15:50:20+00:00
-url: /archives/98
-featured_image: /wp-content/uploads/2015/05/filldot.png
+url: /posts/98
+featured_image: /images/posts/2015/05/filldot.png
 categories:
   - リリース
   - 開発
@@ -31,7 +31,7 @@ categories:
 もしよろしければ、触ってみてください。
 
 <div id="attachment_99" style="width: 82px" class="wp-caption alignleft">
-  <img aria-describedby="caption-attachment-99" src="http://shamaton.orz.hm/blog/wp-content/uploads/2015/05/filldot.png" alt="filldot" title="つくてん" width="72" height="72" class="size-full wp-image-99" />
+  <img aria-describedby="caption-attachment-99" src="http://shamaton.orz.hm/blog/images/posts/2015/05/filldot.png" alt="filldot" title="つくてん" width="72" height="72" class="size-full wp-image-99" />
   
   <p id="caption-attachment-99" class="wp-caption-text">
     つくてん

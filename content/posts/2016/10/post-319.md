@@ -3,8 +3,8 @@ title: sourced.techというところからメールがきた
 author: しゃまとん
 type: post
 date: 2016-10-26T23:00:18+00:00
-url: /archives/319
-featured_image: /wp-content/uploads/2016/10/sourced.png
+url: /posts/319
+featured_image: /images/posts/2016/10/sourced.png
 categories:
   - メモ
 

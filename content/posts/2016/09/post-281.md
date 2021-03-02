@@ -3,8 +3,8 @@ title: '[Unity] AnimationClip内のSpriteのプロパティ名を変更したい
 author: しゃまとん
 type: post
 date: 2016-09-05T12:54:54+00:00
-url: /archives/281
-featured_image: /wp-content/uploads/2016/09/not_sprite.gif
+url: /posts/281
+featured_image: /images/posts/2016/09/not_sprite.gif
 categories:
   - unity
   - プログラミング関連
@@ -18,13 +18,13 @@ UnityでAnimationClipを作成して、結構な数を作成つくったあと�
 
 例えばTransformとかのプロパティに関して変更するときはエディタ上から修正することが可能です。（画像では参照ができなくなりMissingになっています）
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2016/09/enable_change.gif" alt="enable_change" width="291" height="120" class="aligncenter size-full wp-image-286" />][1]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2016/09/enable_change.gif" alt="enable_change" width="291" height="120" class="aligncenter size-full wp-image-286" />][1]
 
 同じようにSpriteも変更しようとすると、変更されずコンソールにはエラーが表示されます。
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2016/09/not_sprite.gif" alt="not_sprite" width="291" height="120" class="aligncenter size-full wp-image-287" />][2]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2016/09/not_sprite.gif" alt="not_sprite" width="291" height="120" class="aligncenter size-full wp-image-287" />][2]
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2016/09/sprite_error.png" alt="sprite_error" width="343" height="118" class="aligncenter size-full wp-image-285" />][3]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2016/09/sprite_error.png" alt="sprite_error" width="343" height="118" class="aligncenter size-full wp-image-285" />][3]
 
 サクッと変更できないだと・・・  
 ということで、巷で公開してくださっているエディタ拡張などで変更を試みましたが、解決には至りませんでした。
@@ -36,14 +36,14 @@ UnityでAnimationClipを作成して、結構な数を作成つくったあと�
 Menu → Edit → Project Settings → EditorでAsset Serializationを下記のようにします。  
 こうすることで、Animファイルがテキストで見えるようになります。
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2016/09/force_text_setting.png" alt="force_text_setting" width="380" height="503" class="aligncenter size-full wp-image-283" />][4]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2016/09/force_text_setting.png" alt="force_text_setting" width="380" height="503" class="aligncenter size-full wp-image-283" />][4]
 
 ■ 変更したいファイルをテキストエディタで開く  
 （ファイルを開く前に念のためにUnity閉じておく方がいいかもしれません。）  
 好きなテキストエディタでファイルを開きます。その中からpathを探してみてください。階層構造でプロパティ名が記載されていると思います。これを参照させたい名称に変更します。
 
 <p style="text-align: center;">
-  <a href="https://shamaton.orz.hm/blog/wp-content/uploads/2016/09/missing.png"><img src="https://shamaton.orz.hm/blog/wp-content/uploads/2016/09/missing.png" alt="missing" width="293" height="99" class="aligncenter size-full wp-image-288" /></a>
+  <a href="https://shamaton.orz.hm/blog/images/posts/2016/09/missing.png"><img src="https://shamaton.orz.hm/blog/images/posts/2016/09/missing.png" alt="missing" width="293" height="99" class="aligncenter size-full wp-image-288" /></a>
 </p>
 
 <p style="text-align: left;">
@@ -51,12 +51,12 @@ Menu → Edit → Project Settings → EditorでAsset Serializationを下記の
 </p>
 
 <p style="text-align: center;">
-  <a href="https://shamaton.orz.hm/blog/wp-content/uploads/2016/09/text_change.png"><img src="https://shamaton.orz.hm/blog/wp-content/uploads/2016/09/text_change.png" alt="text_change" width="315" height="60" class="aligncenter size-full wp-image-289" /></a>
+  <a href="https://shamaton.orz.hm/blog/images/posts/2016/09/text_change.png"><img src="https://shamaton.orz.hm/blog/images/posts/2016/09/text_change.png" alt="text_change" width="315" height="60" class="aligncenter size-full wp-image-289" /></a>
 </p>
 
 これでUnityを再度立ち上げます。これで確認してみると・・・
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2016/09/ok.png" alt="ok" width="298" height="102" class="aligncenter size-full wp-image-290" />][5]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2016/09/ok.png" alt="ok" width="298" height="102" class="aligncenter size-full wp-image-290" />][5]
 
 プロパティ名が変更され、Missingが解決されます＾＾  
 あとは1つずつファイルを開いて・・・って、数が多い場合はつらいので一括置換したい場合はターミナルでsedコマンドを使うといいかなと思います。
@@ -77,10 +77,10 @@ Unityのバージョンアップでエディタ上から変更できるように
 [Unity で Animation を作り込んだ後の Hierarchy 変更][6]  
 [BSD(Mac) で find xargs sed を使う際の注意点][7]
 
- [1]: https://shamaton.orz.hm/blog/wp-content/uploads/2016/09/enable_change.gif
- [2]: https://shamaton.orz.hm/blog/wp-content/uploads/2016/09/not_sprite.gif
- [3]: https://shamaton.orz.hm/blog/wp-content/uploads/2016/09/sprite_error.png
- [4]: https://shamaton.orz.hm/blog/wp-content/uploads/2016/09/force_text_setting.png
- [5]: https://shamaton.orz.hm/blog/wp-content/uploads/2016/09/ok.png
+ [1]: https://shamaton.orz.hm/blog/images/posts/2016/09/enable_change.gif
+ [2]: https://shamaton.orz.hm/blog/images/posts/2016/09/not_sprite.gif
+ [3]: https://shamaton.orz.hm/blog/images/posts/2016/09/sprite_error.png
+ [4]: https://shamaton.orz.hm/blog/images/posts/2016/09/force_text_setting.png
+ [5]: https://shamaton.orz.hm/blog/images/posts/2016/09/ok.png
  [6]: http://qiita.com/nekobako/items/b647a701b6070d1ca872
  [7]: http://tkuchiki.hatenablog.com/entry/2013/02/27/130114

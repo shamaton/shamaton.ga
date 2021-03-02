@@ -3,7 +3,7 @@ title: 'Cocos2dx@WinでサンプルのJSゲームをビルドする#1'
 author: しゃまとん
 type: post
 date: 2013-08-23T16:56:33+00:00
-url: /archives/24
+url: /posts/24
 categories:
   - cocos2dx
   - プログラミング関連
@@ -182,4 +182,4 @@ fi</pre>
 ここまでで、既存のCppファイルでビルドが通るようになる。そのときに必要なJSファイルをassetsに持ってくるようになる。  
 次はAppDelegate.cppからJSファイルを読み込んで、実機転送できるようにする。
 
- [1]: http://shamaton.orz.hm/blog/archives/21
+ [1]: http://shamaton.orz.hm/blog/posts/21

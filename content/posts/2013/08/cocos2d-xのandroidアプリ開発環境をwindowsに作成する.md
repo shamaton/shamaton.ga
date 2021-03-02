@@ -3,7 +3,7 @@ title: Cocos2d-xのAndroidアプリ開発環境をWindowsに作成する
 author: しゃまとん
 type: post
 date: 2013-08-20T15:43:17+00:00
-url: /archives/21
+url: /posts/21
 categories:
   - メモ
 

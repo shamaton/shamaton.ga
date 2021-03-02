@@ -3,8 +3,8 @@ title: cocos2dxのリリースビルド設定
 author: しゃまとん
 type: post
 date: 2014-04-01T15:38:54+00:00
-url: /archives/49
-featured_image: /wp-content/uploads/2015/08/Icon-cocos.png
+url: /posts/49
+featured_image: /images/posts/2015/08/Icon-cocos.png
 categories:
   - cocos2dx
   - プログラミング関連
@@ -38,4 +38,4 @@ iOSとAndroidで設定が別々です。
 
 以上です。
 
- [1]: http://shamaton.orz.hm/blog/archives/89 "[cocos2dx]Androidのdebug,releaseビルドの切り替え"
+ [1]: http://shamaton.orz.hm/blog/posts/89 "[cocos2dx]Androidのdebug,releaseビルドの切り替え"

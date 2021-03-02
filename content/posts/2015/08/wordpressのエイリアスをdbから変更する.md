@@ -3,8 +3,8 @@ title: wordpressのエイリアスをDBから変更する
 author: しゃまとん
 type: post
 date: 2015-08-04T15:34:59+00:00
-url: /archives/105
-featured_image: /wp-content/uploads/2015/08/wordpress-logo-stacked-rgb.png
+url: /posts/105
+featured_image: /images/posts/2015/08/wordpress-logo-stacked-rgb.png
 categories:
   - Web関連
 

@@ -3,7 +3,7 @@ title: cocos2dxでnendを実装するためのリンク集
 author: しゃまとん
 type: post
 date: 2014-02-25T14:12:50+00:00
-url: /archives/41
+url: /posts/41
 categories:
   - cocos2dx
   - プログラミング関連

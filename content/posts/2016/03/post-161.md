@@ -3,8 +3,8 @@ title: '[Unity]LitJsonで入れ子なJsonの使い方'
 author: しゃまとん
 type: post
 date: 2016-03-06T10:31:19+00:00
-url: /archives/161
-featured_image: /wp-content/uploads/2016/01/JSON_logo.png
+url: /posts/161
+featured_image: /images/posts/2016/01/JSON_logo.png
 categories:
   - unity
   - プログラミング関連

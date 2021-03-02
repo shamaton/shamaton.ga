@@ -3,8 +3,8 @@ title: dplyのボタンつくってみた
 author: しゃまとん
 type: post
 date: 2016-12-28T14:49:32+00:00
-url: /archives/341
-featured_image: /wp-content/uploads/2016/12/dply.png
+url: /posts/341
+featured_image: /images/posts/2016/12/dply.png
 is_comment_form_freeze:
   - on
 comment_form_freeze_message:

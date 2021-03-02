@@ -3,8 +3,8 @@ title: '[Unity]PC用とかに解像度対応どうするか'
 author: しゃまとん
 type: post
 date: 2016-04-23T11:45:12+00:00
-url: /archives/171
-featured_image: /wp-content/uploads/2016/03/unity-logo.png
+url: /posts/171
+featured_image: /images/posts/2016/03/unity-logo.png
 categories:
   - unity
   - プログラミング関連
@@ -31,7 +31,7 @@ PC用にゲーム作る場合ってどうするのかな、ユーザーによっ
 
 この辺りを設定することで意図した解像度でゲームが表示されるでしょうか。
 
-<img src="http://shamaton.orz.hm/blog/wp-content/uploads/2016/04/playersetting.png" alt="playersetting" width="252" height="485" class="size-full wp-image-173 aligncenter" /> 
+<img src="http://shamaton.orz.hm/blog/images/posts/2016/04/playersetting.png" alt="playersetting" width="252" height="485" class="size-full wp-image-173 aligncenter" /> 
 
 ■Canvas  
 キャンバスはPlayer Settingとは違い全体設定ではないですが、UIの描画に大きく関わっているので追加するキャンバス毎に対応が必要かと思われます。Canvasに付いているCanvas Scalerで設定できます。  
@@ -41,7 +41,7 @@ PC用にゲーム作る場合ってどうするのかな、ユーザーによっ
 
 この辺りを設定すればよさそうです。
 
-[<img src="http://shamaton.orz.hm/blog/wp-content/uploads/2016/04/canvas_scaler.png" alt="canvas_scaler" width="272" height="113" class="size-full wp-image-174 aligncenter" />][1]
+[<img src="http://shamaton.orz.hm/blog/images/posts/2016/04/canvas_scaler.png" alt="canvas_scaler" width="272" height="113" class="size-full wp-image-174 aligncenter" />][1]
 
 それと、設定ではないけど見えてはいけない領域対策として何かタイリングして隠すものを用意しておくよさげかなーと思いました。
 
@@ -53,4 +53,4 @@ PC用にゲーム作る場合ってどうするのかな、ユーザーによっ
 ■参考  
 <a href="http://tsubakit1.hateblo.jp/entry/2014/12/11/223427" target="_blank">uGUIのアスペクト比を固定する<br /> </a>
 
- [1]: http://shamaton.orz.hm/blog/wp-content/uploads/2016/04/canvas_scaler.png
+ [1]: http://shamaton.orz.hm/blog/images/posts/2016/04/canvas_scaler.png

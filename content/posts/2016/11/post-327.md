@@ -3,8 +3,8 @@ title: '[Unity] RaycastのlayerMaskの扱い方について'
 author: しゃまとん
 type: post
 date: 2016-11-11T13:08:36+00:00
-url: /archives/327
-featured_image: /wp-content/uploads/2016/11/laycast_test.gif
+url: /posts/327
+featured_image: /images/posts/2016/11/laycast_test.gif
 categories:
   - unity
   - プログラミング関連
@@ -41,7 +41,7 @@ int layerMask = 1 &lt;&lt; layerNo;</pre>
 
 ちなみにLayerを見てみると31まであります。多分bit管理ですよね。
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2016/11/layer_setting.png" alt="layer_setting" width="165" height="361" class="aligncenter size-full wp-image-330" />][1]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2016/11/layer_setting.png" alt="layer_setting" width="165" height="361" class="aligncenter size-full wp-image-330" />][1]
 
 簡単に確認してみました。cubeからsphereにrayを射出して当たったら色を変えます。
 
@@ -49,7 +49,7 @@ int layerMask = 1 &lt;&lt; layerNo;</pre>
 
 &nbsp;
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2016/11/laycast_test.gif" alt="laycast_test" width="344" height="204" class="aligncenter size-full wp-image-331" />][2]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2016/11/laycast_test.gif" alt="laycast_test" width="344" height="204" class="aligncenter size-full wp-image-331" />][2]
 
 最初、取得した番号をそのまま渡していたので検出がうまくいきませんでした。  
 これで検出できるようになりました。よかったよかった。
@@ -60,6 +60,6 @@ int layerMask = 1 &lt;&lt; layerNo;</pre>
 
 以上です。
 
- [1]: https://shamaton.orz.hm/blog/wp-content/uploads/2016/11/layer_setting.png
- [2]: https://shamaton.orz.hm/blog/wp-content/uploads/2016/11/laycast_test.gif
+ [1]: https://shamaton.orz.hm/blog/images/posts/2016/11/layer_setting.png
+ [2]: https://shamaton.orz.hm/blog/images/posts/2016/11/laycast_test.gif
  [3]: https://github.com/shamaton/LaycastSample

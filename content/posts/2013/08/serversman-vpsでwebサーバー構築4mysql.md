@@ -3,7 +3,7 @@ title: 'ServersMan VPSでWebサーバー構築#4(MySQL)'
 author: しゃまとん
 type: post
 date: 2013-08-15T15:19:01+00:00
-url: /archives/15
+url: /posts/15
 categories:
   - Web関連
   - サーバー構築

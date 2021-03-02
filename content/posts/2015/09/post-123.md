@@ -3,8 +3,8 @@ title: '[cocos2dx]TMXTiledMapの各タイルからスプライトを複製する
 author: しゃまとん
 type: post
 date: 2015-09-01T15:15:37+00:00
-url: /archives/123
-featured_image: /wp-content/uploads/2015/08/tile_photo.jpg
+url: /posts/123
+featured_image: /images/posts/2015/08/tile_photo.jpg
 categories:
   - cocos2dx
   - プログラミング関連

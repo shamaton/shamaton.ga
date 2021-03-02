@@ -3,8 +3,8 @@ title: '[golang] zeroformatterを作成してみる'
 author: しゃまとん
 type: post
 date: 2016-12-21T15:14:56+00:00
-url: /archives/249
-featured_image: /wp-content/uploads/2016/12/GitHub-Mark-120px-plus.png
+url: /posts/249
+featured_image: /images/posts/2016/12/GitHub-Mark-120px-plus.png
 categories:
   - go
   - プログラミング関連

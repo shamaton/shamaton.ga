@@ -3,8 +3,8 @@ title: '[Unity]複数のuGUIを円運動させる'
 author: しゃまとん
 type: post
 date: 2016-04-09T04:34:25+00:00
-url: /archives/166
-featured_image: /wp-content/uploads/2016/04/circle.gif
+url: /posts/166
+featured_image: /images/posts/2016/04/circle.gif
 categories:
   - unity
   - プログラミング関連
@@ -26,7 +26,7 @@ float y = Mathf.Sin(rad) * r;</pre>
 今回は複数のUIオブジェクトを均等に配置したかったので、ベースオブジェクトを用意してスクリプト上から複製して、座標計算して設定しています。  
 半径はスクリプトで定義してもいいですし、ベースオブジェクトを0度などわかりやすい位置に置いて利用してもいいと思います。
 
-<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2016/04/UI_inspector.png" alt="UI_inspector" width="506" height="262" class="size-full wp-image-168 aligncenter" /> 
+<img src="https://shamaton.orz.hm/blog/images/posts/2016/04/UI_inspector.png" alt="UI_inspector" width="506" height="262" class="size-full wp-image-168 aligncenter" /> 
 
 スクリプトは上記画像のUIオブジェクトにつけて、Baseを参照させます。  
 コードはこんな感じです。
@@ -102,7 +102,7 @@ public class UICircle : MonoBehaviour {
 
 実行するとくるくると回ります。
 
-<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2016/04/circle.gif" alt="circle" width="222" height="212" class="size-full wp-image-169 aligncenter" /> 
+<img src="https://shamaton.orz.hm/blog/images/posts/2016/04/circle.gif" alt="circle" width="222" height="212" class="size-full wp-image-169 aligncenter" /> 
 
 以上です。
 

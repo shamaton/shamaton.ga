@@ -3,7 +3,7 @@ title: 'ServersMan VPSでWebサーバー構築#5(WordPress)'
 author: しゃまとん
 type: post
 date: 2013-08-17T15:55:35+00:00
-url: /archives/16
+url: /posts/16
 categories:
   - Web関連
   - サーバー構築

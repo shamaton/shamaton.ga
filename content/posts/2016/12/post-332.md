@@ -3,8 +3,8 @@ title: '[2016/11] 進捗報告'
 author: しゃまとん
 type: post
 date: 2016-12-01T13:16:10+00:00
-url: /archives/332
-featured_image: /wp-content/uploads/2016/11/make_map.gif
+url: /posts/332
+featured_image: /images/posts/2016/11/make_map.gif
 is_comment_form_freeze:
   - on
 comment_form_freeze_message:
@@ -74,6 +74,6 @@ categories:
 
 <blockquote class="wp-embedded-content">
   <p>
-    <a href="http://shamaton.orz.hm/blog/archives/317">[2016/10] 開発進捗</a>
+    <a href="http://shamaton.orz.hm/blog/posts/317">[2016/10] 開発進捗</a>
   </p>
 </blockquote>

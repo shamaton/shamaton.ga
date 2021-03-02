@@ -3,8 +3,8 @@ title: '[golang]pre-commit-hookでビルドチェックしてみる'
 author: しゃまとん
 type: post
 date: 2016-05-14T12:48:14+00:00
-url: /archives/183
-featured_image: /wp-content/uploads/2016/05/git.png
+url: /posts/183
+featured_image: /images/posts/2016/05/git.png
 categories:
   - git
   - go

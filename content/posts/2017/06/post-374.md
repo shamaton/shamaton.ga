@@ -3,8 +3,8 @@ title: '[Unity] GUILayoutのちょっとしたサンプルコード'
 author: しゃまとん
 type: post
 date: 2017-06-11T07:42:51+00:00
-url: /archives/374
-featured_image: /wp-content/uploads/2017/02/edex.gif
+url: /posts/374
+featured_image: /images/posts/2017/02/edex.gif
 categories:
   - unity
   - プログラミング関連
@@ -21,7 +21,7 @@ categories:
 使いそうなもろもろを入れ込んでます。  
 一応、動作確認してみたものを載せておきます。（見切れてしまっているものがありますがご容赦ください(；・∀・)）
 
-[<img src="https://shamaton.orz.hm/blog/wp-content/uploads/2017/02/edex.gif" alt="" width="448" height="606" class="aligncenter size-full wp-image-379" />][2]
+[<img src="https://shamaton.orz.hm/blog/images/posts/2017/02/edex.gif" alt="" width="448" height="606" class="aligncenter size-full wp-image-379" />][2]
 
 以下はコードです。
 
@@ -30,4 +30,4 @@ categories:
 エディタ拡張できるようになると開発効率をあげられそうなので、是非覚えたいところですね！以上です。
 
  [1]: http://anchan828.github.io/editor-manual/
- [2]: https://shamaton.orz.hm/blog/wp-content/uploads/2017/02/edex.gif
+ [2]: https://shamaton.orz.hm/blog/images/posts/2017/02/edex.gif

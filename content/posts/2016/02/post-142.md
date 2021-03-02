@@ -3,8 +3,8 @@ title: UnityとGoで暗号化してみた
 author: しゃまとん
 type: post
 date: 2016-02-08T15:58:47+00:00
-url: /archives/142
-featured_image: /wp-content/uploads/2015/11/gopher.jpg
+url: /posts/142
+featured_image: /images/posts/2015/11/gopher.jpg
 categories:
   - go
   - unity
@@ -54,7 +54,7 @@ public class crypt : MonoBehaviour {
   }
 }</pre>
 
-[<img src="http://shamaton.orz.hm/blog/wp-content/uploads/2016/02/unity_sha256.png" alt="unity_sha256" width="372" height="60" class="alignleft size-full wp-image-152" />][1]
+[<img src="http://shamaton.orz.hm/blog/images/posts/2016/02/unity_sha256.png" alt="unity_sha256" width="372" height="60" class="alignleft size-full wp-image-152" />][1]
 
 &nbsp;
 
@@ -83,4 +83,4 @@ func main() {
 
 以上です。
 
- [1]: http://shamaton.orz.hm/blog/wp-content/uploads/2016/02/unity_sha256.png
+ [1]: http://shamaton.orz.hm/blog/images/posts/2016/02/unity_sha256.png

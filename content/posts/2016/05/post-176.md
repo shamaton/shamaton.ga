@@ -3,8 +3,8 @@ title: '[Unity] DoTweenでuGUIにバウンドさせてみる'
 author: しゃまとん
 type: post
 date: 2016-05-01T11:57:45+00:00
-url: /archives/176
-featured_image: /wp-content/uploads/2016/04/bound_text.gif
+url: /posts/176
+featured_image: /images/posts/2016/04/bound_text.gif
 categories:
   - unity
   - プログラミング関連
@@ -64,7 +64,7 @@ public class BoundText : MonoBehaviour {
 
 動作はこんな感じになります。
 
-[<img src="http://shamaton.orz.hm/blog/wp-content/uploads/2016/04/bound_text.gif" alt="bound_text" width="92" height="78" class="size-full wp-image-178 aligncenter" />][3]
+[<img src="http://shamaton.orz.hm/blog/images/posts/2016/04/bound_text.gif" alt="bound_text" width="92" height="78" class="size-full wp-image-178 aligncenter" />][3]
 
 iTweenよりも直感的だったので、今後はこちらを利用したいと思います。  
 以上です。
@@ -76,5 +76,5 @@ iTweenよりも直感的だったので、今後はこちらを利用したい�
 
  [1]: https://www.assetstore.unity3d.com/jp/#!/content/84
  [2]: http://dotween.demigiant.com/index.php
- [3]: http://shamaton.orz.hm/blog/wp-content/uploads/2016/04/bound_text.gif
+ [3]: http://shamaton.orz.hm/blog/images/posts/2016/04/bound_text.gif
  [4]: http://albatrus.com/main/unity/7413

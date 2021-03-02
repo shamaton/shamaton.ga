@@ -3,8 +3,8 @@ title: '[cocos2dx]タッチイベント処理を削除する'
 author: しゃまとん
 type: post
 date: 2015-10-04T04:36:57+00:00
-url: /archives/130
-featured_image: /wp-content/uploads/2015/08/Icon-cocos.png
+url: /posts/130
+featured_image: /images/posts/2015/08/Icon-cocos.png
 categories:
   - cocos2dx
   - プログラミング関連

@@ -3,8 +3,8 @@ title: '[Unity] UnityでGit LFSを使う時の設定'
 author: しゃまとん
 type: post
 date: 2017-07-01T16:13:52+00:00
-url: /archives/418
-featured_image: /wp-content/uploads/2016/05/git.png
+url: /posts/418
+featured_image: /images/posts/2016/05/git.png
 categories:
   - git
   - unity

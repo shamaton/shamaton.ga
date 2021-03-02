@@ -3,8 +3,8 @@ title: GithubクローンのGitBucketをCentOS6に入れる
 author: しゃまとん
 type: post
 date: 2016-02-20T03:41:24+00:00
-url: /archives/154
-featured_image: /wp-content/uploads/2016/02/gitbucket.png
+url: /posts/154
+featured_image: /images/posts/2016/02/gitbucket.png
 categories:
   - Web関連
   - サーバー構築
@@ -94,11 +94,11 @@ sudo service httpd restart</pre>
 githubと同じような間隔で使えるっぽいです！  
 user : root, password : rootでログインできます。
 
-[<img src="http://shamaton.orz.hm/blog/wp-content/uploads/2016/02/gitbuket_home.png" alt="gitbuket_home" width="970" height="508" class="alignleft size-full wp-image-157" />][1]
+[<img src="http://shamaton.orz.hm/blog/images/posts/2016/02/gitbuket_home.png" alt="gitbuket_home" width="970" height="508" class="alignleft size-full wp-image-157" />][1]
 
 環境変数はこんな感じです。
 
-[<img src="http://shamaton.orz.hm/blog/wp-content/uploads/2016/02/gitbuket_home2.png" alt="gitbuket_home2" width="1012" height="444" class="alignleft size-full wp-image-158" />][2]
+[<img src="http://shamaton.orz.hm/blog/images/posts/2016/02/gitbuket_home2.png" alt="gitbuket_home2" width="1012" height="444" class="alignleft size-full wp-image-158" />][2]
 
 以上です。
 
@@ -106,5 +106,5 @@ user : root, password : rootでログインできます。
 <a href="http://blacknd.com/linux-server/centos7-gitbucket-jenkins-auto-deploy/" target="_blank">CentOS 7でGitBucketを動かしてJenkinsで自動デプロイ</a>  
 <a href="http://qiita.com/YN0314/items/d205dfed2e968bf8f408" target="_blank">CentOSにGitBucketを構築してみた。</a>
 
- [1]: http://shamaton.orz.hm/blog/wp-content/uploads/2016/02/gitbuket_home.png
- [2]: http://shamaton.orz.hm/blog/wp-content/uploads/2016/02/gitbuket_home2.png
+ [1]: http://shamaton.orz.hm/blog/images/posts/2016/02/gitbuket_home.png
+ [2]: http://shamaton.orz.hm/blog/images/posts/2016/02/gitbuket_home2.png

@@ -3,8 +3,8 @@ title: '[golang]redisで構造体を扱ってみる'
 author: しゃまとん
 type: post
 date: 2015-11-21T14:15:52+00:00
-url: /archives/141
-featured_image: /wp-content/uploads/2015/11/gopher.jpg
+url: /posts/141
+featured_image: /images/posts/2015/11/gopher.jpg
 is_comment_form_freeze:
   - on
 comment_form_freeze_message:

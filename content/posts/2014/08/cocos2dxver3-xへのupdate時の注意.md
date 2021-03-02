@@ -3,7 +3,7 @@ title: '[cocos2dx]ver3.xへのUpdate時の注意'
 author: しゃまとん
 type: post
 date: 2014-08-24T15:23:58+00:00
-url: /archives/56
+url: /posts/56
 categories:
   - cocos2dx
   - Mac

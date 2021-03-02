@@ -3,8 +3,8 @@ title: '[Server] letsencryptを使ってhttps化しました'
 author: しゃまとん
 type: post
 date: 2017-08-04T16:11:25+00:00
-url: /archives/426
-featured_image: /wp-content/uploads/2017/07/key_close.png
+url: /posts/426
+featured_image: /images/posts/2017/07/key_close.png
 categories:
   - Linux
   - Web関連

@@ -3,8 +3,8 @@ title: '[Unity5.5] プロジェクトビューにアセットのファイルサ�
 author: しゃまとん
 type: post
 date: 2017-01-12T15:01:12+00:00
-url: /archives/362
-featured_image: /wp-content/uploads/2016/03/unity-logo.png
+url: /posts/362
+featured_image: /images/posts/2016/03/unity-logo.png
 categories:
   - unity
   - プログラミング関連
@@ -22,7 +22,7 @@ categories:
 関係ねぇ！とにかく表示させろい！って方はご利用くださいませ。  
 こんな感じで表示されるようになります。
 
-[<img src="http://shamaton.orz.hm/blog/wp-content/uploads/2017/01/disp_size.png" alt="" width="248" height="97" class="aligncenter size-full wp-image-363" />][3]
+[<img src="http://shamaton.orz.hm/blog/images/posts/2017/01/disp_size.png" alt="" width="248" height="97" class="aligncenter size-full wp-image-363" />][3]
 
 書き換えた理由としては試したらエラーが出てしまって動かなくなっていたためです。  
 [この辺とか][4]が理由になっていたり。とりあえず同じように表示されるようになったか・・な・・？
@@ -34,5 +34,5 @@ categories:
 
  [1]: https://twitter.com/kyusyukeigo
  [2]: http://anchan828.hatenablog.jp/entry/2013/05/12/044215
- [3]: http://shamaton.orz.hm/blog/wp-content/uploads/2017/01/disp_size.png
+ [3]: http://shamaton.orz.hm/blog/images/posts/2017/01/disp_size.png
  [4]: http://tsubakit1.hateblo.jp/entry/2016/11/25/235315

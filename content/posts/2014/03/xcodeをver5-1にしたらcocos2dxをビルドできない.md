@@ -3,7 +3,7 @@ title: XcodeをVer5.1にしたらCocos2dxをビルドできない
 author: しゃまとん
 type: post
 date: 2014-03-13T02:51:14+00:00
-url: /archives/44
+url: /posts/44
 categories:
   - cocos2dx
   - Mac
