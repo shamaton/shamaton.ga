@@ -1,7 +1,6 @@
 ---
 title: '[Server] letsencryptを使ってhttps化しました'
 author: しゃまとん
-type: post
 date: 2017-08-04T16:11:25+00:00
 url: /posts/426
 featured_image: /images/posts/2017/07/key_close.png
@@ -16,7 +15,10 @@ categories:
 
 少し前から気になっていたホームページのHTTPS化ですが、なんとなくやる気持ちになったので対応してみました。
 
-HTTPSにするにあたって証明書が必要になるのですが、以前はオレオレ証明書だったりどこかの発行所で購入する必要があったのですが、[letsencrypt][1]というサービスが開始されたことで誰でも無料でHTTPS化を正式に行えるようになりました。
+HTTPSにするにあたって証明書が必要になるのですが、
+以前はオレオレ証明書だったりどこかの発行所で購入する必要があったのですが、letsencryptというサービスが開始されたことで誰でも無料でHTTPS化を正式に行えるようになりました。
+
+{{< blogcard url="https://letsencrypt.org/ja/" >}}
 
 ちなみに2018年からワイルドカードにも対応するそうです！！
 
@@ -26,7 +28,8 @@ HTTPSにするにあたって証明書が必要になるのですが、以前は
 まず、letsencryptを利用するにはpython2.7が必要なので、インストールします。  
 rootにて作業しています。
 
-<pre class="lang:sh decode:true">$ wget http://www.python.org/ftp/python/2.7.11/Python-2.7.11.tgz
+```shell
+$ wget http://www.python.org/ftp/python/2.7.11/Python-2.7.11.tgz
 $ tar xvzf Python-2.7.11.tgz
 $ cd Python-2.7.11
 $ ./configure --with-threads --enable-shared --prefix=/usr/local
@@ -35,21 +38,26 @@ $ sudo make install
 
 # 確認
 $ python --version
-Python 2.7.11</pre>
+Python 2.7.11
+```
 
-すんなりいけばバージョンが更新されますが、自分の場合はエラーが表示されてしまったので、下記のサイトを参考に対処しました。ちなみにエラーはこれ。
+すんなりいけばバージョンが更新されますが、自分の場合はエラーが表示されてしまったので、
+下記のサイトを参考に対処しました。ちなみにエラーはこれ。
 
-<pre class="lang:default decode:true ">error while loading shared libraries: libpython2.7.so.1.0: cannot open shared object file: No such file or directory</pre>
+```text
+error while loading shared libraries: libpython2.7.so.1.0: cannot open shared object file: No such file or directory
 
-
+```
 
 次にletsencryptを設定していきます。今回は証明書の発行だけを行います。  
 実行すると色々聞かれるの答えます。その後、確認が行われ成功すると証明書が作成されます。
 
-<pre class="lang:default decode:true"># git clone https://github.com/letsencrypt/letsencrypt
-# cd letsencrypt
-# ./letsencrypt-auto --help
-# ./letsencrypt-auto certonly --webroot -w /var/www/ -d shamaton.orz.hm
+```shell
+# rootで実行
+git clone https://github.com/letsencrypt/letsencrypt
+cd letsencrypt
+./letsencrypt-auto --help
+./letsencrypt-auto certonly --webroot -w /var/www/ -d shamaton.orz.hm
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
 Enter email address (used for urgent renewal and security notices) (Enter 'c' to
 cancel): example@email.com
@@ -97,55 +105,73 @@ IMPORTANT NOTES:
    Donating to EFF:                    https://eff.org/donate-le
 
 # ls /etc/letsencrypt/live/shamaton.orz.hm/
-README  cert.pem  chain.pem  fullchain.pem  privkey.pem</pre>
+README  cert.pem  chain.pem  fullchain.pem  privkey.pem
+```
 
 無事、証明書が発行されました！  
-続いて、apacheの設定を行います。/etc/httpd/conf.d/ssl.confを開き、各項目を設定しておきます。
+続いて、apacheの設定を行います。`/etc/httpd/conf.d/ssl.conf`を開き、各項目を設定しておきます。
 
-<pre class="lang:default decode:true" title="ssl.conf">SSLCertificateFile /etc/letsencrypt/live/shamaton.orz.hm/cert.pem
+```text
+SSLCertificateFile /etc/letsencrypt/live/shamaton.orz.hm/cert.pem
 SSLCertificateKeyFile /etc/letsencrypt/live/shamaton.orz.hm/privkey.pem
-SSLCertificateChainFile /etc/letsencrypt/live/shamaton.orz.hm/chain.pem</pre>
+SSLCertificateChainFile /etc/letsencrypt/live/shamaton.orz.hm/chain.pem
+```
 
 iptablesが有効になっている場合、HTTPSをポートを解放しましょう。  
 追加コマンドか、ファイルを直接編集します。（/etc/sysconfig/iptables）  
 内容は使っているサーバによって読み替えてください。
 
-<pre class="lang:default decode:true">-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT</pre>
+```text
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
+```
 
 apacheとiptablesを再起動しておきます。
 
-<pre class="lang:sh decode:true">$ sudo apachectl configtest
+```shell
+$ sudo apachectl configtest
 $ sudo apachectl restart
 $ sudo service iptables restart
-$ sudo service iptables status</pre>
+$ sudo service iptables status
+```
 
 ここでHTTPSでアクセスできるか確認しておきます。  
 一通りアクセスしてみて問題なさそうだったら、httpをhttpsにリダイレクトするようにしておきます。  
 /etc/httpd/conf.dに新しくconfファイルを追加します。
 
-<pre class="lang:sh decode:true">$ sudo vi /etc/httpd/conf.d/rewrite.conf
+```shell
+$ sudo vi /etc/httpd/conf.d/rewrite.conf
 
-&lt;ifModule mod_rewrite.c&gt;
+<ifModule mod_rewrite.c>
 RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
-&lt;/ifModule&gt;
+</ifModule>
 
-$ sudo apachectl restart</pre>
+$ sudo apachectl restart
+```
 
 わざとhttpでアクセスしてhttpsにリダイレクトすることを確認します。  
 以上でhttps化は完了です。
 
-最後にcronで証明書を定期更新するようにしておきます。letsencryptの証明書は3ヶ月ほどで切れてしまうようなので、cron等で設定しておくとよいです。  
+最後にcronで証明書を定期更新するようにしておきます。
+letsencryptの証明書は3ヶ月ほどで切れてしまうようなので、cron等で設定しておくとよいです。  
 更新されたかわかるようにメールアドレスを添えておきました。
 
-<pre class="lang:default decode:true"># crontab -e
+```shell
+# rootで実行
+crontab -e
+
+# 追加
 MAILTO="example@email.com"
-00 03 07 * * /root/letsencrypt/letsencrypt-auto renew --force-renew</pre>
+00 03 07 * * /root/letsencrypt/letsencrypt-auto renew --force-renew
+```
 
 ちなみに、renewに成功するとこんな感じです。
 
-<pre class="lang:default decode:true"># /root/letsencrypt/letsencrypt-auto renew --force-renew
+```shell
+# rootで実行
+root/letsencrypt/letsencrypt-auto renew --force-renew
+
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
 
 -------------------------------------------------------------------------------
@@ -163,16 +189,15 @@ new certificate deployed without reload, fullchain is
 -------------------------------------------------------------------------------
 
 Congratulations, all renewals succeeded. The following certs have been renewed:
-  /etc/letsencrypt/live/shamaton.orz.hm/fullchain.pem (success)</pre>
+  /etc/letsencrypt/live/shamaton.orz.hm/fullchain.pem (success)
+```
 
-あとで気づいたのですが、画像等がhttpのURLで参照していると「保護された通信」と表示されなくなってしまうようです。この辺は一括設定かなにか対応が必要ですね。
+あとで気づいたのですが、画像等がhttpのURLで参照していると「保護された通信」と表示されなくなってしまうようです。
+この辺は一括設定かなにか対応が必要ですね。
 
 以上です。
 
-■ 参考  
-<a href="http://inatim.com/centos-python2-7-11/" target="_blank" rel="noopener">Linux(CentOS)にPython 2.7.11をインストール</a>  
-<a href="http://qiita.com/sue71/items/100004b704b9ff129b09" target="_blank" rel="noopener">apacheでhttpへのアクセスをhttpsへ自動リダイレクトする</a>  
-<a href="https://weblabo.oscasierra.net/apache-httpd22-ssl-centos6/" target="_blank" rel="noopener">Apache httpd 2.2 に HTTPS (SSL/TLS) の設定をする (CentOS 6)</a>  
-<a href="https://14code.com/blog/20160209_1143" target="_blank" rel="noopener">Let’s Encryptで証明書を発行してWordPressをSSL化する</a>
-
- [1]: https://letsencrypt.jp/
+■ 参考
+{{< blogcard url="http://qiita.com/sue71/items/100004b704b9ff129b09">}}
+{{< blogcard url="https://weblabo.oscasierra.net/apache-httpd22-ssl-centos6/">}}
+{{< blogcard url="https://14code.com/blog/20160209_1143">}}

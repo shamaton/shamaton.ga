@@ -1,7 +1,6 @@
 ---
 title: '[Unity] UnityでGit LFSを使う時の設定'
 author: しゃまとん
-type: post
 date: 2017-07-01T16:13:52+00:00
 url: /posts/418
 featured_image: /images/posts/2016/05/git.png
@@ -14,20 +13,25 @@ categories:
 お世話になっております。  
 しゃまとんです。
 
-なかなか個人制作レベルだとgitを使うぐらいになりますが、例えばエクセルデータだったり、大きなサイズのファイルもgitで管理したい！ってなることが（多分）あります（よね）。
+なかなか個人制作レベルだとgitを使うぐらいになりますが、例えばエクセルデータだったり、
+大きなサイズのファイルもgitで管理したい！ってなることが（多分）あります（よね）。
 
-ただgitの性質的に大きなサイズのバイナリファイルを扱うのが苦手なようで、ソースコードと同じ様に追加しているとリポジトリのサイズがえらいことになってるなんてこともあるかもしれません。
-
+ただgitの性質的に大きなサイズのバイナリファイルを扱うのが苦手なようで、
+ソースコードと同じ様に追加しているとリポジトリのサイズがえらいことになってるなんてこともあるかもしれません。
 
 
 そんなのを解決するのがGit LFSというやつです。  
 Large File Storageの略です。わかりやすいですね。
 
-使うにはちょっとの準備だけして、LFSを使いたいリポジトリに.gitattributesを置けばOK。
+{{< blogcard url="https://git-lfs.github.com/" >}}
+{{< slideshare sgNg3SCqXPQ49s >}}
+
+使うにはちょっとの準備だけして、LFSを使いたいリポジトリに`.gitattributes`を置けばOK。
 
 まず使えるようにするには下記を実行。
 
-<pre class="lang:default decode:true "># mac
+```shell
+# mac
 brew install git-lfs
 git lfs install
 
@@ -37,23 +41,29 @@ https://git-lfs.github.com/
 
 # 確認
 $ git lfs version
-git-lfs/2.2.0 (GitHub; darwin amd64; go 1.8.3)</pre>
+git-lfs/2.2.0 (GitHub; darwin amd64; go 1.8.3)
+```
 
 そしてリポジトリではgitattributesを配置しておきます。  
 lfsのコマンドもあって、登録もできます。
 
-<pre class="lang:default decode:true">git lfs track "*.psd"</pre>
+```shell
+git lfs track "*.psd"
+```
 
 これでpsdファイルがLFSファイルになります。  
 以降の操作はgitをいつも通り操作するだけです！
 
 一点だけ注意しておくとcloneだけは下記のコマンドを使うのがよいです。
 
-<pre class="lang:default decode:true">git lfs clone ${REPOSITORY_URL}</pre>
+```shell
+git lfs clone ${REPOSITORY_URL}
+```
 
 あと、.gitattributesのテンプレ的なのないのかなーと思ったので、[こちら][1]を参考にすると良さそう！
 
-<pre class="lang:default decode:true " title=".gitattributes"># Disable EOL conversions by default
+```text
+# Disable EOL conversions by default
 * -text
 
 ## Unity ##
@@ -110,19 +120,18 @@ lfsのコマンドもあって、登録もできます。
 *.ttf filter=lfs diff=lfs merge=lfs
 *.rns filter=lfs diff=lfs merge=lfs
 *.reason filter=lfs diff=lfs merge=lfs
-*.lxo filter=lfs diff=lfs merge=lfs</pre>
+*.lxo filter=lfs diff=lfs merge=lfs
+```
 
 ちなみにSourceTree使いな方は初期設定を気にしなくても使えます！  
 （.gitattributesは個々に設定が必要です）
 
-そんなこんなでとても便利そうなのですが、利用量に制限がありますのでバンバン使えるぜ！ってわけではないのでご注意ください。
+そんなこんなでとても便利そうなのですが、利用量に制限がありますのでバンバン使えるぜ！
+ってわけではないのでご注意ください。
+
+{{< blogcard url="https://docs.github.com/ja/github/managing-large-files/about-storage-and-bandwidth-usage" >}}
 
 以上です。
 
 ■ 参考
-
-[Git Large File Storage][2]  
-<a href="https://mseeeen.msen.jp/how-to-increase-git-lfs-data-capacity/" target="_blank" rel="noopener">GitHub の Git LFS で使用しているストレージ容量と転送量を増やす</a>
-
- [1]: https://gist.github.com/anjdreas/7d203cc2b2077df5acd67b8c101c4efa
- [2]: https://git-lfs.github.com/
+{{< blogcard url="https://mseeeen.msen.jp/how-to-increase-git-lfs-data-capacity/" >}}

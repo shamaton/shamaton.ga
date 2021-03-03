@@ -1,7 +1,6 @@
 ---
 title: '[Unity] UniRxを使ったマルチシーンの利用方法を考えたけど微妙だった'
 author: しゃまとん
-type: post
 date: 2017-05-28T09:27:10+00:00
 url: /posts/387
 featured_image: /images/posts/2017/05/unirx.png
@@ -15,24 +14,29 @@ categories:
 
 今回は、UniRxを使ったマルチシーンの利用方法について考えていてやってみたけど微妙になってしまった話です。
 
-最近はZenjectがいいという話からちょっと触ってみたりしているのですが、やっぱマルチシーンの初期化時に引数的なものを渡して何かしたいよねと思っていたのが発端でググるとneueccさんの記事がヒットするので、それを参考にもう少し扱いやすくできないかなぁと実装してみました。
+最近はZenjectがいいという話からちょっと触ってみたりしているのですが、
+やっぱマルチシーンの初期化時に引数的なものを渡して何かしたいよねと思っていたのが発端でググるとneueccさんの記事がヒットするので、それを参考にもう少し扱いやすくできないかなぁと実装してみました。
 
-<a href="http://neue.cc/2015/12/03_521.html" target="_blank" rel="noopener noreferrer">Unity 5.3のMulti Scene EditingをUniRxによるシーンナビゲーションで統合する</a>
+{{< blogcard url="http://neue.cc/2015/12/03_521.html" >}}
 
 詳しい処理の流れは上記記事を参考にしていただくとして、変更した点は
 
-・GameObject.FindObjectOfTypeはジェネリック変数Tで行う  
-→　シーンを複数同時に読んだときに引数がアレしそう  
-・Argをobject asしないようにした  
-→　毎回 as がめんどくさげ
+* GameObject.FindObjectOfTypeはジェネリック変数Tで行う  
+→ シーンを複数同時に読んだときに引数がアレしそう  
+* Argをobject asしないようにした  
+→ 毎回 as がめんどくさげ
 
 2点で理由は書いたとおりです。
 
-で&#8230;. Argに何でもつっこめて勝手に動作して最高だぜ！と思って使っていたのですが、とりあえず使ってみるとコードの読みづらさや、あれ&#8230;ここ同期まちさせたい&#8230;というような状況になり、うーーーーん後から見返したときにやばそうとなった次第です。
+で... Argに何でもつっこめて勝手に動作して最高だぜ！と思って使っていたのですが、
+とりあえず使ってみるとコードの読みづらさや、あれ&#8230;ここ同期まちさせたい...というような状況になり、
+うーーーーん後から見返したときにやばそうとなった次第です。
 
 簡単なサンプルを含めたコードはこんな感じです。
 
-<pre class="lang:c# decode:true" title="SceneBase.cs">using System.Collections;
+SceneBase.cs
+```csharp
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -40,11 +44,11 @@ using UnityEngine.SceneManagement;
 using UniRx;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
-/// &lt;summary&gt;
+///<summary>
 /// シーンローダーと連携するシーン管理基底クラス
-/// &lt;/summary&gt;
+///</summary>
 /////////////////////////////////////////////////////////////////////////////////////////////////
-public abstract class SceneBase&lt;T&gt; : PresenterBase {
+public abstract class SceneBase<T> : PresenterBase {
   // 初期化引数
   public T Arg { get; private set; }
 
@@ -60,47 +64,49 @@ public abstract class SceneBase&lt;T&gt; : PresenterBase {
   public bool IsLoaded { get; private set; }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////
-  /// &lt;summary&gt;
+  ///<summary>
   /// Initialize前にコールする
-  /// &lt;/summary&gt;
-  /// &lt;returns&gt;The async.&lt;/returns&gt;
+  ///</summary>
+  ///<returns>The async.</returns>
   /////////////////////////////////////////////////////////////////////////////////////////////////
-  public virtual IObservable&lt;Unit&gt; PrepareAsync() {
+  public virtual IObservable<Unit> PrepareAsync() {
     return Observable.Return(Unit.Default);
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////
-  /// &lt;summary&gt;
+  ///<summary>
   /// 生成時処理
-  /// &lt;/summary&gt;
+  ///</summary>
   /////////////////////////////////////////////////////////////////////////////////////////////////
   protected override void OnAwake() {
     // 完了時にフラグを立てておく
-    this.InitializeAsObservable().Subscribe(_ =&gt; IsLoaded = true);
+    this.InitializeAsObservable().Subscribe(_ => IsLoaded = true);
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////
-  /// &lt;summary&gt;
+  ///<summary>
   /// シーン名を設定
-  /// &lt;/summary&gt;
+  ///</summary>
   /////////////////////////////////////////////////////////////////////////////////////////////////
   public void SetSceneName(string sceneName) {
     loadedSceneName = sceneName;
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////
-  /// &lt;summary&gt;
+  ///<summary>
   /// 初期化値を設定
-  /// &lt;/summary&gt;
-  /// &lt;param name="arg"&gt;Argument.&lt;/param&gt;
+  ///</summary>
+  ///<param name="arg">Argument.</param>
   /////////////////////////////////////////////////////////////////////////////////////////////////
   public void SetArg(T arg) {
     Arg = arg;
   }
 }
-</pre>
+```
 
-<pre class="lang:c# decode:true" title="SceneBaseLoader.cs">using System;
+SceneBaseLoader.cs
+```csharp
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -109,25 +115,25 @@ using UnityEngine.SceneManagement;
 using UniRx;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
-/// &lt;summary&gt;
+///<summary>
 /// SceneBaseクラスを利用したシーンのロード管理
-/// &lt;/summary&gt;
+///</summary>
 /////////////////////////////////////////////////////////////////////////////////////////////////
 public static class SceneBaseLoader {
 
   /////////////////////////////////////////////////////////////////////////////////////////////////
-  /// &lt;summary&gt;
+  ///<summary>
   /// シーンを非同期にロード
-  /// &lt;/summary&gt;
+  ///</summary>
   /////////////////////////////////////////////////////////////////////////////////////////////////
-  public static IObservable&lt;Unit&gt; LoadAsync&lt;T, T_Arg&gt;(string sceneName, T_Arg argument, LoadSceneMode mode = LoadSceneMode.Single)
-    where T : SceneBase&lt;T_Arg&gt;
+  public static IObservable<Unit> LoadAsync<T, T_Arg>(string sceneName, T_Arg argument, LoadSceneMode mode = LoadSceneMode.Single)
+    where T : SceneBase<T_Arg>
   {
-    return Observable.FromCoroutine&lt;Unit&gt;(observer =&gt; initRoutine(SceneManager.LoadSceneAsync(sceneName, mode), observer))
-      .SelectMany(_ =&gt;
+    return Observable.FromCoroutine<Unit>(observer => initRoutine(SceneManager.LoadSceneAsync(sceneName, mode), observer))
+      .SelectMany(_ =>
         {
           // シーンを取得
-          T[] scenes = GameObject.FindObjectsOfType&lt;T&gt;();
+          T[] scenes = GameObject.FindObjectsOfType<T>();
 
           // 同じシーンを重複して読まないようにする
           if (scenes.Length != 1) {
@@ -150,7 +156,7 @@ public static class SceneBaseLoader {
 
           // PrepareAsyncが完了するまで待つ
           return loadedScene.PrepareAsync() 
-            .Do(__ =&gt; {
+            .Do(__ => {
               // Activeにして動かしはじめる
               loadedScene.gameObject.SetActive(true);
             });
@@ -158,11 +164,11 @@ public static class SceneBaseLoader {
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////
-  /// &lt;summary&gt;
+  ///<summary>
   /// 初期化ルーチン
-  /// &lt;/summary&gt;
+  ///</summary>
   /////////////////////////////////////////////////////////////////////////////////////////////////
-  static IEnumerator initRoutine(AsyncOperation operation, IObserver&lt;Unit&gt; observer) {
+  static IEnumerator initRoutine(AsyncOperation operation, IObserver<Unit> observer) {
 
     // ロード待機
     if (!operation.isDone) yield return operation;
@@ -173,9 +179,12 @@ public static class SceneBaseLoader {
     // 完了
     observer.OnCompleted();
   }
-}</pre>
+}
+```
 
-<pre class="lang:c# decode:true " title="Scene1.cs">using System.Collections;
+Scene1.cs
+```csharp
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -188,20 +197,22 @@ public class Scene1 : MonoBehaviour {
     if (Input.GetKeyDown(KeyCode.A)) {
       Scene2Arg arg = new Scene2Arg();
       arg.mesasge = "Scene2をロードしました！";
-      SceneBaseLoader.LoadAsync&lt;Scene2, Scene2Arg&gt;("Scene2", arg, LoadSceneMode.Additive).Subscribe();
+      SceneBaseLoader.LoadAsync<Scene2, Scene2Arg>("Scene2", arg, LoadSceneMode.Additive).Subscribe();
     }
   }
 }
-</pre>
+```
 
-<pre class="lang:c# decode:true " title="Scene2.cs">using System.Collections;
+Scene2.cs
+```csharp
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 using UniRx;
 
-public class Scene2 : SceneBase&lt;Scene2Arg&gt; {
+public class Scene2 : SceneBase<Scene2Arg> {
 
   [SerializeField] private Text text;
 
@@ -225,14 +236,14 @@ public class Scene2 : SceneBase&lt;Scene2Arg&gt; {
 
 public class Scene2Arg {
   public string mesasge = "";
-}</pre>
+}
+```
 
 挙動例はこれ。
 
-[<img src="https://shamaton.orz.hm/blog/images/posts/2017/05/multi_test.gif" alt="" width="598" height="410" class="aligncenter size-full wp-image-411" />][1]
+{{< figure src="/images/posts/2017/05/multi_test.gif" >}}
 
-もっと理解していたらきれいに使えるかもなんですが、今はちょっとなーという感じになってしまいました。一旦はシンプルな使い方にとどめておこうかと思います。
+もっと理解していたらきれいに使えるかもなんですが、今はちょっとなーという感じになってしまいました。
+一旦はシンプルな使い方にとどめておこうかと思います。
 
 以上です。
-
- [1]: https://shamaton.orz.hm/blog/images/posts/2017/05/multi_test.gif
