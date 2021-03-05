@@ -1,7 +1,6 @@
 ---
 title: '[Unity] Colliderの比較するのは何がいいのか'
 author: しゃまとん
-type: post
 date: 2016-09-25T13:13:28+00:00
 url: /posts/186
 featured_image: /images/posts/2016/05/space-92348_640.jpg
@@ -18,35 +17,42 @@ categories:
 しゃまとんです。
 
 最近、当たり判定について考えていたのですが、Colliderを受け取ったら何を対象に比較するのがいいのだろう  
-・名前  
-・タグ  
-・ID
+* 名前  
+* タグ  
+* ID
 
 色々な情報から判定が出来そうなのですが、個人的に  
-・文字より数値のほうが比較が早い  
-・常にユニークな値  
+* 文字より数値のほうが比較が早い  
+* 常にユニークな値
+
 がいいなぁと思っていたので、何かユニークなIDはないのか！と探すと
 
 GetInstanceIDというものがあったのですね。使ったことなかった。  
 Unityで生成されているオブジェクトは必ずIDがついていて、ユニークな値になっているそうです。
 
-
+{{< blogcard url="http://tasogare-games.hatenablog.jp/entry/20150502/1430565009" >}}
 
 じゃあ、これでいい！
 
-<pre class="brush: csharp; gutter: false">collider.GetInstanceId()</pre>
+```csharp
+collider.GetInstanceId()
+```
 
 とすると、ColliderのIDになってしまうらしく、判定がうまくいかないので注意です。  
 もしオブジェクトとの比較ならば
 
-<pre class="brush: csharp; gutter: false">collider.gameObject.GetInstanceID()</pre>
+```csharp
+collider.gameObject.GetInstanceID()
+```
 
 とする必要があるようです。gameObjectを参照する形になるのが嫌だなーと思ったのですが  
-衝突が大量に発生しないようならこれでもいいかなと落ち着きました。なんかパフォーマンス気にしすぎな気もするのですが&#8230;
+衝突が大量に発生しないようならこれでもいいかなと落ち着きました。
+なんかパフォーマンス気にしすぎな気もするのですが...;
 
 簡単にまとめるとこんな感じに。
 
-<pre class="brush: csharp; gutter: true">using UnityEngine;
+```csharp
+using UnityEngine;
 using System.Collections;
 
 public class Attack : MonoBehaviour {
@@ -62,8 +68,10 @@ public class Attack : MonoBehaviour {
       // 何かしらの処理
     }
   }
-}</pre>
+}
+```
 
 複数のオブジェクトを対象にするときはDictionaryとか使って何が当たっているのか判断したらよいかなと思っています。  
-開発が進んできて処理が重いのに悩むのなるべく避けたいですよね&#8230;  
+開発が進んできて処理が重いのに悩むのなるべく避けたいですよね...
+
 以上です。
