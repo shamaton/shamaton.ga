@@ -1,7 +1,6 @@
 ---
 title: '[Unity]PC用とかに解像度対応どうするか'
 author: しゃまとん
-type: post
 date: 2016-04-23T11:45:12+00:00
 url: /posts/171
 featured_image: /images/posts/2016/03/unity-logo.png
@@ -15,33 +14,35 @@ categories:
 
 いつも問題になる解像度についてなのですが、どの辺を設定しておけばうまいことやれるかなーという忘備録になります。
 
-PC用にゲーム作る場合ってどうするのかな、ユーザーによってフルスクリーンだったり、この解像度で遊びたいとかありそうだなーともやもやしているのですが、やはり基本解像度を決めてあとは拡縮させるのがよさ気だなという結論に至りました。
+PC用にゲーム作る場合ってどうするのかな、ユーザーによってフルスクリーンだったり、
+この解像度で遊びたいとかありそうだなーともやもやしているのですが、
+やはり基本解像度を決めてあとは拡縮させるのがよさ気だなという結論に至りました。
 
 ※まだ何も作ってないのでアレですが。。
 
 解像度の周りの設定として、2要素の設定が大事かなと思いました  
-・Player Setting  
-・Canvas
+* Player Setting  
+* Canvas
 
 ■Player Setting  
 遊ぶときにどのような環境でプレーさせるかの設定。個人的には起動時フルスクリーンのチェックも外したい。  
-・Default Screen Width / heightに基本解像度を指定  
-・Resizable Windowのチェックを外す  
-・Supported Aspect Ratioでアスペクト比を制御
+* Default Screen Width / heightに基本解像度を指定  
+* Resizable Windowのチェックを外す  
+* Supported Aspect Ratioでアスペクト比を制御
 
 この辺りを設定することで意図した解像度でゲームが表示されるでしょうか。
 
-<img src="http://shamaton.orz.hm/blog/images/posts/2016/04/playersetting.png" alt="playersetting" width="252" height="485" class="size-full wp-image-173 aligncenter" /> 
+{{< figure src="/images/posts/2016/04/playersetting.png" >}}
 
 ■Canvas  
 キャンバスはPlayer Settingとは違い全体設定ではないですが、UIの描画に大きく関わっているので追加するキャンバス毎に対応が必要かと思われます。Canvasに付いているCanvas Scalerで設定できます。  
-・UI Scale Modeを[Scale With Screen Size]にする  
-・Reference Resolutionを基本解像度にする  
-・Screen Match ModeをExpandにする（場合によって）
+* UI Scale Modeを[Scale With Screen Size]にする  
+* Reference Resolutionを基本解像度にする  
+* Screen Match ModeをExpandにする（場合によって）
 
 この辺りを設定すればよさそうです。
 
-[<img src="http://shamaton.orz.hm/blog/images/posts/2016/04/canvas_scaler.png" alt="canvas_scaler" width="272" height="113" class="size-full wp-image-174 aligncenter" />][1]
+{{< figure src="/images/posts/2016/04/canvas_scaler.png" >}}
 
 それと、設定ではないけど見えてはいけない領域対策として何かタイリングして隠すものを用意しておくよさげかなーと思いました。
 
@@ -50,7 +51,5 @@ PC用にゲーム作る場合ってどうするのかな、ユーザーによっ
 この辺は設定をいじってみて、実際の動作を確認すると理解が早いかなと思います。  
 以上です。
 
-■参考  
-<a href="http://tsubakit1.hateblo.jp/entry/2014/12/11/223427" target="_blank">uGUIのアスペクト比を固定する<br /> </a>
-
- [1]: http://shamaton.orz.hm/blog/images/posts/2016/04/canvas_scaler.png
+■参考
+{{< blogcard url="http://tsubakit1.hateblo.jp/entry/2014/12/11/223427" >}}

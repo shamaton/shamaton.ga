@@ -1,7 +1,6 @@
 ---
 title: 'Cocos2dx@WinでサンプルのJSゲームをビルドする#1'
 author: しゃまとん
-type: post
 date: 2013-08-23T16:56:33+00:00
 url: /posts/24
 categories:
@@ -13,7 +12,9 @@ categories:
 しゃまとんです。
 
 この前コチラにて開発環境を作成を備忘録として記載しました。  
-[Cocos2d-xのAndroidアプリ開発環境をWindowsに作成する][1]  
+
+{{< blogcard url="/posts/21" >}}
+
 とあるところで、JavaScript bindingな開発ができるようになったほうがいいよ！との意見をいただきました。
 
 その意見を踏まえ、やってみるか！となったら、create-project.batを実行してもCpp用のファイルしか生成できない…  
@@ -60,13 +61,16 @@ iconがないよ！とエラーができるので、アイコンを用意して�
 ■Application.mk(NDKエラー対処)  
 下記を最下行に追記する。
 
-<pre class="brush: text; gutter: true">APP_PLATFORM := android-8</pre>
+```text
+APP_PLATFORM := android-8
+```
 
 ■build_native.shの編集  
 以下の用に変更。JSファイルをビルド時にassetsに持ってくるようにする。  
 デフォルトのbuild_native.shに加筆なので、もっと整理できるかも。
 
-<pre class="brush: text; gutter: true">APPNAME="アプリ名(おそらくプロジェクト名)"
+```text
+APPNAME="アプリ名(おそらくプロジェクト名)"
 
 # options
 
@@ -177,9 +181,8 @@ else
     echo "Using prebuilt externals"
     "$NDK_ROOT"/ndk-build -C "$APP_ANDROID_ROOT" $* \
         "NDK_MODULE_PATH=${COCOS2DX_ROOT}:${COCOS2DX_ROOT}/cocos2dx/platform/third_party/android/prebuilt"
-fi</pre>
+fi
+```
 
 ここまでで、既存のCppファイルでビルドが通るようになる。そのときに必要なJSファイルをassetsに持ってくるようになる。  
 次はAppDelegate.cppからJSファイルを読み込んで、実機転送できるようにする。
-
- [1]: http://shamaton.orz.hm/blog/posts/21

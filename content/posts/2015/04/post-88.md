@@ -1,7 +1,6 @@
 ---
 title: '[cocos2dx]photonを使ってみた – その2'
 author: しゃまとん
-type: post
 date: 2015-04-09T13:22:43+00:00
 url: /posts/88
 featured_image: /images/posts/2015/08/photon_realtime_turquoise.png
@@ -18,6 +17,8 @@ photon使ってみたの続きです。
 前回通り記事の手順にそって変更点を記載していきます。
 
 その前までの設定はこちら
+
+{{< blogcard url="/posts/84" >}}
 
 <!--more-->
 
@@ -45,25 +46,30 @@ photon使ってみたの続きです。
 ・NetworkLogic.h  
 array,queueをインクルード
 
-<pre class="brush: cpp; gutter: true">#include &lt;array&gt;
-#include &lt;queue&gt;</pre>
+```cpp
+#include <array>
+#include <queue>
+```
 
 publicの最下位に追加
 
-<pre class="brush: cpp; gutter: true">// ルームが存在するか否かを返すメソッド
-	bool isRoomExists(void);
-	// イベントを送信するメソッド
-	void sendEvent(nByte code, ExitGames::Common::Hashtable* eventContent);
+```cpp
+// ルームが存在するか否かを返すメソッド
+bool isRoomExists(void);
+// イベントを送信するメソッド
+void sendEvent(nByte code, ExitGames::Common::Hashtable* eventContent);
 
-	// 自分のプレイヤー番号
-	int playerNr = 0;
-	// イベントキュー
-	std::queue&lt;std::array&lt;float, 3&gt;&gt; eventQueue;</pre>
+// 自分のプレイヤー番号
+int playerNr = 0;
+// イベントキュー
+std::queue<std::array<float, 3>> eventQueue;
+```
 
 ・NetworkLogic.cpp  
 ファイルの最下部にでも追加する
 
-<pre class="brush: cpp; gutter: true">bool NetworkLogic::isRoomExists(void)
+```cpp
+bool NetworkLogic::isRoomExists(void)
 {
 	if (mLoadBalancingClient.getRoomList().getIsEmpty()) {
 		return false;
@@ -75,58 +81,65 @@ publicの最下位に追加
 void NetworkLogic::sendEvent(nByte code, ExitGames::Common::Hashtable* eventContent)
 {
 	mLoadBalancingClient.opRaiseEvent(true, eventContent, 1, code);
-}</pre>
+}
+```
 
 customEventActionを下記のように上書きする
 
-<pre class="brush: cpp; gutter: true">void NetworkLogic::customEventAction(int playerNr, nByte eventCode, const ExitGames::Common::Object& eventContent)
+```cpp
+void NetworkLogic::customEventAction(int playerNr, nByte eventCode, const ExitGames::Common::Object& eventContent)
 {
 	ExitGames::Common::Hashtable* event;
 
 	switch (eventCode) {
 		case 1:
-			event = ExitGames::Common::ValueObject&lt;ExitGames::Common::Hashtable*&gt;(eventContent).getDataCopy();
-			float x = ExitGames::Common::ValueObject&lt;float&gt;(event-&gt;getValue(1)).getDataCopy();
-			float y = ExitGames::Common::ValueObject&lt;float&gt;(event-&gt;getValue(2)).getDataCopy();
-			eventQueue.push({static_cast&lt;float&gt;(playerNr), x, y});
+			event = ExitGames::Common::ValueObject<ExitGames::Common::Hashtable*>(eventContent).getDataCopy();
+			float x = ExitGames::Common::ValueObject<float>(event->getValue(1)).getDataCopy();
+			float y = ExitGames::Common::ValueObject<float>(event->getValue(2)).getDataCopy();
+			eventQueue.push({static_cast<float>(playerNr), x, y});
 			break;
 	}
-}</pre>
+}
+```
 
 createRoomReturn(), joinRoomReturn(), joinRandomRoomReturn() にlocalPlayerNrを追加  
-こちらは元記事のままでOKです。各fuctionの最下部に記入すると良いと思います。
+こちらは元記事のままでOKです。各functionの最下部に記入すると良いと思います。
 
 ・HelloWorldScene.h  
 タップ処理が漏れているので、元記事の部分と合わせて追記します。  
 public
-
-<pre class="brush: actionscript3; gutter: true">virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event);
-	virtual void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *unused_event);
-	virtual void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event);
-	virtual void onTouchCancelled(cocos2d::Touch *touch, cocos2d::Event *unused_event);</pre>
+```cpp
+virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event);
+virtual void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *unused_event);
+virtual void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event);
+virtual void onTouchCancelled(cocos2d::Touch *touch, cocos2d::Event *unused_event);
+```
 
 private
 
-<pre class="brush: cpp; gutter: true">virtual void update(float delta);
+```cpp
+virtual void update(float delta);
 
-	void addParticle(int playerNr, float x, float y);
+void addParticle(int playerNr, float x, float y);
 
-	NetworkLogic* networkLogic;</pre>
+NetworkLogic* networkLogic;
+```
 
 ・HelloWorldScene.cpp  
 各タッチイベント処理を追加します。Beganには、イベント送信処理を記載します。
 
-<pre class="brush: cpp; gutter: true">bool HelloWorld::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
+```cpp
+bool HelloWorld::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
 {
 
-	if (networkLogic-&gt;playerNr) {
-		this-&gt;addParticle(networkLogic-&gt;playerNr, touch-&gt;getLocation().x, touch-&gt;getLocation().y);
+	if (networkLogic->playerNr) {
+		this->addParticle(networkLogic->playerNr, touch->getLocation().x, touch->getLocation().y);
 
 		// イベント（タッチ座標）を送信
 		ExitGames::Common::Hashtable* eventContent = new ExitGames::Common::Hashtable();
-		eventContent-&gt;put&lt;int, float&gt;(1, touch-&gt;getLocation().x);
-		eventContent-&gt;put&lt;int, float&gt;(2, touch-&gt;getLocation().y);
-		networkLogic-&gt;sendEvent(1, eventContent);
+		eventContent->put<int, float>(1, touch->getLocation().x);
+		eventContent->put<int, float>(2, touch->getLocation().y);
+		networkLogic->sendEvent(1, eventContent);
 	}
 
 	return true;
@@ -142,27 +155,29 @@ void HelloWorld::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_even
 
 void HelloWorld::onTouchCancelled(cocos2d::Touch *touch, cocos2d::Event *unused_event){
 
-}</pre>
+}
+```
 
 描画更新処理(update)は下記のようにします。Inputのところが少し違います。
 
-<pre class="brush: cpp; gutter: true">void HelloWorld::update(float delta)
+```cpp
+void HelloWorld::update(float delta)
 {
-	networkLogic-&gt;run();
+	networkLogic->run();
 
-	switch (networkLogic-&gt;getState()) {
+	switch (networkLogic->getState()) {
 		case STATE_CONNECTED:
 		case STATE_LEFT:
 			// ルームが存在すればジョイン、なければ作成する
-			if (networkLogic-&gt;isRoomExists()) {
-				networkLogic-&gt;setLastInput(INPUT_2);
+			if (networkLogic->isRoomExists()) {
+				networkLogic->setLastInput(INPUT_2);
 			} else {
-				networkLogic-&gt;setLastInput(INPUT_1);
+				networkLogic->setLastInput(INPUT_1);
 			}
 			break;
 		case STATE_DISCONNECTED:
 			// 接続が切れたら再度接続
-			networkLogic-&gt;connect();
+			networkLogic->connect();
 			break;
 		case STATE_CONNECTING:
 		case STATE_JOINING:
@@ -173,52 +188,53 @@ void HelloWorld::onTouchCancelled(cocos2d::Touch *touch, cocos2d::Event *unused_
 			break;
 	}
 
-	while (!networkLogic-&gt;eventQueue.empty()) {
-		std::array&lt;float, 3&gt; arr = networkLogic-&gt;eventQueue.front();
-		networkLogic-&gt;eventQueue.pop();
+	while (!networkLogic->eventQueue.empty()) {
+		std::array<float, 3> arr = networkLogic->eventQueue.front();
+		networkLogic->eventQueue.pop();
 
-		int playerNr = static_cast&lt;int&gt;(arr[0]);
+		int playerNr = static_cast<int>(arr[0]);
 		float x = arr[1];
 		float y = arr[2];
 		CCLOG("%d, %f, %f", playerNr, x, y);
 
-		this-&gt;addParticle(playerNr, x, y);
+		this->addParticle(playerNr, x, y);
 	}
-}</pre>
+}
+```
 
 パーティクル処理(addParticle)はそのまま使えるので、コピーして使いましょう。
 
 init()にタッチ処理の設定とupdate処理の設定を追加します。  
 NetworkLogicの生成も少しだけ違っています。
 
-<pre class="brush: cpp; gutter: true">// シングルタップリスナーを用意する
-	auto listener = EventListenerTouchOneByOne::create();
-	listener-&gt;setSwallowTouches(_swallowsTouches);
+```cpp
+// シングルタップリスナーを用意する
+auto listener = EventListenerTouchOneByOne::create();
+listener->setSwallowTouches(_swallowsTouches);
 
-	// 各イベントの割り当て
-	listener-&gt;onTouchBegan     = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
-	listener-&gt;onTouchMoved     = CC_CALLBACK_2(HelloWorld::onTouchMoved, this);
-	listener-&gt;onTouchEnded     = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
-	listener-&gt;onTouchCancelled = CC_CALLBACK_2(HelloWorld::onTouchCancelled, this);
+// 各イベントの割り当て
+listener->onTouchBegan     = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
+listener->onTouchMoved     = CC_CALLBACK_2(HelloWorld::onTouchMoved, this);
+listener->onTouchEnded     = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
+listener->onTouchCancelled = CC_CALLBACK_2(HelloWorld::onTouchCancelled, this);
 
-	// イベントディスパッチャにシングルタップ用リスナーを追加する
-	_eventDispatcher-&gt;addEventListenerWithSceneGraphPriority(listener, this);
+// イベントディスパッチャにシングルタップ用リスナーを追加する
+_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
 
-	// Photonネットワーククラスのインスタンスを作成
-	networkLogic = new NetworkLogic();
+// Photonネットワーククラスのインスタンスを作成
+networkLogic = new NetworkLogic();
 
-	// 毎フレームでupdateを実行させる
-	this-&gt;schedule(schedule_selector(HelloWorld::update));
-	this-&gt;scheduleUpdate();</pre>
+// 毎フレームでupdateを実行させる
+this->schedule(schedule_selector(HelloWorld::update));
+this->scheduleUpdate();
+```
 
 これでビルドできれば、photon realtimeを利用した、マルチプレイヤーのサンプルが動作すると思います。  
 Androidでもビルドできると思いますので、やってみてください。
 
-<p style="text-align: center;">
-  <a href="http://shamaton.orz.hm/blog/images/posts/2015/03/2015_0329_photon_test_exec.png"><img src="http://shamaton.orz.hm/blog/images/posts/2015/03/2015_0329_photon_test_exec.png" alt="photon test exec" width="469" height="307" class="aligncenter  wp-image-87" /></a>
-</p>
+{{< figure src="/images/posts/2015/03/2015_0329_photon_test_exec.png" >}}
 
 お疲れ様でした。
 
 参考サイト：  
-<a href="http://recruit.gmo.jp/engineer/jisedai/blog/cocos2d-x_photon/" target="_blank">cocos2d-xでPhotonを使ってみよう</a>
+{{< blogcard url="http://recruit.gmo.jp/engineer/jisedai/blog/cocos2d-x_photon/" >}}

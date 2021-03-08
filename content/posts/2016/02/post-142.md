@@ -1,7 +1,6 @@
 ---
 title: UnityとGoで暗号化してみた
 author: しゃまとん
-type: post
 date: 2016-02-08T15:58:47+00:00
 url: /posts/142
 featured_image: /images/posts/2015/11/gopher.jpg
@@ -24,7 +23,8 @@ Goの方がコード量が少ないです。
 
 ■Unity
 
-<pre class="brush: csharp; gutter: true">using UnityEngine;
+```csharp
+using UnityEngine;
 using System.Collections;
 
 public class crypt : MonoBehaviour {
@@ -52,17 +52,15 @@ public class crypt : MonoBehaviour {
     }
     return hashStr;
   }
-}</pre>
+}
+```
 
-[<img src="http://shamaton.orz.hm/blog/images/posts/2016/02/unity_sha256.png" alt="unity_sha256" width="372" height="60" class="alignleft size-full wp-image-152" />][1]
-
-&nbsp;
-
-&nbsp;
+{{< figure src="/images/posts/2016/02/unity_sha256.png" >}}
 
 ■Go
 
-<pre class="brush: text; gutter: true">package main
+```go
+package main
 
 import (
     "crypto/hmac"
@@ -76,11 +74,13 @@ func main() {
     hash.Write([]byte("shamaton.orz.hm"))
     hashSum := fmt.Sprintf("%x", hash.Sum(nil))
     fmt.Println(hashSum)
-}</pre>
+}
+```
 
-<pre class="brush: text; gutter: true">$ go run sha.go
-9e3103953957435e407752ec0d4b063058a55338c6ac2e15ea4f07c21f90e10c</pre>
+```shell
+$ go run sha.go
+9e3103953957435e407752ec0d4b063058a55338c6ac2e15ea4f07c21f90e10c
+```
+
 
 以上です。
-
- [1]: http://shamaton.orz.hm/blog/images/posts/2016/02/unity_sha256.png

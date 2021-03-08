@@ -1,7 +1,6 @@
 ---
 title: '[cocos2dx] IntのVectorクラスを雑に作った'
 author: しゃまとん
-type: post
 date: 2016-08-29T13:01:33+00:00
 url: /posts/132
 featured_image: /images/posts/2016/08/0027_3.jpg
@@ -13,17 +12,19 @@ categories:
 お世話になっております。  
 しゃまとんです。
 
-以前にcocosで作業をしていた際に、タイルマップ的な処理をするときに通常のVectorクラスはfloat型（だったかな）で定義されているため、Int型で使いたいと思うと毎回キャストしないといけません。
+以前にcocosで作業をしていた際に、タイルマップ的な処理をするときに
+通常のVectorクラスはfloat型（だったかな）で定義されているため、Int型で使いたいと思うと毎回キャストしないといけません。
 
-そこで自作でInt型のVectorクラスを作って利用していました。少し前のものですが、そんなに特殊なことはしていないので使えると思います（ます）。
+そこで自作でInt型のVectorクラスを作って利用していました。
+少し前のものですが、そんなに特殊なことはしていないので使えると思います（ます）。
 
 もし同じように考えている方がいらっしゃれば、ご自由にお使いいただければ幸いです。  
 （ビルド通らなかったらごめんなさい）
 
-<pre class="lang:c++ decode:true brush: cpp; gutter: true" title="IntVec2.cpp">//
+```cpp
+//
 //  IntVec2.cpp
 //
-
 #include "IntVec2.h"
 
 
@@ -54,14 +55,14 @@ IntVec2::~IntVec2()
 
 void IntVec2::set(int xx, int yy)
 {
-    this-&gt;x = xx;
-    this-&gt;y = yy;
+    this->x = xx;
+    this->y = yy;
 }
 
 void IntVec2::set(const IntVec2& v)
 {
-    this-&gt;x = v.x;
-    this-&gt;y = v.y;
+    this->x = v.x;
+    this->y = v.y;
 }
 
 void IntVec2::set(const IntVec2& p1, const IntVec2& p2)
@@ -73,13 +74,13 @@ void IntVec2::set(const IntVec2& p1, const IntVec2& p2)
 
 void IntVec2::setPoint(int xx, int yy)
 {
-    this-&gt;x = xx;
-    this-&gt;y = yy;
+    this->x = xx;
+    this->y = yy;
 }
 
 bool IntVec2::equals(const IntVec2& target) const
 {
-    return ((this-&gt;x == target.x) && (this-&gt;y == target.y));
+    return ((this->x == target.x) && (this->y == target.y));
 }
 
 void IntVec2::negate()
@@ -163,16 +164,16 @@ IntVec2& IntVec2::operator*=(int s)
 
 const IntVec2 IntVec2::operator/(const int s) const
 {
-    return IntVec2(this-&gt;x / s, this-&gt;y / s);
+    return IntVec2(this->x / s, this->y / s);
 }
 
 bool IntVec2::operator&lt;(const IntVec2& v) const
 {
     if (x == v.x)
     {
-        return y &lt; v.y;
+        return y < v.y;
     }
-    return x &lt; v.x;
+    return x < v.x;
 }
 
 bool IntVec2::operator==(const IntVec2& v) const
@@ -190,20 +191,25 @@ const IntVec2 operator*(float x, const IntVec2& v)
     IntVec2 result(v);
     result.scale(x);
     return result;
-}</pre>
+}
+```
+<pre class="lang:c++ decode:true brush: cpp; gutter: true" title="IntVec2.cpp">
+
+</pre>
 
 &nbsp;
 
-<pre class="lang:c++ decode:true brush: cpp; gutter: true" title="IntVec2.h">//
+```cpp
+//
 //  IntVec2.h
 //
 
 #ifndef __IntVec2__
 #define __IntVec2__
 
-#include &lt;algorithm&gt;
-#include &lt;functional&gt;
-#include &lt;math.h&gt;
+#include <algorithm>
+#include <functional>
+#include <math.h>
 #include "math/CCMathBase.h"
 
 /**
@@ -256,7 +262,7 @@ public:
     const IntVec2 operator*(int s) const;
     IntVec2& operator*=(int s);
     const IntVec2 operator/(int s) const;
-    bool operator&lt;(const IntVec2& v) const;
+    bool operator<(const IntVec2& v) const;
     bool operator==(const IntVec2& v) const;
     bool operator!=(const IntVec2& v) const;
 
@@ -275,6 +281,7 @@ public:
 };
 
 
-#endif /* defined(__IntVec2__) */</pre>
+#endif /* defined(__IntVec2__) */
+```
 
 以上です。

@@ -1,7 +1,6 @@
 ---
 title: '[Unity]複数のuGUIを円運動させる'
 author: しゃまとん
-type: post
 date: 2016-04-09T04:34:25+00:00
 url: /posts/166
 featured_image: /images/posts/2016/04/circle.gif
@@ -18,20 +17,25 @@ Mathfにあるsin/cos関数をx，yに当てはめることで回転させられ
 
 sin/cos関数にはラジアンを渡します。MathfのDeg2Radを使うと角度を簡単にラジアンに変換できます。
 
-<pre class="brush: csharp; gutter: true">float rad = angle * Mathf.Deg2Rad;
+```csharp
+float rad = angle * Mathf.Deg2Rad;
 
 float x = Mathf.Cos(rad) * r;
-float y = Mathf.Sin(rad) * r;</pre>
+float y = Mathf.Sin(rad) * r;
+```
 
-今回は複数のUIオブジェクトを均等に配置したかったので、ベースオブジェクトを用意してスクリプト上から複製して、座標計算して設定しています。  
-半径はスクリプトで定義してもいいですし、ベースオブジェクトを0度などわかりやすい位置に置いて利用してもいいと思います。
+今回は複数のUIオブジェクトを均等に配置したかったので、ベースオブジェクトを用意してスクリプト上から複製して、
+座標計算して設定しています。  
+半径はスクリプトで定義してもいいですし、
+ベースオブジェクトを0度などわかりやすい位置に置いて利用してもいいと思います。
 
-<img src="https://shamaton.orz.hm/blog/images/posts/2016/04/UI_inspector.png" alt="UI_inspector" width="506" height="262" class="size-full wp-image-168 aligncenter" /> 
+{{< figure src="/images/posts/2016/04/UI_inspector.png" >}}
 
 スクリプトは上記画像のUIオブジェクトにつけて、Baseを参照させます。  
 コードはこんな感じです。
 
-<pre class="brush: actionscript3; gutter: true">using UnityEngine;
+```csharp
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -98,13 +102,14 @@ public class UICircle : MonoBehaviour {
       transes[i].anchoredPosition = new Vector2(x, y);
     }
   }
-}</pre>
+}
+```
 
 実行するとくるくると回ります。
 
-<img src="https://shamaton.orz.hm/blog/images/posts/2016/04/circle.gif" alt="circle" width="222" height="212" class="size-full wp-image-169 aligncenter" /> 
+{{< figure src="/images/posts/2016/04/circle.gif" >}}
 
 以上です。
 
 ■ 参考  
-<a href="http://matudozer.blog.fc2.com/blog-entry-21.html" target="_blank">三角関数を使って、振り子のような運動や円運動をさせる</a>
+{{< blogcard url="http://matudozer.blog.fc2.com/blog-entry-21.html" >}}

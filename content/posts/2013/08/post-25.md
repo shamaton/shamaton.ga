@@ -1,7 +1,6 @@
 ---
 title: 'Cocos2dx@WinでサンプルのJSゲームをビルドする#2'
 author: しゃまとん
-type: post
 date: 2013-08-29T05:02:41+00:00
 url: /posts/25
 categories:
@@ -22,13 +21,14 @@ JSを読みに行くようにCppを修正し、実機転送できるように各
 ■Cppファイルの整理  
 プロジェクト作成時に、サンプルができているがJSに切り替えるので、HelloWorldScene.*を削除します。  
 AppDelegate.cppを既存サンプルのCrystalCrazeからコピーして上書きます。  
-場所はcocos2d-x-2.1.4\samples\Javascript\CrystalCraze\Classes
+場所は`cocos2d-x-2.1.4\samples\Javascript\CrystalCraze\Classes`
 
 ■Android.mkの修正  
 いろいろとビルド時に必要なものがあるので下記のように修正します。  
 これで、プロジェクトのビルドまでは通ります。
 
-<pre class="brush: text; gutter: true">LOCAL_PATH := $(call my-dir)
+```text
+LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
@@ -57,22 +57,26 @@ $(call import-module,cocos2dx)
 $(call import-module,extensions)
 
 $(call import-module,scripting/javascript/spidermonkey-android)
-$(call import-module,scripting/javascript/bindings)</pre>
+$(call import-module,scripting/javascript/bindings)
+```
 
 ■ライブラリの追加  
-プロジェクト右クリック　→プロパティ　→　C/C++一般　→　パスおよびシンボル
+プロジェクト右クリック → プロパティ → C/C++一般 → パスおよびシンボル
 
 タブ：インクルード  
 追加時「すべての言語に追加」にチェック  
 下記2つを追加する。
 
-<pre class="brush: text; gutter: false">・${NDK_ROOT}/platforms/android-8/arch-arm/usr/include
-・${ProjDirPath}/../../cocos2dx/include</pre>
+```text
+${NDK_ROOT}/platforms/android-8/arch-arm/usr/include
+${ProjDirPath}/../../cocos2dx/include
+```
 
 タブ：ソースロケーション  
 リンク・フォルダーを押す。変数ボタンを押して、変数をに新しく追加する。
 
-<pre class="brush: text; gutter: false">変数：COCOS2DX_ROOT
+```text
+変数：COCOS2DX_ROOT
 値C:\adt-bundle-windows\cocos2d-x-2.1.4\cocos2d-x-2.1.4
 
 変数：PROJECT_ROOT
@@ -81,7 +85,8 @@ $(call import-module,scripting/javascript/bindings)</pre>
 追加したら、ファイル・システム内のフォルダーにリンクをチェックし、下記に通りに2つ入力する。
 
 <pre class="brush: text; gutter: false">PROJECT_ROOT/Classes
-COCOS2DX_ROOT/cocos2dx</pre>
+COCOS2DX_ROOT/cocos2dx
+```
 
 すると、  
 Project/Classes  

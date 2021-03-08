@@ -1,7 +1,6 @@
 ---
 title: MySQLの空コミットが気になったので調べてみた
 author: しゃまとん
-type: post
 date: 2015-11-07T09:19:33+00:00
 url: /posts/136
 featured_image: /images/posts/2015/11/mysql_logo.png
@@ -14,7 +13,8 @@ categories:
 しゃまとんです。
 
 webの開発をやっていると、データベースは切っても切れないものだと思います。  
-自分はMySQLを使うことが多いのですが、最近MySQLを使った開発を行っているときにトランザクション管理ちゃんとしないとなと思い考えていた時、
+自分はMySQLを使うことが多いのですが、最近MySQLを使った開発を行っているときにトランザクション管理ちゃんと
+しないとなと思い考えていた時、
 
 MySQLで空コミットしたときって処理重くなるのかな・・・？  
 と思い、すこし調べてみました。  
@@ -25,7 +25,8 @@ MySQLで空コミットしたときって処理重くなるのかな・・・？
 申し訳ないですが、自分はそこまで精通している人間ではないので、参考程度に読んでいただけると幸いです。  
 言語にはgoを使っています。
 
-<pre class="brush: text; gutter: true">package main
+```go
+package main
 
 import (
 	"database/sql"
@@ -120,18 +121,21 @@ func exec(f func()) time.Duration {
 	latency := time.Since(t)
 	return latency
 
-}</pre>
+}
+```
 
 結果は下記のようになりました。  
 見た感じですと
 
 select(txなし) << select(txあり) <= update(空コミット) << update(commit) <= update(rollback)
 
-となりました。selectの速度差はトランザクション開始の処理が入っているので当然なのですが、oracleの空コミットと同様に何も処理されない(?)ので、select(txあり)とほぼ変わらないっぽいですね。
+となりました。selectの速度差はトランザクション開始の処理が入っているので当然なのですが、
+oracleの空コミットと同様に何も処理されない(?)ので、select(txあり)とほぼ変わらないっぽいですね。
 
 勉強になりました。
 
-<pre class="brush: shell; gutter: true">$ go run main.go 
+```text
+ go run main.go 
 f1 :  32.243891ms
 f2 :  46.160667ms
 f3 :  50.834508ms
@@ -160,4 +164,5 @@ f1 :  33.805161ms
 f2 :  45.889625ms
 f3 :  50.216731ms
 f4 :  78.674484ms
-f5 :  78.635478ms</pre>
+f5 :  78.635478ms
+```

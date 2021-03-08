@@ -1,7 +1,6 @@
 ---
 title: cocos2dxのリリースビルド設定
 author: しゃまとん
-type: post
 date: 2014-04-01T15:38:54+00:00
 url: /posts/49
 featured_image: /images/posts/2015/08/Icon-cocos.png
@@ -23,19 +22,17 @@ iOSとAndroidで設定が別々です。
 
 ■iOS
 
-【Xcode】Appleにアプリを提出する時の注意点（デバックの違い）  
-<http://albatrus.com/main/ios/5173>
+{{< blogcard url="https://albatrus.com/entry/main/ios/5173" >}}
 
 ■Android
 
 **Android側の切り替えに関して、別記事を追加しています。**  
+{{< blogcard url="/posts/89" >}}
 **[こちら][1]を参考にしてください。**
 
-<del>Androidは、jni/Application.mk内で下記の記載を変更するといいです。</del>  
- <del>-DCOCOS2D_DEBUG=1</del>  
- <del>↓</del>  
- <del>-DCOCOS2D_DEBUG=0</del>
+~~Androidは、jni/Application.mk内で下記の記載を変更するといいです。  
+ -DCOCOS2D_DEBUG=1  
+ ↓  
+ -DCOCOS2D_DEBUG=0~~
 
 以上です。
-
- [1]: http://shamaton.orz.hm/blog/posts/89 "[cocos2dx]Androidのdebug,releaseビルドの切り替え"

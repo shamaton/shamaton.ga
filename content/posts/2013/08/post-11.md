@@ -1,7 +1,6 @@
 ---
 title: テスト
 author: しゃまとん
-type: post
 date: 2013-08-09T00:58:36+00:00
 url: /posts/11
 categories:

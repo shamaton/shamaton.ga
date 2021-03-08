@@ -1,7 +1,6 @@
 ---
 title: '[cocos2dx]photonを使ってみた – その1'
 author: しゃまとん
-type: post
 date: 2015-04-08T01:25:13+00:00
 url: /posts/84
 featured_image: /images/posts/2015/08/photon_realtime_turquoise.png
@@ -15,14 +14,17 @@ categories:
 
 しゃまとんです。
 
-すこし前ですが、CEDECに行ってきた際にphoton cloudの存在に興味を引かれまして、セッションに参加してきたのですが、あまりの手軽さに驚きました。
+すこし前ですが、CEDECに行ってきた際にphoton cloudの存在に興味を引かれまして、
+セッションに参加してきたのですが、あまりの手軽さに驚きました。
 
-ちなみにphotonというのは、オンラインゲーム(マルチプレイヤーゲーム)を簡単に作ることができる、ネットワークエンジンです。  
-<a href="http://photoncloud.jp/" target="_blank" rel="noopener">photoncloud.jp</a>
+ちなみにphotonというのは、オンラインゲーム(マルチプレイヤーゲーム)を簡単に作ることができる、ネットワークエンジンです。
 
-その時はUnityでのチュートリアルだったのですが、cocos2d-xでもやってくれないかなと思っていたところ、GMOでサンプルを記事にしてくださっていました。(SDKはもともとあった)
+{{< blogcard url="https://www.photonengine.com/ja/photon" >}}
 
-<a href="http://recruit.gmo.jp/engineer/jisedai/blog/cocos2d-x_photon/" target="_blank" rel="noopener">cocos2d-xでphotonを使ってみよう</a>
+その時はUnityでのチュートリアルだったのですが、cocos2d-xでもやってくれないかなと思っていたところ、
+GMOでサンプルを記事にしてくださっていました。(SDKはもともとあった)
+
+{{< blogcard url="http://recruit.gmo.jp/engineer/jisedai/blog/cocos2d-x_photon/" >}}
 
 上記の記事では、version3のSDKを使っていますが、4がリリースされていたので、今後は4が使われるだろうと思い、version4を使いました。  
 合わせて、そのままやっていくと、ビルドできなかったり、Androidでうまく実行できなかったりしたので、ハマった部分をメモしておきます。
@@ -39,9 +41,9 @@ cocos2d-xのバージョンはv3.2でした。
 
 こちらはクライアントSDK（v4）をダウンロードします。
 
-[<img src="https://shamaton.orz.hm/blog/images/posts/2015/03/2015_0329_sdk.png" alt="2015_04_sdk" width="603" height="438" class="aligncenter size-full wp-image-86" />][1]
+{{< figure src="/images/posts/2015/03/2015_0329_sdk.png" >}}
 
-ダウンロード以外の手順は同じです。cocos2d-xでプロジェクトを作成し、SDKのフォルダをリネムして、同じ位置に格納しましょう。
+ダウンロード以外の手順は同じです。cocos2d-xでプロジェクトを作成し、SDKのフォルダをリネームして、同じ位置に格納しましょう。
 
 ■プロジェクトのセットアップ
 
@@ -49,7 +51,8 @@ iOSのセットアップは１〜３まで行ってください。4の64bitア�
 
 Androidの設定ですが、手順のとおりにAndroid.mkを編集してもうまくいかなかったので、下記のように設定しました。主にcall周りの設定を変更しています。
 
-<pre class="brush: text; gutter: true">LOCAL_PATH := $(call my-dir)
+```text
+LOCAL_PATH := $(call my-dir)
 LOCAL_PHOTON_ROOT := $(LOCAL_PATH)/../Photon-AndroidNDK_SDK
 
 include $(CLEAR_VARS)
@@ -114,17 +117,14 @@ $(call import-add-path-optional, $(LOCAL_PHOTON_ROOT)/Photon-cpp)
 $(call import-module,photon-cpp-prebuilt)
 $(call import-add-path-optional, $(LOCAL_PHOTON_ROOT)/LoadBalancing-cpp/lib)
 $(call import-add-path-optional, $(LOCAL_PHOTON_ROOT)/LoadBalancing-cpp)
-$(call import-module,loadbalancing-cpp-prebuilt)</pre>
+$(call import-module,loadbalancing-cpp-prebuilt)
+```
 
 ■サンプルアプリケーション
 
 画面のとおりに表示されるようにします！
 
-<p style="text-align: center;">
-  <a href="https://shamaton.orz.hm/blog/images/posts/2015/03/2015_0329_photon_test_exec.png"><img src="https://shamaton.orz.hm/blog/images/posts/2015/03/2015_0329_photon_test_exec.png" alt="photon test exec" width="547" height="358" class="aligncenter wp-image-87" /></a>
-</p>
+{{< figure src="/images/posts/2015/03/2015_0329_photon_test_exec.png" >}}
 
 次はコードの修正をします。  
 ここまでお疲れ様でした。
-
- [1]: https://shamaton.orz.hm/blog/images/posts/2015/03/2015_0329_sdk.png

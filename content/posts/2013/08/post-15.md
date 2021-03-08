@@ -1,7 +1,6 @@
 ---
 title: 'ServersMan VPSでWebサーバー構築#4(MySQL)'
 author: しゃまとん
-type: post
 date: 2013-08-15T15:19:01+00:00
 url: /posts/15
 categories:
@@ -17,16 +16,28 @@ Webサーバーができたところで、次にWordPressをいざ導入…の�
 
 <!--more-->
 
-  1. MySQLインストール  
-    シンプルプランではMySQLがインストールされていないので、インストールします。</p> <pre class="brush: bash; gutter: true">yum -y install mysql-server</pre>
+1 .. MySQLインストール  
+シンプルプランではMySQLがインストールされていないので、インストールします。
+```shell
+yum -y install mysql-server
+```
 
-  2. 設定ファイル編集 <pre class="brush: bash; gutter: true">vim /etc/my.cnf</pre>
-    
-    行末に追加しましょう。
-    
-    <pre class="brush: bash; gutter: true">character-set-server = utf8 #文字コードをUTF-8にする</pre>
+2 .. 設定ファイル編集 
 
-  3. MySQL起動 <pre class="brush: bash; gutter: true">/etc/init.d/mysqld start
+```shell
+vim /etc/my.cnf
+```
+  
+行末に追加しましょう。
+
+```text
+character-set-server = utf8 #文字コードをUTF-8にする
+```
+
+3 .. MySQL起動
+
+```shell
+/etc/init.d/mysqld start
 
 MySQL データベースを初期化中:  Installing MySQL system tables...
 OK
@@ -35,17 +46,25 @@ OK
 
 ...(省略)...
 
-mysqld を起動中:                                           [  OK  ]</pre>
+mysqld を起動中:                                           [  OK  ]
+```
     
-    サーバー再起動時に自動で立ち上がるようにしましょう。
+サーバー再起動時に自動で立ち上がるようにしましょう。
     
-    <pre class="brush: bash; gutter: true">chkconfig --level 3 mysqld on</pre>
+```shell
+chkconfig --level 3 mysqld on
+```
 
-  4. MySQL初期設定 <pre class="brush: bash; gutter: true">mysql_secure_installation　# MySQL初期設定</pre>
+4 .. MySQL初期設定
+
+```shell
+mysql_secure_installation # MySQL初期設定
+```
     
-    下記の通りに設定していきましょう。
-    
-    <pre class="brush: bash; gutter: true">NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MySQL
+下記の通りに設定していきましょう。
+
+```text
+NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MySQL
       SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
 
 In order to log into MySQL to secure it, we&#039;ll need the current
@@ -102,10 +121,9 @@ Cleaning up...
 All done!  If you&#039;ve completed all of the above steps, your MySQL
 installation should now be secure.
 
-Thanks for using MySQL!</pre>
+Thanks for using MySQL!
+```
 
 これでインストールと設定が完了です。
 
 次はいよいよWordPressです！
-
-&nbsp;

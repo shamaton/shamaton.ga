@@ -1,7 +1,6 @@
 ---
 title: git管理用メモ
 author: しゃまとん
-type: post
 date: 2013-10-28T12:15:45+00:00
 url: /posts/38
 featured_image: /images/posts/2016/05/git.png

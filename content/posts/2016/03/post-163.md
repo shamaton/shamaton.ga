@@ -1,7 +1,6 @@
 ---
 title: '[Unity]パッケージ重複でAndroidのBuildに失敗した'
 author: しゃまとん
-type: post
 date: 2016-03-27T03:05:18+00:00
 url: /posts/163
 featured_image: /images/posts/2016/03/unity-logo.png
@@ -13,15 +12,20 @@ categories:
 お世話になっております。  
 しゃまとんです。
 
-Unityのモバイル開発で外部のサービスを組み込む場合、iOSやAndroid用のパッケージを利用することになるのですが、下記のようなエラーが出ることがあります。
+Unityのモバイル開発で外部のサービスを組み込む場合、iOSやAndroid用のパッケージを利用することになるのですが、
+下記のようなエラーが出ることがあります。
 
-<pre class="brush: text; gutter: true">Error building Player: CommandInvokationFailure: Unable to convert classes into dex format. See the Console for details. 
-/Library/Java/JavaVirtualMachines/jdk1.7.0_65.jdk/Contents/Home/bin/java -Xmx2048M -Dcom.android.sdkmanager.toolsdir="/Users/mukaidaichi/Developer/Android/sdk/tools" -Dfile.encoding=UTF8 -jar "/Applications/Unity/Unity.app/Contents/BuildTargetTools/AndroidPlayer/sdktools.jar"</pre>
+```text
+Error building Player: CommandInvokationFailure: Unable to convert classes into dex format. See the Console for details. 
+/Library/Java/JavaVirtualMachines/jdk1.7.0_65.jdk/Contents/Home/bin/java -Xmx2048M -Dcom.android.sdkmanager.toolsdir="/Users/mukaidaichi/Developer/Android/sdk/tools" -Dfile.encoding=UTF8 -jar "/Applications/Unity/Unity.app/Contents/BuildTargetTools/AndroidPlayer/sdktools.jar"
+```
 
 このようなメッセージがでていて更に下記のようなメッセージが続く場合
 
-<pre class="brush: actionscript3; gutter: true">UNEXPECTED TOP-LEVEL EXCEPTION: 
-java.lang.IllegalArgumentException: already added:</pre>
+```text
+UNEXPECTED TOP-LEVEL EXCEPTION: 
+java.lang.IllegalArgumentException: already added:
+```
 
 何かのパッケージが複数同梱されている状態になっています。  
 already addedの後に続くメッセージにパッケージ名に似た文字列が表示されていると思います。

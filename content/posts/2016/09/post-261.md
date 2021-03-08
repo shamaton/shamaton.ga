@@ -1,7 +1,6 @@
 ---
 title: '[2016/08] 開発進捗'
 author: しゃまとん
-type: post
 date: 2016-09-01T13:31:36+00:00
 url: /posts/261
 featured_image: /images/posts/2016/08/combo_attack.gif

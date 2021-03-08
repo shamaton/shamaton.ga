@@ -1,7 +1,6 @@
 ---
 title: '[Unity]LitJsonで入れ子なJsonの使い方'
 author: しゃまとん
-type: post
 date: 2016-03-06T10:31:19+00:00
 url: /posts/161
 featured_image: /images/posts/2016/01/JSON_logo.png
@@ -14,11 +13,13 @@ categories:
 しゃまとんです。
 
 UnityでLobiを利用したランキングなんぞ使ってみようと画策しております。  
-他のサービスでは、サービス側の画面でランキングを表示するような感じですが、LobiではランキングをJSONで取得できるようになっており、ゲーム内に合わせた表示ができるっぽくなっています。
+他のサービスでは、サービス側の画面でランキングを表示するような感じですが、
+LobiではランキングをJSONで取得できるようになっており、ゲーム内に合わせた表示ができるっぽくなっています。
 
 データはこんな感じ。すべてstringで返ってくるようです。（抜粋）
 
-<pre class="brush: text; gutter: false">{
+```text
+{
   "id" : "test_ranking",
   "status_code" : "0",
   "result" : {
@@ -52,9 +53,11 @@ UnityでLobiを利用したランキングなんぞ使ってみようと画策�
     },
     "total_results" : "10"
   }
-}</pre>
+}
+```
 
-というところで、自分はLitJsonを使ってJSONの処理をしているのですが、記事ではややこしい構造のJSONを扱っている記事があまりなかったので、調べたついでにメモしておきます。
+というところで、自分はLitJsonを使ってJSONの処理をしているのですが、
+記事ではややこしい構造のJSONを扱っている記事があまりなかったので、調べたついでにメモしておきます。
 
 やり方としては2つ  
 ・LitJson.JsonData側で各要素にアクセス  
@@ -64,7 +67,8 @@ UnityでLobiを利用したランキングなんぞ使ってみようと画策�
 ■ JsonData型でのアクセス  
 ToObjectの時に型を指定しないとJsonData型になり、Mapのように扱えます。
 
-<pre class="brush: csharp; gutter: true">private void keyAccess() {
+```csharp
+private void keyAccess() {
 
   TextAsset json = Resources.Load("Json/test") as TextAsset;
   JsonData info = JsonMapper.ToObject(json.text);
@@ -77,12 +81,14 @@ ToObjectの時に型を指定しないとJsonData型になり、Mapのように�
   for (int i = 0; i &lt; result["orders"].Count; i++) {
     Debug.Log(result["orders"][i]["name"]);
   }
-}</pre>
+}
+```
 
 ■構造体を定義してのアクセス  
 ToObject時に指定すると、構造体に展開してくれます。データと型が異なる場合はエラーになります。
 
-<pre class="brush: csharp; gutter: true">private void toStruct() {
+```csharp
+private void toStruct() {
 
   TextAsset json = Resources.Load("Json/test") as TextAsset;
 
@@ -131,7 +137,8 @@ public struct Response {
   public string id          { get; private set; }
   public string status_code { get; private set; }
   public Result result      { get; private set; }
-}</pre>
+}
+```
 
 構造体で定義された変数が存在しない場合は無視されるようですね。  
 キャストも必要なく、コードも見やすいので個人的には構造体かなーと思いました。

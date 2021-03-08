@@ -1,7 +1,6 @@
 ---
 title: '[golang]interfaceに変換されたstructの値を比較する'
 author: しゃまとん
-type: post
 date: 2015-11-14T15:42:25+00:00
 url: /posts/138
 featured_image: /images/posts/2015/11/gopher.jpg
@@ -20,7 +19,8 @@ goで汎用的に使えるメソッドを用意するとなると、interfaceや
 
 やっていることとしては、Elemで要素を取得して、value.Interface()で値が取得できるので、それを比較しています。
 
-<pre class="brush: text; gutter: true">type Hoge struct {
+```go
+type Hoge struct {
 	Id int
 }
 
@@ -38,8 +38,10 @@ func IsEqual(i1 Interface{}, i2 Interface{}) bool {
 		return true
 	}
 	return false
-}</pre>
+}
+```
 
-今回はポインタで構造体を渡しているケースなので、型次第ではinterfaceに至るまでの過程が変わってくると思いますが、基本的は上記のような形で大丈夫だと思います。
+今回はポインタで構造体を渡しているケースなので、型次第ではinterfaceに至るまでの過程が変わってくると思いますが、
+基本的は上記のような形で大丈夫だと思います。
 
 以上です。

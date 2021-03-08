@@ -1,7 +1,6 @@
 ---
 title: XcodeをVer5.1にしたらCocos2dxをビルドできない
 author: しゃまとん
-type: post
 date: 2014-03-13T02:51:14+00:00
 url: /posts/44
 categories:
@@ -21,7 +20,8 @@ categories:
 cocos2dx内のソースでエラー(Semantic issue)が出るようになります。  
 version2.2.0を使用されている方はご注意ください。
 
-間違ってXcodeをupdateしてしまった、もしくはinstallしたらversion5.1のときは5.0系をインストールするようにしたほうがよいです。(※apple審査でリジェクトされる…かも？)
+間違ってXcodeをupdateしてしまった、もしくはinstallしたらversion5.1のときは5.0系をインストールするようにしたほうがよいです。
+(※apple審査でリジェクトされる…かも？)
 
 戻す手順は簡単です。
 
@@ -33,6 +33,5 @@ version2.2.0を使用されている方はご注意ください。
 
 これで、元通りビルドできるようになります。
 
-&nbsp;
 
  [1]: https://developer.apple.com/downloads/index.action
