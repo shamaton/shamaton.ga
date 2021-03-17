@@ -36,7 +36,7 @@ GoのMessagePackパッケージ、[msgpackgen](https://github.com/shamaton/msgpa
 今はこんな感じになっていて、`ShamatonGen`とsuffixについているものが今回紹介しているものになります。知っている範囲でGo製のMessagePackシリアライザと公式の[Protobuf](https://github.com/golang/protobuf)や[Json](https://golang.org/pkg/encoding/json/)をいれて比較してみました。今の所、一番速そうです...！
 ![a](https://user-images.githubusercontent.com/4637556/107843994-23439e00-6e13-11eb-9303-296be7c24282.png)
 
-尚、結果が近しい`tinylib`というパッケージもCode Generator付きのシリアライザです。実装の際に比較対象にしていましたが、そちらよりも簡単にコード生成できるような仕組みにするのも心がけました。
+尚、結果が近しい[`tinylib`](https://github.com/tinylib/msgp)というパッケージもCode Generator付きのシリアライザです。実装の際に比較対象にしていましたが、そちらよりも簡単にコード生成できるような仕組みにするのも心がけました。
 ということで、ぜひお試しいただきたい...!!
 
 ### 使い方 - コード生成
